@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Realezy - Realize os seus desejos, "the easy way"</title>
+    <title>Bootstrap 3</title>
     <meta name = "viewport" content="width=device-width, initial-scale=1.0">
     <link href = "css/bootstrap.min.css" rel="stylesheet">
-    <link href = "css/lavish-bootstrap.css" rel="stylesheet">
     <link href = "css/style.css" rel="stylesheet">
 </head>
 
@@ -60,55 +59,58 @@
 
     <div class = "container">
 
-        <div class = "jumbotron">
-            <center>
-                <h1>Hello</h1>
-                <p>Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
-                <a class = "btn btn-success">Buy</a>
-                <a class = "btn btn-warning">Add to Cart</a>
-            </center>
-        </div>
-
-    </div>
-
-    <div class = "container">
-
         <div class = "row">
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
+			<h1>Negociação</h1><br/>
+			
+           <form class="form-horizontal" role="form">
+			  <div class="form-group">
+				<label for="offered" class="col-sm-2 control-label">Ofereci</label>
+				<div class="col-sm-2">
+				  <input type="number" class="form-control" id="offered" placeholder="350€">
+				</div>
+				<button type="submit" class="btn btn-info">Negociar</button>
+			  </div>
+			  <fieldset disabled>
+			  <div class="form-group">
+				<label for="counter-offer" class="col-sm-2 control-label">Proposta</label>
+				<div class="col-sm-2">
+				  <input type="number" class="form-control" id="counter-offer" placeholder="300€">
+				</div>
+			  </div>
+			  </fieldset>
+			  <hr/>
+			  <div class="form-group">
+				<label for="offered" class="col-sm-2 control-label">Diferença</label>
+				<div class="col-sm-2">
+				  <fieldset disabled><input type="number" class="form-control" id="offered" placeholder="50€"></fieldset>
+				</div>
+				<button type="submit" class="btn btn-success">Aceitar</button>
+				<button type="button" class="btn btn-danger">Rejeitar</button>
+			  </div>
+			</form>
         </div>
 
+		<div class="row" style="margin-top: 40px">
+			<div class="col-sm-2 col-md-2">
+            <img src="imgs/prod2.jpg"
+            alt="" class="img-rounded img-responsive" />
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <blockquote>
+                <p>Alta bota</p><small><cite title="Product Description">Sapatilhas do Bip Bip</cite></small>
+            </blockquote>
+			<hr/>
+			<button type="button" class="btn btn-default btn-lg">
+			  <span class="glyphicon glyphicon-lock"></span> Empresa X
+			</button>
+			<br/>
+            <span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star-empty"></span>
+        </div>
+		</div>
     </div>
 
 
