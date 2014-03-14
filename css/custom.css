@@ -3,6 +3,10 @@ body {
     margin-bottom: 80px;
 }
 
+.carousel-control {
+	margin-top:80px;
+}
+
 .page-header {
     margin-top: 0;
 }
