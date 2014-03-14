@@ -3,7 +3,7 @@
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
-    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html; charset=iso-8859-1" name = "viewport" content="width=device-width, initial-scale=1.0">
     <link href = "css/bootstrap.min.css" rel="stylesheet">
     <link href = "css/lavish-bootstrap.css" rel="stylesheet">
     <link href = "css/style.css" rel="stylesheet">
@@ -16,12 +16,6 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
                         <a class="navbar-brand" href="#"><img class="img-responsive" style="margin-top:-12px;" src="imgs/logo.png" height="40px" width="100px" alt="Realezy Logo"/></a>
                     </div>
                 </div>
@@ -52,7 +46,36 @@
                                 </ul>
                             </div>
                         </form>
-                    </div><!--/.navbar-collapse -->
+                    </div>
+                </div>
+                <div class="col-md-2 navbar-right">
+                    <div class="navbar-collapse collapse">
+                        <ul class="list-inline" style="margin:0px;list-style-type:none">
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="img-responsive inline-block" alt="Negotiation Alerts" style="box-shadow: 0px 0px 5px #fff;margin-top:-35px;" heigth="30px" width="30px" src="imgs/negotiation.png" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Negócio 1</a></li>
+                                    <li><a href="#">Negócio Recusado por Vendedor</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Negócio 2</a></li>
+                                    <li><a href="#">Novo Preço: 0.00 <b class="glyphicon glyphicon-euro"></b></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="img-responsive inline-block" alt="Negotiation Alerts" style="margin-top:5px;" heigth="40px" width="40px" src="imgs/anonymous_icon.jpg" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Ver Dados</a></li>
+                                    <li><a href="#">Configurar Conta</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Terminar Sessão</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,113 +85,147 @@
 
         <div class = "jumbotron">
             <center>
-                <h1>Hello</h1>
-                <p>Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
-                <a class = "btn btn-success">Buy</a>
-                <a class = "btn btn-warning">Add to Cart</a>
-            </center>
-        </div>
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
 
-    </div>
-
-    <div class = "container">
-
-        <div class = "row">
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-            <div class = "col-md-3">
-
-                <h3><a href = "#">Samsung Galaxy S5</a></h3>
-                <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
-                <a href = "#" class = "btn btn-default">Details</a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class = "navbar navbar-default navbar-fixed-bottom">
-
-        <div class = "container ">
-            <p class = "navbar-text pull-left">Site built by Realezy Team</p>
-            <a href = "http://www.paypal.com" class = "navbar-btn btn-success btn pull-right">Donate</a>
-        </div>
-
-    </div>
-
-    <div class = "modal fade" id = "contact" role = "dialog">
-        <div class = "modal-dialog">
-            <div class = "modal-content">
-                <form class = "form-horizontal">
-                    <div class = "modal-header">
-                        <h4>Contact Realezy Team</h4>
-                    </div>
-                    <div class = "modal-body">
-
-                        <div class = "form-group">
-                            <label for = "contact-name" class = "col-lg-2 control-label">Name:</label>
-                            <div class = "col-lg-10">
-
-                                <input type = "text" class = "form-control" id = "contact-name" placeholder = "Full Name">
-
-                            </div>
-                        </div>
-
-                        <div class = "form-group">
-                            <label for = "contact-email" class = "col-lg-2 control-label">Email:</label>
-                            <div class = "col-lg-10">
-
-                                <input type = "email" class = "form-control" id = "contact-email" placeholder = "you@example.com">
-
-                            </div>
-                        </div>
-
-                        <div class = "form-group">
-                            <label for = "contact-message" class = "col-lg-2 control-label">Message:</label>
-                            <div class = "col-lg-10">
-
-                                <textarea name="contact-message" class = "form-control" rows="8"></textarea>
-
-                            </div>
-                        </div>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <h2>
+                            Top Produtos
+                        </h2>
 
                     </div>
-                    <div class = "modal-footer">
-                        <a class = "btn btn-primary" data-dismiss = "modal">Close</a>
-                        <button class = "btn btn-primary" type = "submit">Send</button>
+                    <div class="item">
+                    <h2>
+                            Top Produtos
+                        </h2>
                     </div>
-                </form>
+                    <div class="item">
+                    <h2>
+                            Top Produtos
+                        </h2>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
         </div>
+
+    </center>
+</div>
+
+</div>
+
+<div class = "container">
+
+    <div class = "row">
+
+        <div class = "col-md-3">
+
+            <h3><a href = "#">Samsung Galaxy S5</a></h3>
+            <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
+            <a href = "#" class = "btn btn-default">Details</a>
+
+        </div>
+
+        <div class = "col-md-3">
+
+            <h3><a href = "#">Samsung Galaxy S5</a></h3>
+            <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
+            <a href = "#" class = "btn btn-default">Details</a>
+
+        </div>
+
+        <div class = "col-md-3">
+
+            <h3><a href = "#">Samsung Galaxy S5</a></h3>
+            <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
+            <a href = "#" class = "btn btn-default">Details</a>
+
+        </div>
+
+        <div class = "col-md-3">
+
+            <h3><a href = "#">Samsung Galaxy S5</a></h3>
+            <p>The new animation is now live!! I called an extremely poorly rated Indian restaurant as Buk Lau. What happened after can only be described as the absolute worst customer service ever. Share the video by tagging.</p>
+            <a href = "#" class = "btn btn-default">Details</a>
+
+        </div>
+
     </div>
 
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src = "js/bootstrap.js"></script>
+</div>
+
+
+<div class = "navbar navbar-default navbar-fixed-bottom">
+
+    <div class = "container ">
+        <p class = "navbar-text pull-left">Site built by Realezy Team</p>
+        <a href = "http://www.paypal.com" class = "navbar-btn btn-success btn pull-right">Donate</a>
+    </div>
+
+</div>
+
+<div class = "modal fade" id = "contact" role = "dialog">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <form class = "form-horizontal">
+                <div class = "modal-header">
+                    <h4>Contact Realezy Team</h4>
+                </div>
+                <div class = "modal-body">
+
+                    <div class = "form-group">
+                        <label for = "contact-name" class = "col-lg-2 control-label">Name:</label>
+                        <div class = "col-lg-10">
+
+                            <input type = "text" class = "form-control" id = "contact-name" placeholder = "Full Name">
+
+                        </div>
+                    </div>
+
+                    <div class = "form-group">
+                        <label for = "contact-email" class = "col-lg-2 control-label">Email:</label>
+                        <div class = "col-lg-10">
+
+                            <input type = "email" class = "form-control" id = "contact-email" placeholder = "you@example.com">
+
+                        </div>
+                    </div>
+
+                    <div class = "form-group">
+                        <label for = "contact-message" class = "col-lg-2 control-label">Message:</label>
+                        <div class = "col-lg-10">
+
+                            <textarea name="contact-message" class = "form-control" rows="8"></textarea>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class = "modal-footer">
+                    <a class = "btn btn-primary" data-dismiss = "modal">Close</a>
+                    <button class = "btn btn-primary" type = "submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src = "js/bootstrap.js"></script>
 
 </body>
 
