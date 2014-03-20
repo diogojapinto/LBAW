@@ -26,3 +26,7 @@ body {
 #advSearchBtn:hover{
 	color:grey;
 }
+
+#detailsTable td {
+	vertical-align: middle;
+}
