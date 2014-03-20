@@ -15,3 +15,7 @@ body {
 /* text-align:right; */
 text-align:left;
 }
+
+#negociation_icon:onclick{
+	box-shadow: 0px 0px 5px #fff
+}
