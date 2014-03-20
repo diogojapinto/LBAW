@@ -16,20 +16,14 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><img class="img-responsive" style="margin-top:-12px;" src="imgs/logo.png" height="40px" width="100px" alt="Realezy Logo"/></a>
+                        <a class="navbar-brand" href="index.html"><img class="img-responsive" style="margin-top:-12px;" src="imgs/logo.png" height="40px" width="100px" alt="Realezy Logo"/></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-md-offset-2">
+                <div class="col-md-8">
                     <div class="navbar-collapse collapse">
                         <form class="navbar-form" role="form">
                             <div class="form-group">
-                                <input type="text" placeholder="Produto" class="form-control">
+                                <input type="text" size="55%" placeholder="Produto" class="form-control">
                             </div>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-danger" data-toggle="dropdown">
@@ -50,9 +44,39 @@
                                     <li class="divider"></li>
                                     <li><a href="#">Separated link</a></li>
                                 </ul>
+								<a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa Avan&ccedil;ada</a>
                             </div>
                         </form>
-                    </div><!--/.navbar-collapse -->
+                    </div>
+                </div>
+                <div class="col-md-2 navbar-right">
+                    <div class="navbar-collapse collapse">
+                        <ul class="list-inline" style="margin:0px;list-style-type:none">
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/negotiation.png" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Negócio 1</a></li>
+                                    <li><a href="#">Negócio Recusado por Vendedor</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Negócio 2</a></li>
+                                    <li><a href="#">Novo Preço: 0.00 <b class="glyphicon glyphicon-euro"></b></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/Users-User-icon.png" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Ver Dados</a></li>
+                                    <li><a href="#">Configurar Conta</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Terminar Sessão</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,6 +184,106 @@
 
     </div>
 
+	
+    <div class = "modal fade" id = "advSearch" role = "dialog">
+        <div class = "modal-dialog">
+            <div class = "modal-content">
+                <form class = "form-horizontal" role="form">
+                    <div class = "modal-header">
+                        <h4>Pesquisa Avan&ccedil;ada</h4>
+                    </div>
+                    <div class = "modal-body">
+                        <div class = "form-group form-inline">
+                            <div class = "col-sm-10">
+                            	<label for="palavraschave" class = "control-label">Insira as palavras-chave</label>
+                            </div>
+                            <div class = "col-sm-10">
+                                <input type = "text" class = "form-control" id = "palavraschave" placeholder = "Palavras-Chave" type="search" required>
+                            <!-- </div>
+                            <div class = "col-sm-4"> -->
+                            	<select class="form-control">
+								    <option value="all-any">Todas as palavras, qualquer Ordem</option>
+								    <option value="any-any">Qualquer palavra, qualquer Ordem</option>
+								    <option value="all-exact">Palavras exatas, ordem exata</option>
+								    <option value="exact-any">Palavras exatas, qualquer ordem</option>
+								</select>
+                            </div>
+                       	</div>
+                       	<div class = "form-group">
+                           	<label for="categorias" class = "col-lg-2 control-label">Categoria</label>
+                            <div class = "col-lg-6">
+	                            <select class="form-control" id="categorias">
+									<option value="0">Todas as Categorias</option>
+									<option value="1">Antiques</option>
+									<option value="2">Art</option>
+									<option value="3">Baby</option>
+									<option value="4">Books</option>
+									<option value="5">Business &amp; Industrial</option>
+									<option value="6">Cameras &amp; Photo</option>
+									<option value="7">Cell Phones &amp; Accessories</option>
+									<option value="8">Clothing, Shoes &amp; Accessories</option>
+									<option value="9">Coins &amp; Paper Money</option>
+									<option value="10">Collectibles</option>
+									<option value="11">Computers/Tablets &amp; Networking</option>
+									<option value="12">Consumer Electronics</option>
+									<option value="13">Crafts</option>
+									<option value="14">Dolls &amp; Bears</option>
+									<option value="15">DVDs &amp; Movies</option>
+									<option value="16">Entertainment Memorabilia</option>
+									<option value="17">Gift Cards &amp; Coupons</option>
+									<option value="18">Health &amp; Beauty</option>
+									<option value="19">Home &amp; Garden</option>
+									<option value="20">Jewelry &amp; Watches</option>
+									<option value="21">Music</option>
+									<option value="22">Musical Instruments &amp; Gear</option>
+									<option value="23">Pet Supplies</option>
+									<option value="24">Pottery &amp; Glass</option>
+									<option value="25">Real Estate</option>
+									<option value="26">Specialty Services</option>
+									<option value="27">Sporting Goods</option>
+									<option value="28">Sports Mem, Cards &amp; Fan Shop</option>
+									<option value="29">Stamps</option>
+									<option value="30">Toys &amp; Hobbies</option>
+									<option value="31">Travel</option>
+									<option value="32">Video Games &amp; Consoles</option>
+									<option value="33">Everything Else</option>
+								</select>
+							</div>
+						</div>
+						<div class = "form-group form-inline">
+							<div class = "col-lg-10">
+								<label for="ordenar" class = "control-label">Ordenar por &nbsp;</label>
+	                            <select class="form-control" id="ordenar">
+	                            	<option value="1">Melhor correspond&ecirc;ncia</option>
+									<option value="2">Pre&ccedil;o: ascendente</option>
+									<option value="3">Pre&ccedil;o: descendente</option>
+									<option value="4">Tempo: pr&oacute;ximo do fim</option>
+									<option value="5">Tempo: mais recente</option>
+								</select>
+							</div>
+						</div>
+						<div class = "form-group form-inline">
+                            <div class = "col-lg-10">
+                            	<label for="nr_res" class = "control-label">Resultados por p&aacute;gina &nbsp;</label>
+	                            <select class="form-control" id="nr_res">
+	                            	<option value="1">25</option>
+									<option value="2">50</option>
+									<option value="3">75</option>
+									<option value="4">100</option>
+									<option value="5">200</option>
+								</select>
+							</div>
+                        </div>
+
+                    </div>
+                    <div class = "modal-footer">
+                        <button class = "btn btn-primary" type = "submit">Procurar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+	
     <div class = "modal fade" id = "contact" role = "dialog">
         <div class = "modal-dialog">
             <div class = "modal-content">
