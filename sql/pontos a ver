@@ -1,0 +1,19 @@
+CreditCard -> idUser (check if it is everywhere) --> missing in populate
+
+-> por CRON para CLUSTER (durante a noite...)
+
+CONSTRAINT executivos_pk PRIMARY KEY (id) --> criar todas as restriçoes assim
+
+alterar frequencia relativa para valores exponenciais (expoencias de 10)
+
+verificar queries realmente necessárias -> baseadas nas interfaces
+
+adicionar indices, (lots of them)
+
+para cada tabela, apresentar o numero de tuplos experado (expoencias de 10)
+
+ver uso de bitmaps em indexes (por exemplo em selects de AND AND AND ....)
+
+explicar DEVIDAMENTE os clusters
+
+novos clusters (por exemplo ordenar deals por sellers)
