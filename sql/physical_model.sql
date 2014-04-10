@@ -193,7 +193,7 @@ CREATE TABLE  Deal (
     idProduct INTEGER NOT NULL REFERENCES Product(idProduct)
         ON DELETE SET NULL,
     beginningDate DATE NOT NULL,
-    endDate DATE NOT NULL,
+    endDate DATE,
     deliveryMethod DELIVERYMETHOD,
     idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
         ON DELETE SET NULL,
