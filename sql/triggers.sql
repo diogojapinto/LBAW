@@ -72,6 +72,18 @@ BEGIN
 END
 ' LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION update_selling_product_trigger() RETURNS TRIGGER AS '
+BEGIN
+	IF (SELECT idProduct 
+		FROM Deal
+		WHERE dealState = \'Pending\') = idProduct
+	THEN
+		RETURN OLD;
+	ELSE
+		RETURN NEW;
+END
+' LANGUAGE plpgsql;
+
 DROP TRIGGER IF EXISTS new_buyerinfo_trigger ON BuyerInfo;
 CREATE TRIGGER new_buyerinfo_trigger
 	BEFORE INSERT ON BuyerInfo
@@ -96,3 +108,8 @@ DROP TRIGGER IF EXISTS new_deal_trigger ON Deal;
 CREATE TRIGGER new_deal_trigger
 	BEFORE INSERT ON Deal
 	FOR EACH ROW EXECUTE PROCEDURE new_deal_trigger();
+
+DROP TRIGGER IF EXISTS update_selling_product_trigger ON Deal;
+CREATE TRIGGER update_selling_product_trigger
+	BEFORE INSERT ON Deal
+	FOR EACH ROW EXECUTE PROCEDURE update_selling_product_trigger();
