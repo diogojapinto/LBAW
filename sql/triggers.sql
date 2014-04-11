@@ -76,7 +76,8 @@ CREATE OR REPLACE FUNCTION update_selling_product_trigger() RETURNS TRIGGER AS '
 BEGIN
 	IF (SELECT idProduct 
 		FROM Deal
-		WHERE dealState = \'Pending\') = idProduct
+		WHERE dealState = \'Pending\'
+			AND idSeller = NEW.idSeller) = idProduct
 	THEN
 		RETURN OLD;
 	ELSE

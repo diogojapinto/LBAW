@@ -29,7 +29,7 @@ DROP DOMAIN IF EXISTS Amount;
 
 CREATE TYPE  NotificationState AS ENUM ('Read', 'Unread');
 
-CREATE TYPE  InteractionType AS ENUM ('Offer', 'Proposal');
+CREATE TYPE  InteractionType AS ENUM ('Offer', 'Refusal', 'Proposal', 'Declined');
 
 CREATE TYPE  DeliveryMethod AS ENUM ('In Hand', 'Shipping');
 
@@ -98,7 +98,7 @@ CREATE TABLE  Product (
     name VARCHAR(40) NOT NULL,
     description VARCHAR,
     approved BOOLEAN NOT NULL DEFAULT FALSE
-);
+); 
 
 CREATE TABLE  Buyer (
     idBuyer INTEGER PRIMARY KEY REFERENCES RegisteredUser(idUser)
@@ -166,15 +166,15 @@ CREATE TABLE  PrivateMessage (
 );
 
 CREATE TABLE  BuyerAddress (
-    idBuyer INTEGER NOT NULL REFERENCES Buyer(idUser)
-        ON DELETE SET NULL,
     idAddress INTEGER PRIMARY KEY REFERENCES Address(idAddress)
         ON DELETE CASCADE,
+    idBuyer INTEGER NOT NULL REFERENCES Buyer(idUser)
+        ON DELETE SET NULL,
     fullName VARCHAR NOT NULL
 );
 
 CREATE TABLE  BuyerInfo (
-    idSeller SERIAL PRIMARY KEY,
+    idBuyerInfo SERIAL PRIMARY KEY,
     idShippingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress) NOT NULL
         ON DELETE SET NULL,
     idBillingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress)
@@ -185,7 +185,7 @@ CREATE TABLE  BuyerInfo (
 
 CREATE TABLE  Deal (
     idDeal SERIAL PRIMARY KEY,
-    dealState DEALSTATE NOT NULL DEFAULT 'Pending',
+    dealState DealState NOT NULL DEFAULT 'Pending',
     idBuyer INTEGER NOT NULL REFERENCES Buyer(idUser)
         ON DELETE SET NULL,
     idSeller INTEGER NOT NULL REFERENCES Seller(idUser)
@@ -194,7 +194,7 @@ CREATE TABLE  Deal (
         ON DELETE SET NULL,
     beginningDate DATE NOT NULL,
     endDate DATE,
-    deliveryMethod DELIVERYMETHOD,
+    deliveryMethod DeliveryMethod,
     idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
         ON DELETE SET NULL,
     sellerRating RATING,
@@ -248,7 +248,7 @@ CREATE INDEX deal_buyer_ix ON Deal (idBuyer);
 
 CREATE INDEX deal_seller_ix ON Deal (idSeller);
 
-CREATE INDEX interaction_ix ON Interaction USING hash (idDeal, interactionNo); -- to fetch all interactions
+CREATE INDEX interaction_ix ON Interaction (idDeal, interactionNo); -- to fetch all interactions
 
 CREATE INDEX private_message_ix ON PrivateMessage (idUser)
 
@@ -258,7 +258,7 @@ CREATE INDEX category_name_ix ON ProductCategory USING gin (name);
 
 CREATE INDEX products_in_category_ix ON ProductCategoryProduct (idCategory);
 
-CREATE INDEX buyer_price_ix ON WantsToBuy (proposedPrice);
+CREATE INDEX buyer_price_ix ON WantsToBuy (idProduct, proposedPrice);
 
 -- Clustering
 
@@ -267,3 +267,5 @@ ALTER TABLE Interaction CLUSTER ON interaction_ix;
 ALTER TABLE Deal CLUSTER ON deal_buyer_ix;
 
 ALTER TABLE ProductCategoryProduct CLUSTER ON products_in_category_ix;
+
+ALTER TABLE WantsToBuy CLUSTER ON buyer_price_ix;
