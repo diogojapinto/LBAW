@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION new_buyerinfo_trigger() RETURNS TRIGGER AS '
 DECLARE
 	idBuyer INTEGER;
 BEGIN
-	idBuyer := SELECT idBuyer FROM Deal WHERE idBuyerInfo = NEW.idBuyerInfo;
+	SELECT INTO idBuyer idBuyer FROM Deal WHERE idBuyerInfo = NEW.idBuyerInfo;
 	
 	IF (SELECT idBuyer FROM BuyerAddress WHERE idAddress = NEW.idShippingAddress) != idBuyer OR
 	(SELECT idUser FROM CreditCard WHERE idOwner = NEW.idBuyer) != idBuyer OR
@@ -49,12 +49,12 @@ END
 
 CREATE OR REPLACE FUNCTION update_deal_trigger() RETURNS TRIGGER AS '
 BEGIN
-	IF NEW.DealState = \'Successfull\' AND NEW.deliveryMethod IS NULL
+	IF NEW.DealState = "Successfull" AND NEW.deliveryMethod IS NULL
 	THEN
 		RETURN OLD; -- exception
 	END IF;
 	
-	IF NEW.deliveryMethod = \'Shipping\' AND idBuyerInfo IS NULL
+	IF NEW.deliveryMethod = "Shipping" AND idBuyerInfo IS NULL
 	THEN
 		RETURN OLD; -- exception
 	END IF;
@@ -65,7 +65,7 @@ END
 
 CREATE OR REPLACE FUNCTION new_deal_trigger() RETURNS TRIGGER AS '
 BEGIN
-	NEW.dealState := \'Pending\';
+	NEW.dealState := "Pending";
 	NEW.beginningDate := CURRENT_DATE;
 	
 	RETURN NEW;
@@ -76,7 +76,7 @@ CREATE OR REPLACE FUNCTION update_selling_product_trigger() RETURNS TRIGGER AS '
 BEGIN
 	IF (SELECT idProduct 
 		FROM Deal
-		WHERE dealState = \'Pending\'
+		WHERE dealState = "Pending"
 			AND idSeller = NEW.idSeller) = idProduct
 	THEN
 		RETURN OLD;
