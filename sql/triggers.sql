@@ -82,6 +82,7 @@ BEGIN
 		RETURN OLD;
 	ELSE
 		RETURN NEW;
+	END IF;
 END
 ' LANGUAGE plpgsql;
 
