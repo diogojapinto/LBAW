@@ -231,7 +231,17 @@ ALTER TABLE WantsToSell
     ADD CONSTRAINT ct_valid_seller_prices CHECK (minimumPrice < averagePrice);
  
 -- Indexes
-CREATE EXTENSION pg_trgm;
+DROP INDEX IF EXISTS login_info_ix;
+DROP INDEX IF EXISTS email_ix;
+DROP INDEX IF EXISTS deal_beginning_date_ix;
+DROP INDEX IF EXISTS deal_buyer_ix;
+DROP INDEX IF EXISTS deal_seller_ix;
+DROP INDEX IF EXISTS interaction_ix;
+DROP INDEX IF EXISTS private_message_ix;
+DROP INDEX IF EXISTS product_name_ix;
+DROP INDEX IF EXISTS category_name_ix;
+DROP INDEX IF EXISTS products_in_category_ix;
+DROP INDEX IF EXISTS buyer_price_ix;
 
 CREATE INDEX login_info_ix ON RegisteredUser (username, password); -- login
 
@@ -247,9 +257,9 @@ CREATE INDEX interaction_ix ON Interaction (idDeal, interactionNo); -- to fetch 
 
 CREATE INDEX private_message_ix ON PrivateMessage (idUser);
 
-CREATE INDEX product_name_ix ON Product USING gin (name gin_trgm_ops);
+CREATE INDEX product_name_ix ON Product USING gin (to_tsvector('portuguese', name));
 
-CREATE INDEX category_name_ix ON ProductCategory USING gin (name gin_trgm_ops);
+CREATE INDEX category_name_ix ON ProductCategory USING gin (to_tsvector('portuguese', name));
 
 CREATE INDEX products_in_category_ix ON ProductCategoryProduct (idCategory);
 
