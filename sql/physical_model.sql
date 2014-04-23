@@ -75,15 +75,6 @@ CREATE TABLE  Country (
     name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE  CreditCard (
-    idCreditCard SERIAL PRIMARY KEY,
-    idUser INTEGER NOT NULL REFERENCES Buyer(idUser)
-        ON DELETE SET NULL,
-    ownerName VARCHAR(40) NOT NULL,
-    number CreditCardNo NOT NULL UNIQUE,
-    dueDate DATE NOT NULL
-);
-
 CREATE TABLE  Address (
     idAddress SERIAL PRIMARY KEY,
     addressLine VARCHAR(140) NOT NULL,
@@ -105,11 +96,19 @@ CREATE TABLE  Buyer (
         ON DELETE CASCADE
 );
 
+CREATE TABLE  CreditCard (
+    idCreditCard SERIAL PRIMARY KEY,
+    idBuyer INTEGER NOT NULL REFERENCES Buyer(idBuyer)
+        ON DELETE SET NULL,
+    ownerName VARCHAR(40) NOT NULL,
+    number CreditCardNo NOT NULL UNIQUE,
+    dueDate DATE NOT NULL
+);
+
 CREATE TABLE  Seller (
     idSeller INTEGER PRIMARY KEY REFERENCES RegisteredUser(idUser)
         ON DELETE CASCADE,
-    idAddress INTEGER REFERENCES Address(idAddress) NOT NULL
-        ON DELETE SET NULL,
+    idAddress INTEGER REFERENCES Address(idAddress) NOT NULL,
     companyName VARCHAR(40) NOT NULL,
     cellphone CellPhone,
     description VARCHAR,
@@ -138,28 +137,26 @@ CREATE TABLE  ProductCategoryProduct (
 CREATE TABLE  ProductRating (
     idProduct INTEGER REFERENCES Product(idProduct)
         ON DELETE CASCADE,
-    idBuyer INTEGER REFERENCES Buyer(idUser)
+    idBuyer INTEGER REFERENCES Buyer(idBuyer)
         ON DELETE SET NULL,
     rating Rating NOT NULL,
     comment VARCHAR(200),
-    PRIMARY KEY(idProduct, idUser)
+    PRIMARY KEY(idProduct, idBuyer)
 );
 
 CREATE TABLE  WantsToBuy (
     idProduct INTEGER REFERENCES Product(idProduct)
         ON DELETE CASCADE,
-    idBuyer INTEGER REFERENCES Buyer(idUser)
+    idBuyer INTEGER REFERENCES Buyer(idBuyer)
         ON DELETE CASCADE,
     proposedPrice Amount NOT NULL,
-    PRIMARY KEY(idProduct, idUser)
+    PRIMARY KEY(idProduct, idBuyer)
 );
 
 CREATE TABLE  PrivateMessage (
     idPM SERIAL PRIMARY KEY,
-    idUser INTEGER REFERENCES RegisteredUser(idUser) NOT NULL
-        ON DELETE CASCADE,
-    idAdmin INTEGER REFERENCES Administrator(idUser) NOT NULL
-        ON DELETE CASCADE,
+    idUser INTEGER REFERENCES RegisteredUser(idUser) NOT NULL,
+    idAdmin INTEGER REFERENCES Administrator(idAdmin) NOT NULL,
     state NotificationState NOT NULL DEFAULT 'Unread',
     subject VARCHAR(40) NOT NULL,
     content VARCHAR(1000) NOT NULL
@@ -168,27 +165,24 @@ CREATE TABLE  PrivateMessage (
 CREATE TABLE  BuyerAddress (
     idAddress INTEGER PRIMARY KEY REFERENCES Address(idAddress)
         ON DELETE CASCADE,
-    idBuyer INTEGER NOT NULL REFERENCES Buyer(idUser)
+    idBuyer INTEGER NOT NULL REFERENCES Buyer(idBuyer)
         ON DELETE SET NULL,
     fullName VARCHAR NOT NULL
 );
 
 CREATE TABLE  BuyerInfo (
     idBuyerInfo SERIAL PRIMARY KEY,
-    idShippingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress) NOT NULL
-        ON DELETE SET NULL,
-    idBillingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress)
-        ON DELETE SET NULL,
+    idShippingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress),
+    idBillingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress),
     idCreditCard INTEGER NOT NULL REFERENCES CreditCard
-        ON DELETE SET NULL
 );
 
 CREATE TABLE  Deal (
     idDeal SERIAL PRIMARY KEY,
     dealState DealState NOT NULL DEFAULT 'Pending',
-    idBuyer INTEGER NOT NULL REFERENCES Buyer(idUser)
+    idBuyer INTEGER NOT NULL REFERENCES Buyer(idBuyer)
         ON DELETE SET NULL,
-    idSeller INTEGER NOT NULL REFERENCES Seller(idUser)
+    idSeller INTEGER NOT NULL REFERENCES Seller(idSeller)
         ON DELETE SET NULL,
     idProduct INTEGER NOT NULL REFERENCES Product(idProduct)
         ON DELETE SET NULL,
@@ -202,7 +196,7 @@ CREATE TABLE  Deal (
 );
 
 CREATE TABLE  WantsToSell (
-    idSeller INTEGER REFERENCES Seller(idUser)
+    idSeller INTEGER REFERENCES Seller(idSeller)
         ON DELETE CASCADE,
     idProduct INTEGER REFERENCES Product(idProduct)
         ON DELETE CASCADE,
@@ -219,7 +213,7 @@ CREATE TABLE  Interaction(
     amount Amount NOT NULL,
     date DATE NOT NULL,
     interactionType InteractionType NOT NULL,
-    PRIMARY KEY (idDeal, interactionNoa)
+    PRIMARY KEY (idDeal, interactionNo)
 );
 
 -- Constraints
@@ -228,7 +222,7 @@ ALTER TABLE RegisteredUser
     ADD CONSTRAINT ct_valid_banishment CHECK (NOT(isBanned) OR bannedDate IS NOT NULL);
 
 ALTER TABLE PrivateMessage 
-    ADD CONSTRAINT ct_valid_pm_recipient CHECK (idAdministrator != idUser);
+    ADD CONSTRAINT ct_valid_pm_recipient CHECK (idAdmin != idUser);
 
 ALTER TABLE Deal 
     ADD CONSTRAINT ct_valid_deal_dates CHECK (endDate::date > beginningDate::date);
@@ -237,6 +231,17 @@ ALTER TABLE WantsToSell
     ADD CONSTRAINT ct_valid_seller_prices CHECK (minimumPrice < averagePrice);
  
 -- Indexes
+DROP INDEX IF EXISTS login_info_ix;
+DROP INDEX IF EXISTS email_ix;
+DROP INDEX IF EXISTS deal_beginning_date_ix;
+DROP INDEX IF EXISTS deal_buyer_ix;
+DROP INDEX IF EXISTS deal_seller_ix;
+DROP INDEX IF EXISTS interaction_ix;
+DROP INDEX IF EXISTS private_message_ix;
+DROP INDEX IF EXISTS product_name_ix;
+DROP INDEX IF EXISTS category_name_ix;
+DROP INDEX IF EXISTS products_in_category_ix;
+DROP INDEX IF EXISTS buyer_price_ix;
 
 CREATE INDEX login_info_ix ON RegisteredUser (username, password); -- login
 
@@ -250,11 +255,11 @@ CREATE INDEX deal_seller_ix ON Deal (idSeller);
 
 CREATE INDEX interaction_ix ON Interaction (idDeal, interactionNo); -- to fetch all interactions
 
-CREATE INDEX private_message_ix ON PrivateMessage (idUser)
+CREATE INDEX private_message_ix ON PrivateMessage (idUser);
 
-CREATE INDEX product_name_ix ON Product USING gin (name);
+CREATE INDEX product_name_ix ON Product USING gin (to_tsvector('portuguese', name));
 
-CREATE INDEX category_name_ix ON ProductCategory USING gin (name);
+CREATE INDEX category_name_ix ON ProductCategory USING gin (to_tsvector('portuguese', name));
 
 CREATE INDEX products_in_category_ix ON ProductCategoryProduct (idCategory);
 

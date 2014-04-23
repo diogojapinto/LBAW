@@ -1,15 +1,15 @@
-CREATE OR REPLACE FUNCTION new_buyerinfo_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION new_buyerinfo_trigger() RETURNS TRIGGER AS $$
 DECLARE
 	idBuyer INTEGER;
 BEGIN
-	idBuyer := SELECT idBuyer FROM Deal WHERE idBuyerInfo = NEW.idBuyerInfo;
+	SELECT INTO idBuyer idBuyer FROM Deal WHERE idBuyerInfo = NEW.idBuyerInfo;
 	
 	IF (SELECT idBuyer FROM BuyerAddress WHERE idAddress = NEW.idShippingAddress) != idBuyer OR
 	(SELECT idUser FROM CreditCard WHERE idOwner = NEW.idBuyer) != idBuyer OR
 	(NEW.idBillingAddress IS NOT NULL AND
 		(SELECT idUser FROM BuyerAddress WHERE idAddress = NEW.idBillingAddress) != idBuyer)
 	THEN
-		RETURN OLD; -- exception
+		RAISE EXCEPTION 'Addresses must belong to the Buyer in a Deal';
 	END IF;
 	
 	IF NEW.idBillingAddress IS NULL
@@ -19,9 +19,9 @@ BEGIN
 	
 	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 	
-CREATE OR REPLACE FUNCTION remove_productcategory_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION remove_productcategory_trigger() RETURNS TRIGGER AS $$
 BEGIN
 	IF OLD.idParent IS NOT NULL
 	THEN
@@ -32,9 +32,9 @@ BEGIN
 	
 	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_registreduser_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION update_registreduser_trigger() RETURNS TRIGGER AS $$
 BEGIN
 	IF OLD.isBanned != NEW.isBanned AND NEW.isBanned = TRUE
 	THEN
@@ -45,45 +45,46 @@ BEGIN
 	
 	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_deal_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION update_deal_trigger() RETURNS TRIGGER AS $$
 BEGIN
-	IF NEW.DealState = \'Successfull\' AND NEW.deliveryMethod IS NULL
+	IF NEW.DealState = "Successful" AND NEW.deliveryMethod IS NULL
 	THEN
-		RETURN OLD; -- exception
+		RAISE EXCEPTION 'When a Deal is successful, a Delivery Method must be set';
 	END IF;
 	
-	IF NEW.deliveryMethod = \'Shipping\' AND idBuyerInfo IS NULL
+	IF NEW.deliveryMethod = "Shipping" AND idBuyerInfo IS NULL
 	THEN
-		RETURN OLD; -- exception
+		RAISE EXCEPTION 'When a Deal is shipping, Buyer Info must be specified';
 	END IF;
 	
 	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION new_deal_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION new_deal_trigger() RETURNS TRIGGER AS $$
 BEGIN
-	NEW.dealState := \'Pending\';
+	NEW.dealState := "Pending";
 	NEW.beginningDate := CURRENT_DATE;
 	
 	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_selling_product_trigger() RETURNS TRIGGER AS '
+CREATE OR REPLACE FUNCTION update_selling_product_trigger() RETURNS TRIGGER AS $$
 BEGIN
 	IF (SELECT idProduct 
 		FROM Deal
-		WHERE dealState = \'Pending\'
+		WHERE dealState = "Pending"
 			AND idSeller = NEW.idSeller) = idProduct
 	THEN
-		RETURN OLD;
-	ELSE
-		RETURN NEW;
+		RAISE EXCEPTION '';
+	END IF;
+	
+	RETURN NEW;
 END
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS new_buyerinfo_trigger ON BuyerInfo;
 CREATE TRIGGER new_buyerinfo_trigger
