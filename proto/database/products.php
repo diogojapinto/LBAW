@@ -30,7 +30,7 @@ function getProductsByName($name){
                             WHERE to_tsvector('portuguese', name) @@ to_tsquery('portuguese', :name);");
     $stmt->execute(array(':name', $name));
     $products = $stmt->fetchAll();
-    
+
     foreach($products as $product){
         $stmt = $conn->prepare("SELECT name
                                 FROM ProductCategoryProduct, ProductCategory,

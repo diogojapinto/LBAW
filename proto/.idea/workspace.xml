@@ -33,41 +33,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.1538463" vertical-offset="662" max-vertical-offset="1513">
-              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.5005875" vertical-offset="2039" max-vertical-offset="2890">
+              <caret line="145" column="1" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
               <folding>
-                <marker date="1398289438856" expanded="true" signature="87:132" placeholder="DELETE FROM ..." />
-                <marker date="1398289438856" expanded="true" signature="278:331" placeholder="DELETE FROM ..." />
-                <marker date="1398289438856" expanded="true" signature="478:525" placeholder="SELECT * FRO..RegisteredUser..." />
-                <marker date="1398289438856" expanded="true" signature="491:525" placeholder="DELETE FROM ..." />
-                <marker date="1398289438856" expanded="true" signature="769:818" placeholder="SELECT * FRO..RegisteredUser..." />
-                <marker date="1398289438856" expanded="true" signature="1165:1256" placeholder="INSERT INTO ..." />
-                <marker date="1398289438856" expanded="true" signature="1398:1469" placeholder="INSERT INTO ..." />
-                <marker date="1398289438856" expanded="true" signature="1802:1893" placeholder="INSERT INTO ..." />
-                <marker date="1398289438856" expanded="true" signature="2035:2139" placeholder="INSERT INTO ..." />
-                <marker date="1398289438856" expanded="true" signature="2317:2516" placeholder="INSERT INTO ..." />
-                <marker date="1398289438856" expanded="true" signature="2752:2879" placeholder="SELECT usern..RegisteredUser..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="products.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/products.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35957697" vertical-offset="238" max-vertical-offset="1105">
-              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-              <folding>
-                <element signature="e#6#94#0" expanded="true" />
-                <marker date="1398289544249" expanded="true" signature="170:226" placeholder="SELECT idPro..Product..." />
-                <marker date="1398289544249" expanded="true" signature="356:580" placeholder="SELECT name ..ProductCategoryProduct..." />
-                <marker date="1398289544249" expanded="true" signature="771:921" placeholder="SELECT * FRO..Product..." />
-                <marker date="1398289544249" expanded="true" signature="1077:1301" placeholder="SELECT name ..ProductCategoryProduct..." />
-                <marker date="1398289544249" expanded="true" signature="1483:1621" placeholder="SELECT Produ..Product..." />
-                <marker date="1398289544249" expanded="true" signature="1731:1933" placeholder="SELECT name ..ProductProductCategory..." />
+                <marker date="1398290525077" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
+                <marker date="1398290525077" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
+                <marker date="1398290525077" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
+                <marker date="1398290525077" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
+                <marker date="1398290525077" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
+                <marker date="1398290525077" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
+                <marker date="1398290525077" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
+                <marker date="1398290525077" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
+                <marker date="1398290525077" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
+                <marker date="1398290525077" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
+                <marker date="1398290525077" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
+                <marker date="1398290525077" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
+                <marker date="1398290525077" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
+                <marker date="1398290525077" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
+                <marker date="1398290525077" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
+                <marker date="1398290525077" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
+                <marker date="1398290525077" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
+                <marker date="1398290525077" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
               </folding>
             </state>
           </provider>
@@ -85,8 +74,8 @@
       <list>
         <option value="$PROJECT_DIR$/templates/products/list.tpl" />
         <option value="$PROJECT_DIR$/pages/products/list_all.php" />
-        <option value="$PROJECT_DIR$/database/users.php" />
         <option value="$PROJECT_DIR$/database/products.php" />
+        <option value="$PROJECT_DIR$/database/users.php" />
       </list>
     </option>
   </component>
@@ -687,12 +676,12 @@
       <created>1398265547596</created>
       <updated>1398265547596</updated>
       <workItem from="1398265549861" duration="1204000" />
-      <workItem from="1398283956440" duration="5173000" />
+      <workItem from="1398283956440" duration="6150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6377000" />
+    <option name="totallyTimeSpent" value="7354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
@@ -817,38 +806,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/users.php">
+    <entry file="file://$PROJECT_DIR$/database/products.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.1538463" vertical-offset="662" max-vertical-offset="1513">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.8589894" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <marker date="1398289438856" expanded="true" signature="87:132" placeholder="DELETE FROM ..." />
-            <marker date="1398289438856" expanded="true" signature="278:331" placeholder="DELETE FROM ..." />
-            <marker date="1398289438856" expanded="true" signature="478:525" placeholder="SELECT * FRO..RegisteredUser..." />
-            <marker date="1398289438856" expanded="true" signature="491:525" placeholder="DELETE FROM ..." />
-            <marker date="1398289438856" expanded="true" signature="769:818" placeholder="SELECT * FRO..RegisteredUser..." />
-            <marker date="1398289438856" expanded="true" signature="1165:1256" placeholder="INSERT INTO ..." />
-            <marker date="1398289438856" expanded="true" signature="1398:1469" placeholder="INSERT INTO ..." />
-            <marker date="1398289438856" expanded="true" signature="1802:1893" placeholder="INSERT INTO ..." />
-            <marker date="1398289438856" expanded="true" signature="2035:2139" placeholder="INSERT INTO ..." />
-            <marker date="1398289438856" expanded="true" signature="2317:2516" placeholder="INSERT INTO ..." />
-            <marker date="1398289438856" expanded="true" signature="2752:2879" placeholder="SELECT usern..RegisteredUser..." />
+            <element signature="e#6#94#0" expanded="true" />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT idPro..Product..." />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductCategoryProduct..." />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..Product..." />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductCategoryProduct..." />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT Produ..Product..." />
+            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductProductCategory..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/products.php">
+    <entry file="file://$PROJECT_DIR$/database/users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35957697" vertical-offset="238" max-vertical-offset="1105">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.5005875" vertical-offset="2039" max-vertical-offset="2890">
+          <caret line="145" column="1" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
           <folding>
-            <element signature="e#6#94#0" expanded="true" />
-            <marker date="1398289544249" expanded="true" signature="170:226" placeholder="SELECT idPro..Product..." />
-            <marker date="1398289544249" expanded="true" signature="356:580" placeholder="SELECT name ..ProductCategoryProduct..." />
-            <marker date="1398289544249" expanded="true" signature="771:921" placeholder="SELECT * FRO..Product..." />
-            <marker date="1398289544249" expanded="true" signature="1077:1301" placeholder="SELECT name ..ProductCategoryProduct..." />
-            <marker date="1398289544249" expanded="true" signature="1483:1621" placeholder="SELECT Produ..Product..." />
-            <marker date="1398289544249" expanded="true" signature="1731:1933" placeholder="SELECT name ..ProductProductCategory..." />
+            <marker date="1398290525077" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
+            <marker date="1398290525077" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
+            <marker date="1398290525077" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398290525077" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398290525077" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
+            <marker date="1398290525077" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
+            <marker date="1398290525077" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
+            <marker date="1398290525077" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
+            <marker date="1398290525077" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
+            <marker date="1398290525077" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
+            <marker date="1398290525077" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
+            <marker date="1398290525077" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
+            <marker date="1398290525077" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
+            <marker date="1398290525077" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
+            <marker date="1398290525077" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398290525077" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398290525077" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
+            <marker date="1398290525077" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
           </folding>
         </state>
       </provider>
