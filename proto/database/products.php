@@ -28,8 +28,7 @@ function getProductsByName($name){
     $stmt = $conn->prepare("SELECT *
                             FROM Product
                             WHERE to_tsvector('portuguese', name) @@ to_tsquery('portuguese', :name);");
-    $stmt->bindParam(':name', $name);
-    return $stmt->execute();
+    return $stmt->execute(array(':name', $name));
 }
 
 function getProduct($id){
@@ -37,14 +36,12 @@ function getProduct($id){
     $stmt = $conn->prepare("SELECT Product.name, description
                             FROM Product
                             WHERE Product.idProduct = :idProduct;");
-    $stmt->bind(':idProduct', $id);
-    $stmt->execute();
+    $stmt->execute(array(':idProduct', $id));
     $product = $stmt->fetch();
     $stmt = $conn->prepare("SELECT name
                             FROM ProductProductCategory, ProductCategory,
                             WHERE idProduct = :id AND ProductCategory.idCategory = ProductProductCategory.idCategory;");
-    $stmt->bind(':id', $id);
-    $stmt->execute();
+    $stmt->execute(array(':id', $id));
     $product['Category'] = $stmt->fetch();
     return $product;
 }
