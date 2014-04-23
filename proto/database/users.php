@@ -15,7 +15,19 @@ function deleteUserByUserName($userName){
 function checkUsername($userName){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE idUser = :id;");
-    $results = $stmt->execute(array(':id', $userName));
+    $stmt->execute(array(':id', $userName));
+    $results = $stmt->fetchAll();
+    if(sizeof($results) == 0)
+        return true;
+    else
+        return false;
+}
+
+function checkEmail($email){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE email = :email;");
+    $stmt->execute(array(':email', $email));
+    $results = $stmt->fetchAll();
     if(sizeof($results) == 0)
         return true;
     else
@@ -35,7 +47,7 @@ function registerBuyer($userName, $password, $email){
 
         $stmt->execute();
 
-        return $conn->commit();
+        return $conn->commit() == true;
     }
 }
 
@@ -57,20 +69,14 @@ function registerSeller($userName, $password, $email, $addressLine, $postalCode,
 
         $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone));
 
-        return $conn->commit();
+        return $conn->commit() == true;
     }
 }
 
-function createUser($realname, $username, $password) {
+function userLogin($username, $password) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO users VALUES (?, ?, ?)");
-    $stmt->execute(array($username, $realname, sha1($password)));
-}
-
-function isLoginCorrect($username, $password) {
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM users 
+    $stmt = $conn->prepare("SELECT username
+                            FROM RegisteredUser
                             WHERE username = ? AND password = ?");
     $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch() == true;
