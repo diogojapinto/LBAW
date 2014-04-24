@@ -37,6 +37,8 @@
     exit;
   }
   
-  $_SESSION['username'] = $username;
+  $id = getIdUser($username);
+  $_SESSION['iduser'] = $id['iduser'];
+  
   header("Location: $BASE_URL");
 ?>

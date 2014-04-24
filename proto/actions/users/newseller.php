@@ -27,7 +27,7 @@
     header("Location: $BASE_URL" . 'pages/users/registerseller.php');
     exit;
   }
-  /*
+  
   try {
     registerSeller($username, $password1, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone);
   } catch (PDOException $e) {
@@ -44,8 +44,10 @@
     header("Location: $BASE_URL" . 'pages/users/registerseller.php');
 	
     exit;
-  }*/
-  registerSeller($username, $password1, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone);
-  $_SESSION['username'] = $username;
+  }
+  
+  $id = getIdUser($username);
+  $_SESSION['iduser'] = $id['iduser'];
+  
   header("Location: $BASE_URL");
 ?>
