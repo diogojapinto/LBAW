@@ -5,5 +5,5 @@
   $countries = getCountryList();
   $smarty->assign('countries', $countries);
   
-  $smarty->display('registerseller.tpl');
+  $smarty->display('users/registerseller.tpl');
 ?>

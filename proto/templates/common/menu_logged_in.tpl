@@ -21,7 +21,7 @@
                                     <li><a href="#">Ver Dados</a></li>
                                     <li><a href="#">Configurar Conta</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="{$BASE_URL}actions/logout.php">Terminar Sessão</a></li>
+                                    <li><a href="{$BASE_URL}actions/users/logout.php">Terminar Sessão</a></li>
                                 </ul>
                             </li>
                         </ul>

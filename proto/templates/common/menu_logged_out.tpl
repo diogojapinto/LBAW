@@ -12,7 +12,7 @@
                          heigth="30px" width="30px" src="{$BASE_URL}images/icon_set/Users-User-icon.png"/>
                 </a>
                 <ul class="dropdown-menu" role="menu" style="padding: 15px;">
-                    <form action="{$BASE_URL}actions/login.php" method="post" accept-charset="UTF-8">
+                    <form action="{$BASE_URL}actions/users/login.php" method="post" accept-charset="UTF-8">
                         <input placeholder="Nome de utilizador" style="margin-bottom: 15px;" type="text" name="username"
                                size="30"/>
                         <input placeholder="Palavra-passe" style="margin-bottom: 15px;" type="password" name="password"
@@ -21,9 +21,9 @@
                         <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;"
                                type="submit" name="commit" value="Sign In"/>
                     </form>
-                    <a href="{$BASE_URL}pages/registerseller.php" class="btn btn-success"
+                    <a href="{$BASE_URL}pages/users/registerseller.php" class="btn btn-success"
                        style="margin: 3px; float: right;">Registar Vendedor</a>
-                    <a href="{$BASE_URL}pages/registerbuyer.php" class="btn btn-success"
+                    <a href="{$BASE_URL}pages/users/registerbuyer.php" class="btn btn-success"
                        style="margin: 3px; float: right;">Registar Comprador</a>
                 </ul>
             </li>

@@ -90,7 +90,7 @@
     <div class = "row">
 
         {foreach $highestRatedProducts as $product}
-            
+
         {/foreach}
         <div class = "col-md-3">
             <div class="thumbnail">

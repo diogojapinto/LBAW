@@ -1,4 +1,4 @@
-proto/config/init.php
+proto/config/*
 proto/.idea/
 proto/proto.iml
 proto/templates_c/
