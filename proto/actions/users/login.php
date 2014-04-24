@@ -11,7 +11,8 @@
 
   $username = $_POST['username'];
   $password = $_POST['password'];
-  
+  $id = getIdUser($username);
+  $_SESSION['iduser'] = $id['iduser'];
   
   if (userLogin($username, $password)) {
     $_SESSION['username'] = $username;
@@ -20,5 +21,5 @@
     $_SESSION['error_messages'][] = 'Login failed';  
   }
   
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: ' . $BASE_URL);
 ?>

@@ -97,6 +97,16 @@ function userLogin($username, $password)
     return $stmt->fetch() == true;
 }
 
+function isBuyer($username)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT username
+                            FROM RegisteredUser, Buyer
+                            WHERE username = ? AND idUser = idBuyer");
+    $stmt->execute(array($username));
+    return $stmt->fetch() == true;
+}
+
 function getInteractions($userId)
 {
     global $conn;
@@ -157,6 +167,36 @@ function getCountryList()
     return $conn->query("SELECT * FROM Country ORDER BY name;");
 }
 
+function getIdUser($username)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT idUser FROM RegisteredUser WHERE username = :username;");
+	$stmt->execute(array(':username' => $username));
+	
+	return $stmt->fetch();
+}
+
+function getRegistredUser($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE idUser = :id;");
+	$stmt->execute(array(':id' => $id));
+	
+	return $stmt->fetch();
+}
+
+function getSeller($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT cellphone, companyName, description, addressline, city, postalCode, name
+	FROM Seller, Address, Country
+	WHERE Seller.idSeller = :id AND Seller.idAddress = Address.idAddress AND
+		Country.idCountry = Address.idCountry;");
+	$stmt->execute(array(':id' => $id));
+	
+	return $stmt->fetch();
+}
+
 function getPrivateMessage($privateMessageId)
 {
     global $conn;
@@ -176,4 +216,16 @@ function getPrivateMessage($privateMessageId)
     $conn->commit();
 
     return $result;
+}
+
+function updateUserEmail($userid, $email) {
+	global $conn;
+    $stmt = $conn->prepare("UPDATE RegistredUser SET email = :email WHERE idUser = :id");
+    return $stmt->execute(array(':email' => $email, ':id' => $userid));
+}
+
+function updateUserPassword($userid, $password) {
+	global $conn;
+    $stmt = $conn->prepare("UPDATE RegistredUser SET password = :password WHERE idUser = :id");
+    return $stmt->execute(array(':password' => $password, ':id' => $userid));
 }
