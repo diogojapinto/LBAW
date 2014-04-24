@@ -6,11 +6,15 @@
                                     <img class="img-responsive highlight_icon" alt="Negotiation Alerts" heigth="30px" width="30px" src="{$BASE_URL}images/icon_set/negotiation.png" />
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Negócio 1</a></li>
-                                    <li><a href="#">Negócio Recusado por Vendedor</a></li>
+                                    {foreach from=$notifications['interactions'] key=interactionno item=interaction}
+                                        <li><a href="#">Nova oferta no produto {$interaction.name}</a></li>
+                                        <li><a href="#">Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b></a></li>
+                                    {/foreach}
                                     <li class="divider"></li>
-                                    <li><a href="#">Negócio 2</a></li>
-                                    <li><a href="#">Novo Preço: 0.00 <b class="glyphicon glyphicon-euro"></b></a></li>
+                                    {foreach from=$notifications['privateMessages'] key=messageno item=message}
+                                        <li><a href="#">Mensagem {$message@iteration}</a></li>
+                                        <li><a href="#">Assunto: {$message.subject}</a></li>
+                                    {/foreach}
                                 </ul>
                             </li>
                             <li>

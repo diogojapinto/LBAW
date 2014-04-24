@@ -110,16 +110,24 @@ function isBuyer($username)
 function getInteractions($userId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT interactionNo, state, date FROM Interaction WHERE idUser = :id;");
-    $stmt->execute(array(':id' => $userId));
+    $stmt = $conn->prepare("SELECT Interaction.*, Product.name FROM Interaction, Deal, Product, registeredUser
+                            WHERE Interaction.iddeal = Deal.iddeal AND
+                                  Deal.idproduct = Product.idproduct AND
+                                  Deal.idbuyer = registeredUser.idUser AND
+                                  registeredUser.idUser = ?;");
+    $stmt->execute(array($userId));
     return $stmt->fetchAll();
 }
 
 function getUnreadInteractions($userId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT interactionNo, date FROM Interaction WHERE idUser = :id AND state = 'Unread';");
-    $stmt->execute(array(':id' => $userId));
+    $stmt = $conn->prepare("SELECT Interaction.*, Product.name FROM Interaction, Deal, Product, registeredUser
+                            WHERE Interaction.iddeal = Deal.iddeal AND
+                                  Deal.idproduct = Product.idproduct AND
+                                  Deal.idbuyer = registeredUser.idUser AND
+                                  registeredUser.idUser = ? AND state = 'Unread';");
+    $stmt->execute(array($userId));
     return $stmt->fetchAll();
 }
 
