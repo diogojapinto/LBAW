@@ -1,27 +1,23 @@
 {include file='common/header.tpl'}
 
-<section id="tweets">
-  <h2>Tweets</h2>
+<section id="products">
+  <h2>Products</h2>
 
-  <div id="new_tweets"></div>
+  <div id="top_products"></div>
 
-  {foreach $tweets as $tweet}
+  {foreach $products as $product}
 
-  <article class="tweet-data">
-    <img src="{$BASE_URL}{$tweet.photo}">
-    <span class="realname">{$tweet.realname}</span>
-    <a href="{$BASE_URL}pages/tweets/list_user.php?username={$tweet.username}" class="username">@{$tweet.username}</a>
+  <article class="product-data">
+    <img src="{$BASE_URL}/images/{$product.idproduct}">
+    <span class="realname">{$product.name}</span>
+    <a href="{$BASE_URL}pages/products/product.php?productId={$product.idproduct}">@{$product.name}</a>
 
-    <span class="time">{$tweet.time}</span>
-    <div class="tweet-text">{$tweet.text}</div>
+    <span class="time">{$product.description}</span>
   </article>
 
   {/foreach}
 
 </section>
 
-<script>last_tweet_id = {$last_tweet_id}</script>
-
-<script src="{$BASE_URL}javascript/tweets.js"></script>
 
 {include file='common/footer.tpl'}
