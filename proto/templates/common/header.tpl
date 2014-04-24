@@ -66,7 +66,7 @@
                 {if $USERNAME}
                     {include file='common/menu_logged_in.tpl'}
                 {else}
-                    {include file='common/menu_logged_in.tpl'}
+                    {include file='common/menu_logged_out.tpl'}
                 {/if}
             </div>
         </div>

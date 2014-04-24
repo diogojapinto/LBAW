@@ -85,7 +85,7 @@ function userLogin($username, $password)
     $stmt = $conn->prepare("SELECT username
                             FROM RegisteredUser
                             WHERE username = ? AND password = ?");
-    $stmt->execute(array($username, sha1($password)));
+    $stmt->execute(array($username, $password));
     return $stmt->fetch() == true;
 }
 
@@ -139,6 +139,14 @@ function getUnreadPrivateMessages($userId)
     global $conn;
     $stmt = $conn->prepare("SELECT idPM, subject FROM PrivateMessage WHERE idUser = :id AND state = 'Unread';");
     $stmt->execute(array(':id' => $userId));
+    return $stmt->fetchAll();
+}
+
+function getCountryList()
+{
+    global $conn;
+	echo 10;
+    $stmt = $conn->prepare("SELECT * FROM Country ORDER BY name;");
     return $stmt->fetchAll();
 }
 
