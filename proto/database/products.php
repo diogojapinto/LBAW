@@ -43,6 +43,19 @@ function getProductsByName($name)
     return $products;
 }
 
+function getProductsByCategory($category)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
+    $stmt->execute(array($category));
+    $products = $stmt->fetchAll();
+
+    return $products;
+}
+
 function getProduct($id)
 {
     global $conn;
