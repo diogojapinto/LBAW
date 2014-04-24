@@ -9,39 +9,39 @@
 function getAllProducts()
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT idProduct, Product.name, description FROM Product;");
+    $stmt = $conn->prepare("SELECT Product.*, description, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
     $stmt->execute();
-    $products = $stmt->fetchAll();
-    foreach ($products as $product) {
-        $stmt = $conn->prepare("SELECT name
-                                FROM ProductCategoryProduct, ProductCategory
-                                WHERE idProduct = :id AND ProductCategory.idCategory = ProductCategoryProduct.idCategory;");
-        $stmt->execute(array(':id' => $product['idproduct']));
-        $product['Category'] = $stmt->fetch();
-    }
+    return $stmt->fetchAll();
+}
 
-    return $products;
+function getProduct($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT Product.name, description, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND Product.idProduct = ?;");
+    $stmt->execute(array($id));
+    $product = $stmt->fetch();
+    return $product;
 }
 
 function getProductsByName($name)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM Product
-                            WHERE to_tsvector('portuguese', name) @@ to_tsquery('portuguese', :name);");
+    $stmt = $conn->prepare("SELECT Product.name, description, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND to_tsvector('portuguese', name) @@ to_tsquery('portuguese', :name);");
     $stmt->execute(array(':name', $name));
-    $products = $stmt->fetchAll();
-
-    foreach ($products as $product) {
-        $stmt = $conn->prepare("SELECT name
-                                FROM ProductCategoryProduct, ProductCategory,
-                                WHERE idProduct = :idCurrentProduct AND ProductCategory.idCategory = ProductProductCategory.idCategory;");
-        $stmt->execute();
-        $product['Category'] = $stmt->fetch();
-    }
-
-    return $products;
+    return $stmt->fetchAll();
 }
+
 
 function getProductsByCategory($category)
 {
@@ -49,28 +49,13 @@ function getProductsByCategory($category)
     $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND ProductCategory.name = ?;");
     $stmt->execute(array($category));
-    $products = $stmt->fetchAll();
 
-    return $products;
+    return $stmt->fetchAll();
 }
 
-function getProduct($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT Product.name, description
-                            FROM Product
-                            WHERE Product.idProduct = :idProduct;");
-    $stmt->execute(array(':idProduct', $id));
-    $product = $stmt->fetch();
-    $stmt = $conn->prepare("SELECT name
-                            FROM ProductProductCategory, ProductCategory,
-                            WHERE idProduct = :id AND ProductCategory.idCategory = ProductProductCategory.idCategory;");
-    $stmt->execute(array(':id', $id));
-    $product['Category'] = $stmt->fetch();
-    return $product;
-}
 
 function getRootCategories()
 {

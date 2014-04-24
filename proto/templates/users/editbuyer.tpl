@@ -3,18 +3,12 @@
 <div class = "container">
 
         <div class = "row">
-			<h1>Registo de utilizador</h1><br/>
+			<h1>Modificar dados de utilizador</h1><br/>
 			
-           <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/newbuyer.php">
+           <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/editbuyer.php">
 			 {foreach $FORM_VALUES.errors as $error}
 				<div class="alert alert-danger">{$error}</div>
 			 {/foreach}
-			  <div class="form-group">
-				<label for="inputUsername3" class="col-sm-2 control-label">Nome de utilizador</label>
-				<div class="col-sm-2">
-				  <input value="{$FORM_VALUES.username}" type="text" class="form-control" id="inputUsername3" placeholder="Nome de utilizador" name="username" required>
-				</div>
-			  </div>
 			  <div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
 				<div class="col-sm-2">
@@ -39,7 +33,7 @@
 			  </div>
 			  <div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-				  <button type="submit" class="btn btn-primary">Registar</button>
+				  <button type="submit" class="btn btn-primary">Submeter alterações</button>
 				</div>
 			  </div>
 			</form>
