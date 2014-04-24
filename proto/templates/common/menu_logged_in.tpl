@@ -1,4 +1,4 @@
- <div class="col-md-2 navbar-right">
+﻿ <div class="col-md-2 navbar-right">
                     <div class="navbar-collapse collapse">
                         <ul class="list-inline" style="margin:0px;list-style-type:none">
                             <li>
@@ -18,8 +18,8 @@
                                     <img class="img-responsive highlight_icon" alt="Negotiation Alerts" heigth="30px" width="30px" src="{$BASE_URL}images/icon_set/Users-User-icon.png" />
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Ver Dados</a></li>
-                                    <li><a href="#">Configurar Conta</a></li>
+                                    <li><a href="{$BASE_URL}pages/users/showuser.php">Ver Dados</a></li>
+                                    <li><a href="{$BASE_URL}pages/users/edituser.php">Configurar Conta</a></li>
                                     <li class="divider"></li>
                                     <li><a href="{$BASE_URL}actions/users/logout.php">Terminar Sessão</a></li>
                                 </ul>
