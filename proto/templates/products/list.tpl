@@ -1,4 +1,3 @@
-{include file='common/header.tpl'}
 
 <section id="products">
   <h2>Products</h2>
@@ -18,6 +17,3 @@
   {/foreach}
 
 </section>
-
-
-{include file='common/footer.tpl'}

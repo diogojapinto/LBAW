@@ -7,16 +7,15 @@
  */
 
 function getAllProducts(){
-
     global $conn;
     $stmt = $conn->prepare("SELECT idProduct, Product.name, description FROM Product;");
     $stmt->execute();
     $products = $stmt->fetchAll();
     foreach($products as $product){
         $stmt = $conn->prepare("SELECT name
-                                FROM ProductCategoryProduct, ProductCategory,
-                                WHERE idProduct = :idCurrentProduct AND ProductCategory.idCategory = ProductProductCategory.idCategory;");
-        $stmt->execute();
+                                FROM ProductCategoryProduct, ProductCategory
+                                WHERE idProduct = :id AND ProductCategory.idCategory = ProductCategoryProduct.idCategory;");
+        $stmt->execute(array(':id' => $product['idproduct']));
         $product['Category'] = $stmt->fetch();
     }
 
