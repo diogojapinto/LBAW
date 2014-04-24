@@ -5,30 +5,22 @@
 
         <div class = "col-md-5 thumbnail">
 
-            <img src = "imgs/iphone5.png" class = "img-responsive">
+            <img src = "images/products/{$product.idproduct}.png" class = "img-responsive">
 
         </div>
 
         <div class = "col-md-7 thumbnail">
 
-            <h3><a href = "#">iPhone 4</a></h3>
-            <p class = "text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel dolor sed nisl pretium tempus. Duis in neque vitae nisl pulvinar gravida. Aliquam luctus diam ac molestie vehicula. Duis sed augue a ipsum fringilla vestibulum eget vel lacus.</p>
-            <p class = "text-justify"><strong>PVP: </strong>499€</p>
+            <h3><a href = "#">{$product.name}</a></h3>
+            <p class = "text-justify">{$product.description}</p>
 
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="offered" class="col-sm-2 control-label">Proposta</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" id="offered" placeholder="350€">
+                        <input type="number" class="form-control" id="offered" placeholder="100€">
                     </div>
                     <button type="submit" class="btn btn-info">Submeter</button>
-                </div>
-
-                <div class="form-group">
-                    <label for="offered" class="col-sm-2 control-label">Diferença</label>
-                    <div class="col-sm-2">
-                        <fieldset disabled><input type="number" class="form-control" id="offered" placeholder="149€"></fieldset>
-                    </div>
                 </div>
             </form>
 
