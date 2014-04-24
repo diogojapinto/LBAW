@@ -1,11 +1,39 @@
-﻿<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 13:19:11
+         compiled from "/srv/www/htdocs/realezy/proto/templates/common/header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:19814652895359071a822881-79815394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '843296796954c2ef53276d1f965da223c8eba711' => 
+    array (
+      0 => '/srv/www/htdocs/realezy/proto/templates/common/header.tpl',
+      1 => 1398345551,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '19814652895359071a822881-79815394',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5359071a83cd99_49875115',
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+    'USERNAME' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5359071a83cd99_49875115')) {function content_5359071a83cd99_49875115($_smarty_tpl) {?>﻿<!DOCTYPE html>
 <html>
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
     <meta content="text/html; charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{$BASE_URL}css/styles.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,9 +44,11 @@
 
         <div class="row">
             <div class="col-md-2">
-                <a class="navbar-brand" href="{$BASE_URL}">
+                <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+">
                     <img class="img-responsive" style="margin-top:-12px;"
-                         src="{$BASE_URL}images/icon_set/logo.png" height="40px"
+                         src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+images/icon_set/logo.png" height="40px"
                          width="100px"
                          alt="Realezy Logo"/>
                 </a>
@@ -63,12 +93,14 @@
                             Avan&ccedil;ada</a>
                     </div>
                 </div>
-                {if $USERNAME}
-                    {include file='common/menu_logged_in.tpl'}
-                {else}
-                    {include file='common/menu_logged_in.tpl'}
-                {/if}
+                <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
+                    <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_in.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+                <?php } else { ?>
+                    <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_in.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+                <?php }?>
             </div>
         </div>
     </div>
-</div>
+</div><?php }} ?>

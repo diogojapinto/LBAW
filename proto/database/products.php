@@ -6,12 +6,13 @@
  * Time: 9:13 PM
  */
 
-function getAllProducts(){
+function getAllProducts()
+{
     global $conn;
     $stmt = $conn->prepare("SELECT idProduct, Product.name, description FROM Product;");
     $stmt->execute();
     $products = $stmt->fetchAll();
-    foreach($products as $product){
+    foreach ($products as $product) {
         $stmt = $conn->prepare("SELECT name
                                 FROM ProductCategoryProduct, ProductCategory
                                 WHERE idProduct = :id AND ProductCategory.idCategory = ProductCategoryProduct.idCategory;");
@@ -22,7 +23,8 @@ function getAllProducts(){
     return $products;
 }
 
-function getProductsByName($name){
+function getProductsByName($name)
+{
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Product
@@ -30,7 +32,7 @@ function getProductsByName($name){
     $stmt->execute(array(':name', $name));
     $products = $stmt->fetchAll();
 
-    foreach($products as $product){
+    foreach ($products as $product) {
         $stmt = $conn->prepare("SELECT name
                                 FROM ProductCategoryProduct, ProductCategory,
                                 WHERE idProduct = :idCurrentProduct AND ProductCategory.idCategory = ProductProductCategory.idCategory;");
@@ -41,7 +43,8 @@ function getProductsByName($name){
     return $products;
 }
 
-function getProduct($id){
+function getProduct($id)
+{
     global $conn;
     $stmt = $conn->prepare("SELECT Product.name, description
                             FROM Product
@@ -54,6 +57,19 @@ function getProduct($id){
     $stmt->execute(array(':id', $id));
     $product['Category'] = $stmt->fetch();
     return $product;
+}
+
+function getRootCategories()
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT ProductCategory.name
+                            FROM ProductCategory
+                            WHERE idParent = NULL;");
+
+    $stmt->execute();
+    $categories = $stmt->fetchAll();
+
+    return $categories;
 }
 
 ?>

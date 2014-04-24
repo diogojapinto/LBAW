@@ -1,4 +1,29 @@
-<div class="navbar navbar-default navbar-fixed-bottom">
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 12:47:10
+         compiled from "/srv/www/htdocs/realezy/proto/templates/common/footer.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:7338500575359071a853172-35421894%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'ced2d741381d681dbb681cd76c0add1eed6e72a7' => 
+    array (
+      0 => '/srv/www/htdocs/realezy/proto/templates/common/footer.tpl',
+      1 => 1398343629,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '7338500575359071a853172-35421894',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5359071a8541d1_17631292',
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5359071a8541d1_17631292')) {function content_5359071a8541d1_17631292($_smarty_tpl) {?><div class="navbar navbar-default navbar-fixed-bottom">
 
     <div class="container ">
         <p class="navbar-text pull-left">Site built by Realezy Team</p>
@@ -159,8 +184,10 @@
 </div>
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
-<script src="{$BASE_URL}javascript/login.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/bootstrap.min.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/login.js"></script>
 
 </body>
-</html>
+</html><?php }} ?>
