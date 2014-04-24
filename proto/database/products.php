@@ -27,7 +27,6 @@ function getProduct($id)
                             AND Product.idProduct = ?;");
     $stmt->execute(array($id));
     $product = $stmt->fetch();
-    var_dump($product);
     return $product;
 }
 
@@ -50,11 +49,11 @@ function getProductsByCategory($category)
     $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND ProductCategory.name = ?;");
     $stmt->execute(array($category));
-    $products = $stmt->fetchAll();
 
-    return $products;
+    return $stmt->fetchAll();
 }
 
 

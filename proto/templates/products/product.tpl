@@ -39,10 +39,10 @@
         <div class = "col-md-3">
 
             <div class="thumbnail">
-                <img src="imgs/hua.jpg" alt="...">
+                <img src="imgs/{$relatedProducts[0].idproduct}.jpg" alt="...">
                 <div class="caption">
-                    <h3>Huawei</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <h3>{$relatedProducts[0].name}</h3>
+                    <p>{$relatedProducts[0].description}</p>
                 </div>
             </div>
 
@@ -51,10 +51,10 @@
         <div class = "col-md-3">
 
             <div class="thumbnail">
-                <img src="imgs/z1.png" alt="...">
+                <img src="imgs/{$relatedProducts[1].idproduct}.jpg" alt="...">
                 <div class="caption">
-                    <h3>Sony</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <h3>{$relatedProducts[1].name}</h3>
+                    <p>{$relatedProducts[1].description}</p>
                 </div>
             </div>
 
@@ -63,10 +63,10 @@
         <div class = "col-md-3">
 
             <div class="thumbnail">
-                <img src="imgs/lg.png" alt="...">
+                <img src="imgs/{$relatedProducts[2].idproduct}.jpg" alt="...">
                 <div class="caption">
-                    <h3>LG</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <h3>{$relatedProducts[2].name}</h3>
+                    <p>{$relatedProducts[2].description}</p>
                 </div>
             </div>
 
@@ -75,10 +75,10 @@
         <div class = "col-md-3">
 
             <div class="thumbnail">
-                <img src="imgs/s4.png" alt="...">
+                <img src="imgs/{$relatedProducts[3].idproduct}.jpg" alt="...">
                 <div class="caption">
-                    <h3>Samsung</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <h3>{$relatedProducts[3].name}</h3>
+                    <p>{$relatedProducts[3].description}</p>
                 </div>
             </div>
 

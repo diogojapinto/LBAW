@@ -11,6 +11,8 @@ include_once($BASE_DIR . 'database/products.php');
 
 $product = getProduct($_GET['idProduct']);
 $relatedProducts = getProductsByCategory($product['category']);
+shuffle($relatedProducts);
+$baseCategories = getRootCategories();
 
 $smarty->assign('product', $product);
 $smarty->assign('relatedProducts', $relatedProducts);
