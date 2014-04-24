@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 15:05:07
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 17:44:51
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19814652895359071a822881-79815394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '843296796954c2ef53276d1f965da223c8eba711' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/header.tpl',
-      1 => 1398351907,
+      1 => 1398356215,
       2 => 'file',
     ),
   ),
@@ -104,7 +104,7 @@ $_smarty_tpl->tpl_vars['baseCategory']->_loop = true;
                     <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_in.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
                 <?php } else { ?>
-                    <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_in.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                    <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_out.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
                 <?php }?>
             </div>

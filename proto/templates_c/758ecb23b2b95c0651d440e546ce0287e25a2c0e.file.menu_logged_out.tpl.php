@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 13:18:09
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 17:44:51
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/menu_logged_out.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17606138175359071a83e9b5-70421039%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '758ecb23b2b95c0651d440e546ce0287e25a2c0e' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/menu_logged_out.tpl',
-      1 => 1398345480,
+      1 => 1398356215,
       2 => 'file',
     ),
   ),
@@ -46,7 +46,7 @@ images/icon_set/Users-User-icon.png"/>
                 </a>
                 <ul class="dropdown-menu" role="menu" style="padding: 15px;">
                     <form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-actions/login.php" method="post" accept-charset="UTF-8">
+actions/users/login.php" method="post" accept-charset="UTF-8">
                         <input placeholder="Nome de utilizador" style="margin-bottom: 15px;" type="text" name="username"
                                size="30"/>
                         <input placeholder="Palavra-passe" style="margin-bottom: 15px;" type="password" name="password"
@@ -56,10 +56,10 @@ actions/login.php" method="post" accept-charset="UTF-8">
                                type="submit" name="commit" value="Sign In"/>
                     </form>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/registerseller.php" class="btn btn-success"
+pages/users/registerseller.php" class="btn btn-success"
                        style="margin: 3px; float: right;">Registar Vendedor</a>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/registerbuyer.php" class="btn btn-success"
+pages/users/registerbuyer.php" class="btn btn-success"
                        style="margin: 3px; float: right;">Registar Comprador</a>
                 </ul>
             </li>
