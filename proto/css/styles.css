@@ -57,3 +57,8 @@ body {
     position: inherit;
     padding-top: -50px;
 }
+
+#btnCategory {
+    width: 110px;
+    overflow: hidden;
+}

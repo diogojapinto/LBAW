@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 12:47:10
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 14:59:16
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7338500575359071a853172-35421894%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ced2d741381d681dbb681cd76c0add1eed6e72a7' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/footer.tpl',
-      1 => 1398343629,
+      1 => 1398351529,
       2 => 'file',
     ),
   ),
@@ -188,6 +188,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 javascript/bootstrap.min.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/login.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/productsSearch.js"></script>
 
 </body>
 </html><?php }} ?>

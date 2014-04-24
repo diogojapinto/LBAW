@@ -161,6 +161,7 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <script src="{$BASE_URL}javascript/login.js"></script>
+<script src="{$BASE_URL}javascript/productsSearch.js"></script>
 
 </body>
 </html>

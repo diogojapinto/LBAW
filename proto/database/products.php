@@ -62,14 +62,40 @@ function getProduct($id)
 function getRootCategories()
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT ProductCategory.name
+    try {
+        $stmt = $conn->prepare("SELECT ProductCategory.name
                             FROM ProductCategory
-                            WHERE idParent = NULL;");
+                            WHERE idParent IS NULL;");
 
-    $stmt->execute();
-    $categories = $stmt->fetchAll();
+        $stmt->execute();
 
-    return $categories;
+        $categories = $stmt->fetchAll();
+
+        return $categories;
+    } catch (PDOException $e) {
+        echo $e->errorInfo;
+    }
+}
+
+function getHighestRatedProducts()
+{
+    global $conn;
+    try {
+        $stmt = $conn->prepare("SELECT idProduct, name, description
+                                FROM Product
+                                WHERE idProduct IN (SELECT idProduct
+                                                    FROM ProductRating
+                                                    WHERE rating = (SELECT MAX(rating)
+                                                                    FROM ProductRating));");
+
+        $stmt->execute();
+
+        $products = $stmt->fetchAll();
+
+        return $products;
+    } catch (PDOException $e) {
+        echo $e->errorInfo;
+    }
 }
 
 ?>

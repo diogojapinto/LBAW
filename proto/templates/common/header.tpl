@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-danger" data-toggle="dropdown">
+                            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
                                 Categorias
                             </button>
                             <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
@@ -52,11 +52,11 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+
+                                {foreach $baseCategories as $baseCategory}
+                                    <li><a class="categoryLink" href="#">{$baseCategory.name}</a></li>
+                                {/foreach}
+
                             </ul>
                         </div>
                         <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa

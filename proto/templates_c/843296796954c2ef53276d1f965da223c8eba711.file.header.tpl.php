@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 13:19:11
+<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 15:05:07
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19814652895359071a822881-79815394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '843296796954c2ef53276d1f965da223c8eba711' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/header.tpl',
-      1 => 1398345551,
+      1 => 1398351907,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'BASE_URL' => 0,
+    'baseCategories' => 0,
+    'baseCategory' => 0,
     'USERNAME' => 0,
   ),
   'has_nocache_code' => false,
@@ -67,7 +69,7 @@ images/icon_set/logo.png" height="40px"
                     </div>
                     <div class="col-md-6">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-danger" data-toggle="dropdown">
+                            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
                                 Categorias
                             </button>
                             <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
@@ -82,11 +84,16 @@ images/icon_set/logo.png" height="40px"
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+
+                                <?php  $_smarty_tpl->tpl_vars['baseCategory'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['baseCategory']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['baseCategories']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['baseCategory']->key => $_smarty_tpl->tpl_vars['baseCategory']->value) {
+$_smarty_tpl->tpl_vars['baseCategory']->_loop = true;
+?>
+                                    <li><a class="categoryLink" href="#"><?php echo $_smarty_tpl->tpl_vars['baseCategory']->value['name'];?>
+</a></li>
+                                <?php } ?>
+
                             </ul>
                         </div>
                         <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
