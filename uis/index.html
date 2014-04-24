@@ -2,157 +2,162 @@
 <html>
 
 <head>
-    <title>Realezy - Realize os seus desejos, "the easy way"</title>
-    <meta content="text/html; charset=iso-8859-1" name = "viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "css/bootstrap.min.css" rel="stylesheet">
-    <link href = "css/custom.css" rel="stylesheet">
+	<title>Realezy - Realize os seus desejos, "the easy way"</title>
+	<meta content="text/html; charset=iso-8859-1" name = "viewport" content="width=device-width, initial-scale=1.0">
+	<link href = "css/bootstrap.min.css" rel="stylesheet">
+	<link href = "css/styles.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html"><img class="img-responsive" style="margin-top:-12px;" src="imgs/logo.png" height="40px" width="100px" alt="Realezy Logo"/></a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="navbar-collapse collapse">
-                        <form class="navbar-form" role="form">
-                            <div class="form-group">
-                                <input type="text"  size="40%" placeholder="Produto" class="form-control">
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger" data-toggle="dropdown">
-                                    Categorias
-                                </button>
-                                <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <button type="button" style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;" class="btn btn-success">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
+	<div class="navbar navbar-inverse navbar-static-desktop">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-2">
+					<a class="navbar-brand" href="index.html"><img class="img-responsive" style="margin-top:-12px;" src="imgs/logo.png" height="40px" width="100px" alt="Realezy Logo"/></a>
+				</div>
+
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="container collapse navbar-collapse navHeaderCollapse">
+					<div class="col-md-8">
+						<form class="navbar-form" role="form">
+							<div class="form-group">
+								<input type="text" placeholder="Produto" class="form-control">
+							</div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger" data-toggle="dropdown">
+									Categorias
+								</button>
+								<button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<button type="button" style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;" class="btn btn-success">
+									<span class="glyphicon glyphicon-search"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
 								<a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa Avan&ccedil;ada</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-2 navbar-right">
-                    <div class="navbar-collapse collapse">
-                        <ul class="list-inline" style="margin:0px;list-style-type:none">
-                            <li>
-                                <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/negotiation.png" />
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Negócio 1</a></li>
-                                    <li><a href="#">Negócio Recusado por Vendedor</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Negócio 2</a></li>
-                                    <li><a href="#">Novo Preço: 0.00 <b class="glyphicon glyphicon-euro"></b></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/Users-User-icon.png" />
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Ver Dados</a></li>
-                                    <li><a href="#">Configurar Conta</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Terminar Sessão</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-2 nav navbar-nav navbar-right">
+						<ul class="list-inline" style="margin:0px;list-style-type:none">
+							<li>
+								<a class="dropdown-toggle" data-toggle="dropdown">
+									<img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/negotiation.png" />
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Negócio 1</a></li>
+									<li><a href="#">Negócio Recusado por Vendedor</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Negócio 2</a></li>
+									<li><a href="#">Novo Preço: 0.00 <b class="glyphicon glyphicon-euro"></b></a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="dropdown-toggle" data-toggle="dropdown">
+									<img class="img-responsive highlight_icon" alt="Negotiation Alerts" style="margin-top:10px;" heigth="30px" width="30px" src="imgs/Users-User-icon.png" />
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Ver Dados</a></li>
+									<li><a href="#">Configurar Conta</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Terminar Sessão</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class = "container">
+	<div class = "container">
 
-        <div class = "jumbotron">
-            <center>
-                <div id="carousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
-                </ol>
+		<div class = "jumbotron">
+			<center>
+				<div id="carousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel" data-slide-to="1"></li>
+						<li data-target="#carousel" data-slide-to="2"></li>
+					</ol>
 
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <h2>
-                            Top Produtos
-                        </h2>
-                        <div class = "row">
+					<div class="carousel-inner">
+						<div class="item active">
+							<h2>
+								Top Produtos
+							</h2>
+							<div class = "row">
 
-            <div class = "col-md-5">
+								<div class = "col-md-5">
 
-                <img src = "imgs/iphone5.png" class = "img-responsive">
+									<img src = "imgs/iphone5.png" class = "img-responsive">
 
-            </div>
+								</div>
 
-            <div class = "col-md-7">
+								<div class = "col-md-7">
 
-                <h3><a href = "#">iPhone 4</a></h3>
-                <p class = "text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel dolor sed nisl pretium tempus. Duis in neque vitae nisl pulvinar gravida. Aliquam luctus diam ac molestie vehicula. Duis sed augue a ipsum fringilla vestibulum eget vel lacus.</p>
-                <p class = "text-justify"><strong>PVP: </strong>499 <b class="glyphicon glyphicon-euro"></b></p>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info">Submeter</button>
-                    </div>
-                </form>
+									<h3><a href = "#">iPhone 4</a></h3>
+									<p class = "text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel dolor sed nisl pretium tempus. Duis in neque vitae nisl pulvinar gravida. Aliquam luctus diam ac molestie vehicula. Duis sed augue a ipsum fringilla vestibulum eget vel lacus.</p>
+									<p class = "text-justify"><strong>PVP: </strong>499 <b class="glyphicon glyphicon-euro"></b></p>
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<button type="submit" class="btn btn-info">Submeter</button>
+										</div>
+									</form>
 
 
 
-            </div>
+								</div>
 
-        </div>
-                    </div>
-                    <div class="item">
-                        <h2>
-                            Top Empresas
-                            <div class = "row">
+							</div>
+						</div>
+						<div class="item">
+							<h2>
+								Top Empresas
+								<div class = "row">
 
-            <div class = "col-md-3">
+									<div class = "col-md-3">
 
-                <img src = "imgs/company.gif" class = "img-responsive">
+										<img src = "imgs/company.gif" class = "img-responsive">
 
-            </div>
+									</div>
 
-            <div class = "col-md-9">
+									<div class = "col-md-9">
 
-                <h3><a href = "#">Descrição 4</a></h3>
-                <p class = "text-justify">Hella fashion axe chillwave, letterpress squid synth leggings. Wayfarers iPhone kale chips, Bushwick skateboard butache actually ennui pug hoodie Vice jean shorts. Williamsburg actually biodiesel sustainable wolf chillwave. Roof party food truck small batch master cleanse locavore letterpress. Brooklyn post-ironic tattooed, pour-over Odd Future seitan retro squid raw denim try-hard XOXO Marfa. Flexitarian readymade distillery Neutra actually Portland.</p><br>
-            </div>
+										<h3><a href = "#">Descrição 4</a></h3>
+										<p class = "text-justify">Hella fashion axe chillwave, letterpress squid synth leggings. Wayfarers iPhone kale chips, Bushwick skateboard butache actually ennui pug hoodie Vice jean shorts. Williamsburg actually biodiesel sustainable wolf chillwave. Roof party food truck small batch master cleanse locavore letterpress. Brooklyn post-ironic tattooed, pour-over Odd Future seitan retro squid raw denim try-hard XOXO Marfa. Flexitarian readymade distillery Neutra actually Portland.</p><br>
+									</div>
 
-        </div>
-                        </h2>
-                    </div>
-                    <div class="item">
-                        <h2>
-                            Top Negócios
-                            <img class="img-responsive" src="imgs/company.gif" />   
-                        </h2>
-                    </div>
-                </div>
+								</div>
+							</h2>
+						</div>
+						<div class="item">
+							<h2>
+								Top Negócios
+								<img class="img-responsive" src="imgs/company.gif" />   
+							</h2>
+						</div>
+					</div>
 
-            </div>
-        </div>
+				</div>
+			</div>
 
 		</center>
 
@@ -169,219 +174,219 @@
 
 	<div class = "container">
 
-    <div class = "row">
+		<div class = "row">
 
-            <div class = "col-md-3">
+			<div class = "col-md-3">
 
-                <div class="thumbnail">
-                    <img src="imgs/hua.jpg" alt="...">
-                    <div class="caption">
-                        <h3>Huawei</h3>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                </div>
+				<div class="thumbnail">
+					<img src="imgs/hua.jpg" alt="...">
+					<div class="caption">
+						<h3>Huawei</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class = "col-md-3">
+			<div class = "col-md-3">
 
-                <div class="thumbnail">
-                    <img src="imgs/z1.png" alt="...">
-                    <div class="caption">
-                        <h3>Sony</h3>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                </div>
+				<div class="thumbnail">
+					<img src="imgs/z1.png" alt="...">
+					<div class="caption">
+						<h3>Sony</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class = "col-md-3">
+			<div class = "col-md-3">
 
-                <div class="thumbnail">
-                    <img src="imgs/lg.png" alt="...">
-                    <div class="caption">
-                        <h3>LG</h3>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                </div>
+				<div class="thumbnail">
+					<img src="imgs/lg.png" alt="...">
+					<div class="caption">
+						<h3>LG</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class = "col-md-3">
+			<div class = "col-md-3">
 
-                <div class="thumbnail">
-                    <img src="imgs/s4.png" alt="...">
-                    <div class="caption">
-                        <h3>Samsung</h3>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                </div>
+				<div class="thumbnail">
+					<img src="imgs/s4.png" alt="...">
+					<div class="caption">
+						<h3>Samsung</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-        </div>
-
-    </div>
-
-	</div>
-
-
-	<div class = "navbar navbar-default navbar-fixed-bottom">
-
-		<div class = "container ">
-			<p class = "navbar-text pull-left">Site built by Realezy Team</p>
-			<a href = "http://www.paypal.com" class = "navbar-btn btn-success btn pull-right">Donate</a>
 		</div>
 
 	</div>
 
-    <div class = "modal fade" id = "advSearch" role = "dialog">
-        <div class = "modal-dialog">
-            <div class = "modal-content">
-                <form class = "form-horizontal" role="form">
-                    <div class = "modal-header">
-                        <h4>Pesquisa Avan&ccedil;ada</h4>
-                    </div>
-                    <div class = "modal-body">
-                        <div class = "form-group form-inline">
-                            <div class = "col-sm-10">
-                            	<label for="palavraschave" class = "control-label">Insira as palavras-chave</label>
-                            </div>
-                            <div class = "col-sm-10">
-                                <input type = "text" class = "form-control" id = "palavraschave" placeholder = "Palavras-Chave" type="search" required>
+</div>
+
+
+<div class = "navbar navbar-default navbar-fixed-bottom">
+
+	<div class = "container ">
+		<p class = "navbar-text pull-left">Site built by Realezy Team</p>
+		<a href = "http://www.paypal.com" class = "navbar-btn btn-success btn pull-right">Donate</a>
+	</div>
+
+</div>
+
+<div class = "modal fade" id = "advSearch" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+			<form class = "form-horizontal" role="form">
+				<div class = "modal-header">
+					<h4>Pesquisa Avan&ccedil;ada</h4>
+				</div>
+				<div class = "modal-body">
+					<div class = "form-group form-inline">
+						<div class = "col-sm-10">
+							<label for="palavraschave" class = "control-label">Insira as palavras-chave</label>
+						</div>
+						<div class = "col-sm-10">
+							<input type = "text" class = "form-control" id = "palavraschave" placeholder = "Palavras-Chave" type="search" required>
                             <!-- </div>
                             <div class = "col-sm-4"> -->
                             	<select class="form-control">
-								    <option value="all-any">Todas as palavras, qualquer Ordem</option>
-								    <option value="any-any">Qualquer palavra, qualquer Ordem</option>
-								    <option value="all-exact">Palavras exatas, ordem exata</option>
-								    <option value="exact-any">Palavras exatas, qualquer ordem</option>
-								</select>
+                            		<option value="all-any">Todas as palavras, qualquer Ordem</option>
+                            		<option value="any-any">Qualquer palavra, qualquer Ordem</option>
+                            		<option value="all-exact">Palavras exatas, ordem exata</option>
+                            		<option value="exact-any">Palavras exatas, qualquer ordem</option>
+                            	</select>
                             </div>
-                       	</div>
-                       	<div class = "form-group">
-                           	<label for="categorias" class = "col-lg-2 control-label">Categoria</label>
-                            <div class = "col-lg-6">
-	                            <select class="form-control" id="categorias">
-									<option value="0">Todas as Categorias</option>
-									<option value="1">Antiques</option>
-									<option value="2">Art</option>
-									<option value="3">Baby</option>
-									<option value="4">Books</option>
-									<option value="5">Business &amp; Industrial</option>
-									<option value="6">Cameras &amp; Photo</option>
-									<option value="7">Cell Phones &amp; Accessories</option>
-									<option value="8">Clothing, Shoes &amp; Accessories</option>
-									<option value="9">Coins &amp; Paper Money</option>
-									<option value="10">Collectibles</option>
-									<option value="11">Computers/Tablets &amp; Networking</option>
-									<option value="12">Consumer Electronics</option>
-									<option value="13">Crafts</option>
-									<option value="14">Dolls &amp; Bears</option>
-									<option value="15">DVDs &amp; Movies</option>
-									<option value="16">Entertainment Memorabilia</option>
-									<option value="17">Gift Cards &amp; Coupons</option>
-									<option value="18">Health &amp; Beauty</option>
-									<option value="19">Home &amp; Garden</option>
-									<option value="20">Jewelry &amp; Watches</option>
-									<option value="21">Music</option>
-									<option value="22">Musical Instruments &amp; Gear</option>
-									<option value="23">Pet Supplies</option>
-									<option value="24">Pottery &amp; Glass</option>
-									<option value="25">Real Estate</option>
-									<option value="26">Specialty Services</option>
-									<option value="27">Sporting Goods</option>
-									<option value="28">Sports Mem, Cards &amp; Fan Shop</option>
-									<option value="29">Stamps</option>
-									<option value="30">Toys &amp; Hobbies</option>
-									<option value="31">Travel</option>
-									<option value="32">Video Games &amp; Consoles</option>
-									<option value="33">Everything Else</option>
-								</select>
-							</div>
-						</div>
-						<div class = "form-group form-inline">
-							<div class = "col-lg-10">
-								<label for="ordenar" class = "control-label">Ordenar por &nbsp;</label>
-	                            <select class="form-control" id="ordenar">
-	                            	<option value="1">Melhor correspond&ecirc;ncia</option>
-									<option value="2">Pre&ccedil;o: ascendente</option>
-									<option value="3">Pre&ccedil;o: descendente</option>
-									<option value="4">Tempo: pr&oacute;ximo do fim</option>
-									<option value="5">Tempo: mais recente</option>
-								</select>
-							</div>
-						</div>
-						<div class = "form-group form-inline">
-                            <div class = "col-lg-10">
-                            	<label for="nr_res" class = "control-label">Resultados por p&aacute;gina &nbsp;</label>
-	                            <select class="form-control" id="nr_res">
-	                            	<option value="1">25</option>
-									<option value="2">50</option>
-									<option value="3">75</option>
-									<option value="4">100</option>
-									<option value="5">200</option>
-								</select>
-							</div>
+                        </div>
+                        <div class = "form-group">
+                        	<label for="categorias" class = "col-lg-2 control-label">Categoria</label>
+                        	<div class = "col-lg-6">
+                        		<select class="form-control" id="categorias">
+                        			<option value="0">Todas as Categorias</option>
+                        			<option value="1">Antiques</option>
+                        			<option value="2">Art</option>
+                        			<option value="3">Baby</option>
+                        			<option value="4">Books</option>
+                        			<option value="5">Business &amp; Industrial</option>
+                        			<option value="6">Cameras &amp; Photo</option>
+                        			<option value="7">Cell Phones &amp; Accessories</option>
+                        			<option value="8">Clothing, Shoes &amp; Accessories</option>
+                        			<option value="9">Coins &amp; Paper Money</option>
+                        			<option value="10">Collectibles</option>
+                        			<option value="11">Computers/Tablets &amp; Networking</option>
+                        			<option value="12">Consumer Electronics</option>
+                        			<option value="13">Crafts</option>
+                        			<option value="14">Dolls &amp; Bears</option>
+                        			<option value="15">DVDs &amp; Movies</option>
+                        			<option value="16">Entertainment Memorabilia</option>
+                        			<option value="17">Gift Cards &amp; Coupons</option>
+                        			<option value="18">Health &amp; Beauty</option>
+                        			<option value="19">Home &amp; Garden</option>
+                        			<option value="20">Jewelry &amp; Watches</option>
+                        			<option value="21">Music</option>
+                        			<option value="22">Musical Instruments &amp; Gear</option>
+                        			<option value="23">Pet Supplies</option>
+                        			<option value="24">Pottery &amp; Glass</option>
+                        			<option value="25">Real Estate</option>
+                        			<option value="26">Specialty Services</option>
+                        			<option value="27">Sporting Goods</option>
+                        			<option value="28">Sports Mem, Cards &amp; Fan Shop</option>
+                        			<option value="29">Stamps</option>
+                        			<option value="30">Toys &amp; Hobbies</option>
+                        			<option value="31">Travel</option>
+                        			<option value="32">Video Games &amp; Consoles</option>
+                        			<option value="33">Everything Else</option>
+                        		</select>
+                        	</div>
+                        </div>
+                        <div class = "form-group form-inline">
+                        	<div class = "col-lg-10">
+                        		<label for="ordenar" class = "control-label">Ordenar por &nbsp;</label>
+                        		<select class="form-control" id="ordenar">
+                        			<option value="1">Melhor correspond&ecirc;ncia</option>
+                        			<option value="2">Pre&ccedil;o: ascendente</option>
+                        			<option value="3">Pre&ccedil;o: descendente</option>
+                        			<option value="4">Tempo: pr&oacute;ximo do fim</option>
+                        			<option value="5">Tempo: mais recente</option>
+                        		</select>
+                        	</div>
+                        </div>
+                        <div class = "form-group form-inline">
+                        	<div class = "col-lg-10">
+                        		<label for="nr_res" class = "control-label">Resultados por p&aacute;gina &nbsp;</label>
+                        		<select class="form-control" id="nr_res">
+                        			<option value="1">25</option>
+                        			<option value="2">50</option>
+                        			<option value="3">75</option>
+                        			<option value="4">100</option>
+                        			<option value="5">200</option>
+                        		</select>
+                        	</div>
                         </div>
 
                     </div>
                     <div class = "modal-footer">
-                        <button class = "btn btn-primary" type = "submit">Procurar</button>
+                    	<button class = "btn btn-primary" type = "submit">Procurar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-	<div class = "modal fade" id = "contact" role = "dialog">
-		<div class = "modal-dialog">
-			<div class = "modal-content">
-				<form class = "form-horizontal">
-					<div class = "modal-header">
-						<h4>Contact Realezy Team</h4>
-					</div>
-					<div class = "modal-body">
+    <div class = "modal fade" id = "contact" role = "dialog">
+    	<div class = "modal-dialog">
+    		<div class = "modal-content">
+    			<form class = "form-horizontal">
+    				<div class = "modal-header">
+    					<h4>Contact Realezy Team</h4>
+    				</div>
+    				<div class = "modal-body">
 
-						<div class = "form-group">
-							<label for = "contact-name" class = "col-lg-2 control-label">Name:</label>
-							<div class = "col-lg-10">
+    					<div class = "form-group">
+    						<label for = "contact-name" class = "col-lg-2 control-label">Name:</label>
+    						<div class = "col-lg-10">
 
-								<input type = "text" class = "form-control" id = "contact-name" placeholder = "Full Name">
+    							<input type = "text" class = "form-control" id = "contact-name" placeholder = "Full Name">
 
-							</div>
-						</div>
+    						</div>
+    					</div>
 
-						<div class = "form-group">
-							<label for = "contact-email" class = "col-lg-2 control-label">Email:</label>
-							<div class = "col-lg-10">
+    					<div class = "form-group">
+    						<label for = "contact-email" class = "col-lg-2 control-label">Email:</label>
+    						<div class = "col-lg-10">
 
-								<input type = "email" class = "form-control" id = "contact-email" placeholder = "you@example.com">
+    							<input type = "email" class = "form-control" id = "contact-email" placeholder = "you@example.com">
 
-							</div>
-						</div>
+    						</div>
+    					</div>
 
-						<div class = "form-group">
-							<label for = "contact-message" class = "col-lg-2 control-label">Message:</label>
-							<div class = "col-lg-10">
+    					<div class = "form-group">
+    						<label for = "contact-message" class = "col-lg-2 control-label">Message:</label>
+    						<div class = "col-lg-10">
 
-								<textarea name="contact-message" class = "form-control" rows="8"></textarea>
+    							<textarea name="contact-message" class = "form-control" rows="8"></textarea>
 
-							</div>
-						</div>
+    						</div>
+    					</div>
 
-					</div>
-					<div class = "modal-footer">
-						<a class = "btn btn-primary" data-dismiss = "modal">Close</a>
-						<button class = "btn btn-primary" type = "submit">Send</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    				</div>
+    				<div class = "modal-footer">
+    					<a class = "btn btn-primary" data-dismiss = "modal">Close</a>
+    					<button class = "btn btn-primary" type = "submit">Send</button>
+    				</div>
+    			</form>
+    		</div>
+    	</div>
+    </div>
 
-	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src = "js/bootstrap.js"></script>
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src = "js/bootstrap.js"></script>
 
 </body>
 

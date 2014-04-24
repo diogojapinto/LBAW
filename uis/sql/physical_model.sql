@@ -63,8 +63,8 @@ CREATE DOMAIN  Amount FLOAT
 
 CREATE TABLE  RegisteredUser (
     idUser SERIAL PRIMARY KEY,
-    username VARCHAR(40) NOT NULL UNIQUE,
-    password VARCHAR(40) NOT NULL,
+    username VARCHAR(80) NOT NULL UNIQUE,
+    password VARCHAR(80) NOT NULL,
     email Email NOT NULL UNIQUE,
     isBanned BOOLEAN NOT NULL DEFAULT FALSE,
     bannedDate DATE DEFAULT NULL
@@ -86,7 +86,7 @@ CREATE TABLE  Address (
 
 CREATE TABLE  Product (
     idProduct SERIAL PRIMARY KEY,
-    name VARCHAR(40) NOT NULL,
+    name VARCHAR(80) NOT NULL,
     description VARCHAR,
     approved BOOLEAN NOT NULL DEFAULT FALSE
 ); 
@@ -100,7 +100,7 @@ CREATE TABLE  CreditCard (
     idCreditCard SERIAL PRIMARY KEY,
     idBuyer INTEGER NOT NULL REFERENCES Buyer(idBuyer)
         ON DELETE SET NULL,
-    ownerName VARCHAR(40) NOT NULL,
+    ownerName VARCHAR(80) NOT NULL,
     number CreditCardNo NOT NULL UNIQUE,
     dueDate DATE NOT NULL
 );
@@ -109,7 +109,7 @@ CREATE TABLE  Seller (
     idSeller INTEGER PRIMARY KEY REFERENCES RegisteredUser(idUser)
         ON DELETE CASCADE,
     idAddress INTEGER REFERENCES Address(idAddress) NOT NULL,
-    companyName VARCHAR(40) NOT NULL,
+    companyName VARCHAR(80) NOT NULL,
     cellphone CellPhone,
     description VARCHAR,
     isVisibleToAPI BOOLEAN NOT NULL DEFAULT TRUE
