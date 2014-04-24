@@ -23,41 +23,99 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="list.tpl" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="list.tpl" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/products/list.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="544">
-              <caret line="12" column="104" selection-start-line="12" selection-start-column="99" selection-end-line="12" selection-end-column="104" />
+            <state vertical-scroll-proportion="0.59753954" vertical-offset="0" max-vertical-offset="569">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="product.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/products/product.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="204">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/products.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.0" vertical-offset="272" max-vertical-offset="1105">
+              <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#94#0" expanded="true" />
+                <marker date="1398326530032" expanded="true" signature="170:226" placeholder="SELECT idPro..Product..." />
+                <marker date="1398326530032" expanded="true" signature="356:580" placeholder="SELECT name ..ProductCategoryProduct..." />
+                <marker date="1398326530032" expanded="true" signature="771:921" placeholder="SELECT * FRO..Product..." />
+                <marker date="1398326530032" expanded="true" signature="1073:1297" placeholder="SELECT name ..ProductCategoryProduct..." />
+                <marker date="1398326530032" expanded="true" signature="1479:1617" placeholder="SELECT Produ..Product..." />
+                <marker date="1398326530032" expanded="true" signature="1727:1929" placeholder="SELECT name ..ProductProductCategory..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5005875" vertical-offset="2039" max-vertical-offset="2890">
-              <caret line="145" column="1" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="2890">
+              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
               <folding>
-                <marker date="1398290525077" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
-                <marker date="1398290525077" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
-                <marker date="1398290525077" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
-                <marker date="1398290525077" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
-                <marker date="1398290525077" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
-                <marker date="1398290525077" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
-                <marker date="1398290525077" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
-                <marker date="1398290525077" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
-                <marker date="1398290525077" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
-                <marker date="1398290525077" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
-                <marker date="1398290525077" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
-                <marker date="1398290525077" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
-                <marker date="1398290525077" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
-                <marker date="1398290525077" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
-                <marker date="1398290525077" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
-                <marker date="1398290525077" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
-                <marker date="1398290525077" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
-                <marker date="1398290525077" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
+                <marker date="1398326530032" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
+                <marker date="1398326530032" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
+                <marker date="1398326530032" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
+                <marker date="1398326530032" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
+                <marker date="1398326530032" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
+                <marker date="1398326530032" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
+                <marker date="1398326530032" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
+                <marker date="1398326530032" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
+                <marker date="1398326530032" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
+                <marker date="1398326530032" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
+                <marker date="1398326530032" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
+                <marker date="1398326530032" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
+                <marker date="1398326530032" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
+                <marker date="1398326530032" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
+                <marker date="1398326530032" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
+                <marker date="1398326530032" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
+                <marker date="1398326530032" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
+                <marker date="1398326530032" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_all.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/products/list_all.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="306">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/init.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="629">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="153">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,10 +130,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/products/list.tpl" />
         <option value="$PROJECT_DIR$/pages/products/list_all.php" />
         <option value="$PROJECT_DIR$/database/products.php" />
         <option value="$PROJECT_DIR$/database/users.php" />
+        <option value="$PROJECT_DIR$/templates/tweets/list.tpl" />
+        <option value="$PROJECT_DIR$/config/init.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/templates/products/list.tpl" />
       </list>
     </option>
   </component>
@@ -83,8 +144,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1036" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -114,6 +175,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -145,28 +207,6 @@
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tweets" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -196,43 +236,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tweets" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -268,9 +272,22 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proto" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -283,6 +300,16 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -448,9 +475,6 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -470,6 +494,9 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -507,10 +534,6 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -530,6 +553,10 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -676,15 +703,16 @@
       <created>1398265547596</created>
       <updated>1398265547596</updated>
       <workItem from="1398265549861" duration="1204000" />
-      <workItem from="1398283956440" duration="6150000" />
+      <workItem from="1398283956440" duration="6988000" />
+      <workItem from="1398323763562" duration="3093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7354000" />
+    <option name="totallyTimeSpent" value="11285000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -692,6 +720,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -705,12 +734,11 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19743276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19742814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -733,18 +761,98 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/tweets/list_all.php">
+    <entry file="file://$PROJECT_DIR$/templates/products/list.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43948296" vertical-offset="0" max-vertical-offset="851">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="544">
+          <caret line="12" column="104" selection-start-line="12" selection-start-column="99" selection-end-line="12" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2039" max-vertical-offset="2890">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <marker date="1398326530032" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
+            <marker date="1398326530032" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
+            <marker date="1398326530032" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
+            <marker date="1398326530032" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
+            <marker date="1398326530032" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
+            <marker date="1398326530032" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
+            <marker date="1398326530032" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/products/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="877">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/common/header.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="877">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="2890">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <marker date="1398326530032" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
+            <marker date="1398326530032" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
+            <marker date="1398326530032" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
+            <marker date="1398326530032" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
+            <marker date="1398326530032" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
+            <marker date="1398326530032" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
+            <marker date="1398326530032" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
+            <marker date="1398326530032" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
+            <marker date="1398326530032" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
+            <marker date="1398326530032" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="629">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.059929494" vertical-offset="0" max-vertical-offset="851">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="153">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
@@ -752,33 +860,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/products/list_all.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31962398" vertical-offset="0" max-vertical-offset="851">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#94#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/products/list.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="544">
-          <caret line="12" column="104" selection-start-line="12" selection-start-column="99" selection-end-line="12" selection-end-column="104" />
+        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="306">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/tweets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.059929494" vertical-offset="0" max-vertical-offset="986">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <marker date="1398265858486" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tweets..." />
-            <marker date="1398265858486" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tweets..." />
-            <marker date="1398265858486" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1398265858486" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
-            <marker date="1398265858486" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tweets..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,62 +874,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/products/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="877">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/common/header.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="877">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/products.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8589894" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.0" vertical-offset="272" max-vertical-offset="1105">
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
           <folding>
             <element signature="e#6#94#0" expanded="true" />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT idPro..Product..." />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductCategoryProduct..." />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..Product..." />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductCategoryProduct..." />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT Produ..Product..." />
-            <marker date="1398289590801" expanded="true" signature="-1:-1" placeholder="SELECT name ..ProductProductCategory..." />
+            <marker date="1398326530032" expanded="true" signature="170:226" placeholder="SELECT idPro..Product..." />
+            <marker date="1398326530032" expanded="true" signature="356:580" placeholder="SELECT name ..ProductCategoryProduct..." />
+            <marker date="1398326530032" expanded="true" signature="771:921" placeholder="SELECT * FRO..Product..." />
+            <marker date="1398326530032" expanded="true" signature="1073:1297" placeholder="SELECT name ..ProductCategoryProduct..." />
+            <marker date="1398326530032" expanded="true" signature="1479:1617" placeholder="SELECT Produ..Product..." />
+            <marker date="1398326530032" expanded="true" signature="1727:1929" placeholder="SELECT name ..ProductProductCategory..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/users.php">
+    <entry file="file://$PROJECT_DIR$/templates/products/list.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5005875" vertical-offset="2039" max-vertical-offset="2890">
-          <caret line="145" column="1" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
-          <folding>
-            <marker date="1398290525077" expanded="true" signature="88:133" placeholder="DELETE FROM ..." />
-            <marker date="1398290525077" expanded="true" signature="280:333" placeholder="DELETE FROM ..." />
-            <marker date="1398290525077" expanded="true" signature="481:528" placeholder="SELECT * FRO..RegisteredUser..." />
-            <marker date="1398290525077" expanded="true" signature="774:823" placeholder="SELECT * FRO..RegisteredUser..." />
-            <marker date="1398290525077" expanded="true" signature="1174:1265" placeholder="INSERT INTO ..." />
-            <marker date="1398290525077" expanded="true" signature="1407:1478" placeholder="INSERT INTO ..." />
-            <marker date="1398290525077" expanded="true" signature="1814:1905" placeholder="INSERT INTO ..." />
-            <marker date="1398290525077" expanded="true" signature="2047:2151" placeholder="INSERT INTO ..." />
-            <marker date="1398290525077" expanded="true" signature="2329:2528" placeholder="INSERT INTO ..." />
-            <marker date="1398290525077" expanded="true" signature="2764:2891" placeholder="SELECT usern..RegisteredUser..." />
-            <marker date="1398290525077" expanded="true" signature="3070:3139" placeholder="SELECT inter..." />
-            <marker date="1398290525077" expanded="true" signature="3310:3393" placeholder="SELECT inter..." />
-            <marker date="1398290525077" expanded="true" signature="3597:3676" placeholder="SELECT amoun..." />
-            <marker date="1398290525077" expanded="true" signature="3794:3857" placeholder="UPDATE Inter..." />
-            <marker date="1398290525077" expanded="true" signature="4046:4112" placeholder="SELECT idPM,..PrivateMessage..." />
-            <marker date="1398290525077" expanded="true" signature="4286:4366" placeholder="SELECT idPM,..PrivateMessage..." />
-            <marker date="1398290525077" expanded="true" signature="4576:4636" placeholder="SELECT subje..PrivateMessage..." />
-            <marker date="1398290525077" expanded="true" signature="4757:4813" placeholder="UPDATE Priva..." />
-          </folding>
+        <state vertical-scroll-proportion="0.59753954" vertical-offset="0" max-vertical-offset="569">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

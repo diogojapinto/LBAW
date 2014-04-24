@@ -1,15 +1,15 @@
 <?php
-session_set_cookie_params(3600, '/realezy/RealezyFinal/'); //FIXME
-
+session_set_cookie_params(3600, '/~lbaw1312');
 session_start();
 
-$BASE_DIR = '/srv/www/htdocs/realezy/RealezyFinal/'; //FIXME
-$BASE_URL = '/realezy/RealezyFinal/'; //FIXME
-$conn = new PDO('pgsql:host=localhost;dbname=fritter', 'postgres', '*D24jpgainfP#'); //FIXME
+$BASE_DIR = '/opt/lbaw/lbaw1312/public_html/proto/';
+$BASE_URL = '/~lbaw1312/proto/';
+
+$conn = new PDO('pgsql:host=vdbm;dbname=lbaw1312', 'lbaw1312', 'eN123ln9');
 $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$conn->exec('SET SCHEMA \'frmk\''); //FIXME
+$conn->exec('SET SCHEMA \'public\'');
 
 include_once($BASE_DIR . 'lib/smarty/Smarty.class.php');
 
