@@ -5,6 +5,7 @@
 <div class="panel-heading">{$COMMON.username}</div>
 <div class="panel-body"><b>Email:</b>    {$COMMON.email}</div>
 </div>
+    <a class="btn btn-default" href="{$BASE_URL}pages/products/add.php" role="button">Adicionar Produto</a>
 </div>
 
 

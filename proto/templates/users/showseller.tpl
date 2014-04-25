@@ -8,11 +8,12 @@
 <b>Telefone:</b>    {$SELLER.cellphone}<br/>
 <b>Morada:</b>    {$SELLER.addressline}<br/>
 <b>Cidade:</b>    {$SELLER.city}<br/>
-<b>Código Postal:</b>    {$SELLER.postalcode}<br/>
-<b>País:</b>    {$SELLER.name}<br/>
-<b>Descrição:</b>    {$SELLER.description}<br/>
+<b>C&oacute;digo Postal:</b>    {$SELLER.postalcode}<br/>
+<b>Pa&iacute;s:</b>    {$SELLER.name}<br/>
+<b>Descri&ccedil;&atilde;o:</b>    {$SELLER.description}<br/>
 </div>
 </div>
+    <a class="btn btn-default" href="{$BASE_URL}pages/products/add.php" role="button">Adicionar Produto</a>
 </div>
 
 {include file='common/footer.tpl'}
