@@ -3,7 +3,7 @@
     <div class="page-header">
         <h1>Adicionar Produto</h1>
     </div>
-    <form role="form">
+    <form role="form" method="post" action="{$BASE_URL}actions/products/newproduct.php">
         <div class="input-group col-md-5">
             <span class="input-group-addon">Nome</span>
             <input type="text" class="form-control" placeholder="Nome do Produto">
