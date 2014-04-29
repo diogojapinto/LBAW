@@ -4,19 +4,22 @@
         <h1>Adicionar Produto</h1>
     </div>
     <form role="form" method="post" action="{$BASE_URL}actions/products/newproduct.php">
+		{foreach $FORM_VALUES.errors as $error}
+			<div class="alert alert-danger">{$error}</div>
+		{/foreach}
         <div class="input-group col-md-5">
             <span class="input-group-addon">Nome</span>
-            <input type="text" class="form-control" placeholder="Nome do Produto">
+            <input value="{$FORM_VALUES.name}" type="text" class="form-control" placeholder="Nome do Produto">
         </div>
         <br>
         <div class="input-group col-md-5">
             <span class="input-group-addon">Imagem</span>
-            <input type="file" class="form-control">
+            <input value="{$FORM_VALUES.image}" type="file" class="form-control">
         </div>
         <br>
         <div class="input-group col-md-5 panel panel-default">
             <div class="panel-heading">Descri&ccedil;&atilde;o</div>
-            <textarea class="form-control panel-body" rows="3" placeholder="Descrição do Produto"></textarea>
+            <textarea value="{$FORM_VALUES.description}" class="form-control panel-body" rows="3" placeholder="Descrição do Produto"></textarea>
         </div>
 
         <div class="btn-group">
@@ -25,11 +28,14 @@
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu" role="menu">
-                {foreach $baseCategories as $baseCategory}
-                    <li><a class="categoryLink" href="#">{$baseCategory.name}</a></li>
-                {/foreach}
-            </ul>
+            <div>
+				<select name="category" id="catID" class="form-control">
+					<option value="-1"></option>
+					{foreach $baseCategories as $baseCategory}
+					<option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
+					{/foreach}
+				</select>
+			</div>
         </div>
         <br><br>
         <button type="submit" class="btn btn-default">Submit</button>
