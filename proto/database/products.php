@@ -121,4 +121,24 @@ function insertProduct($name, $description, $category){
         echo $e->errorInfo;
     }
 }
+
+function search($name=null, $category=null){
+    global $conn;
+    try{
+        $sqlGet = "SELECT Product.* FROM Product, ProductCategory";
+        $sqlGet .= " WHERE ";
+        if(!is_null($name))
+            $sqlGet .= " name LIKE %" . $name . "%";
+        if(!is_null($category)) {
+            if(!is_null($name))
+                $sqlGet .= " AND ";
+            $sqlGet .= "ProductCategory.idCategory = " . $category;
+        }
+        $idGet = $conn->prepare($sqlGet);
+        $idGet->execute();
+        return $idGet->fetchAll();
+    } catch(PDOException $e) {
+        echo $e->errorInfo;
+    }
+}
 ?>

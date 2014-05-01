@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
@@ -31,9 +31,10 @@
             </button>
 
             <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px">
+                <form role="form" method="post" action="{$BASE_URL}pages/products/search.php">
                 <div class="container col-md-8">
                     <div class="col-md-6 navbar-search">
-                        <input type="text" placeholder="Produto" class="form-control">
+                        <input type="text" value="{$FORM_VALUES.name}" placeholder="Produto" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <div class="btn-group">
@@ -45,24 +46,23 @@
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <button type="button"
+                            <button type="submit"
                                     style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
                                     class="btn btn-success">
                                 <span class="glyphicon glyphicon-search"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu" role="menu">
-
+                            <select name="category" class="dropdown-menu" role="menu">
                                 {foreach $baseCategories as $baseCategory}
-                                    <li><a class="categoryLink" href="#">{$baseCategory.name}</a></li>
+                                    <option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
                                 {/foreach}
-
-                            </ul>
+                            </select>
                         </div>
                         <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
                             Avan&ccedil;ada</a>
                     </div>
                 </div>
+                </form>
                 {if $USERNAME}
                     {include file='common/menu_logged_in.tpl'}
                 {else}
