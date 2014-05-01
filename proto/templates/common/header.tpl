@@ -46,17 +46,18 @@
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
+                            <select name="category" class="dropdown-menu" role="menu">
+                                <option value="null"><a href="#"> Categorias </a></option>
+                                {foreach $baseCategories as $baseCategory}
+                                    <option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
+                                {/foreach}
+                            </select>
                             <button type="submit"
                                     style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
                                     class="btn btn-success">
                                 <span class="glyphicon glyphicon-search"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <select name="category" class="dropdown-menu" role="menu">
-                                {foreach $baseCategories as $baseCategory}
-                                    <option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
-                                {/foreach}
-                            </select>
                         </div>
                         <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
                             Avan&ccedil;ada</a>
