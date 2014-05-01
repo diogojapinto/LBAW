@@ -9,15 +9,11 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/products.php');
 include_once($BASE_DIR . 'database/users.php');
 
-if (!$_POST['name'] && $_POST['category'] == '-1') {
-    $_SESSION['form_values'] = $_POST;
-    $_SESSION['form_values']['errors'] = array('Todos os campos são obrigatórios.');
 
-    header("Location: $BASE_URL");
-    exit;
-}
+$name = $_POST['name'];
+$cat = $_POST['category'];
 
-$products = search($_POST['name'], $_POST['category']);
+$products = search($name, $cat);
 
 $baseCategories = getRootCategories();
 
