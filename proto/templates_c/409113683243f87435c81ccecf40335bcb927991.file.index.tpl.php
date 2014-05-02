@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 21:52:11
+<?php /* Smarty version Smarty-3.1.15, created on 2014-05-02 10:34:13
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:163061046453592256aedbb2-43158291%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '409113683243f87435c81ccecf40335bcb927991' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/index.tpl',
-      1 => 1398376329,
+      1 => 1399026852,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_53592256b207d5_54285690',
   'variables' => 
   array (
+    'BASE_URL' => 0,
     'highestRatedProducts' => 0,
     'product' => 0,
   ),
@@ -50,6 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         É comprador?
 
                     </h2>
+
                     <p>Para si, para além de poder conhecer vários produtos, temos a possibilidade de dar a conhecer o
                         preço que está disposto a pagar pelo que deseja adquirir. Após se apresentar como interessado
                         num produto, será notificado por um vendedor que lhe apresentará uma proposta. A partir daí
@@ -59,10 +61,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="item">
                     <h2>
                         É vendedor?
-
                     </h2>
-                    <p>Através desta plataforma poderá conhecer os seus clientes. Terá acesso ao preço que estes estão
-                        dispostos a pagar pelos seus produtos, bem como ser avaliado por estes pelos seus serviços.</p>
+
+                    <img height="200px" width="200px" style="float:left; top:50px" class="img img-responsive"
+                         src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+images/icon_set/seller.png">
+                        <p>Através desta plataforma poderá conhecer os seus clientes. Terá acesso ao preço que estes
+                            estão
+                            dispostos a pagar pelos seus produtos, bem como ser avaliado por estes pelos seus
+                            serviços.
+                        </p>
                 </div>
             </div>
 
@@ -90,8 +98,9 @@ $_smarty_tpl->tpl_vars['product']->_loop = true;
 ?>
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="images/products/<?php echo $_smarty_tpl->tpl_vars['product']->value['idProduct'];?>
-" alt="Image of <?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
+                <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+images/products/<?php echo $_smarty_tpl->tpl_vars['product']->value['idProduct'];?>
+.jpg" alt="Image of <?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 ">
 
                 <div class="caption">
