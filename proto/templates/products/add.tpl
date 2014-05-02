@@ -14,6 +14,7 @@
         <br>
         <div class="input-group col-md-5">
             <span class="input-group-addon">Imagem</span>
+            <!-- TODO: Add verification of file extension (must be jpg) -->
             <input value="{$FORM_VALUES.image}" type="file" class="form-control">
         </div>
         <br>

@@ -61,7 +61,7 @@ function getRootCategories()
 {
     global $conn;
     try {
-        $stmt = $conn->prepare("SELECT ProductCategory.name
+        $stmt = $conn->prepare("SELECT ProductCategory.idCategory, ProductCategory.name
                             FROM ProductCategory
                             WHERE idParent IS NULL;");
 

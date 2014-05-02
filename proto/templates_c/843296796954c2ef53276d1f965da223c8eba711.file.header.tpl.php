@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 17:44:51
+<?php /* Smarty version Smarty-3.1.15, created on 2014-05-02 09:46:20
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19814652895359071a822881-79815394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '843296796954c2ef53276d1f965da223c8eba711' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/header.tpl',
-      1 => 1398356215,
+      1 => 1399023979,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'BASE_URL' => 0,
+    'FORM_VALUES' => 0,
     'baseCategories' => 0,
     'baseCategory' => 0,
     'USERNAME' => 0,
+    'FIELD_ERRORS' => 0,
+    'ERROR' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5359071a83cd99_49875115')) {function content_5359071a83cd99_49875115($_smarty_tpl) {?>﻿<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
@@ -63,43 +66,45 @@ images/icon_set/logo.png" height="40px"
             </button>
 
             <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px">
-                <div class="container col-md-8">
-                    <div class="col-md-6 navbar-search">
-                        <input type="text" placeholder="Produto" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="btn-group">
-                            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
-                                Categorias
-                            </button>
-                            <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
-                                    data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <button type="button"
-                                    style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
-                                    class="btn btn-success">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-
-                                <?php  $_smarty_tpl->tpl_vars['baseCategory'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['baseCategory']->_loop = false;
+                <form role="form" method="post" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/products/search.php">
+                    <div class="container col-md-8">
+                        <div class="col-md-6 navbar-search">
+                            <input type="text" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['name'];?>
+" placeholder="Produto" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
+                                    Categorias
+                                </button>
+                                <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <?php  $_smarty_tpl->tpl_vars['baseCategory'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['baseCategory']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['baseCategories']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['baseCategory']->key => $_smarty_tpl->tpl_vars['baseCategory']->value) {
 $_smarty_tpl->tpl_vars['baseCategory']->_loop = true;
 ?>
-                                    <li><a class="categoryLink" href="#"><?php echo $_smarty_tpl->tpl_vars['baseCategory']->value['name'];?>
+                                        <li><a href="#" class="categoryLink"><?php echo $_smarty_tpl->tpl_vars['baseCategory']->value['name'];?>
 </a></li>
-                                <?php } ?>
-
-                            </ul>
+                                    <?php } ?>
+                                </ul>
+                                <button type="submit"
+                                        style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
+                                        class="btn btn-success">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                            </div>
+                            <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
+                                Avan&ccedil;ada</a>
                         </div>
-                        <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
-                            Avan&ccedil;ada</a>
                     </div>
-                </div>
+                </form>
                 <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
                     <?php echo $_smarty_tpl->getSubTemplate ('common/menu_logged_in.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
@@ -110,4 +115,14 @@ $_smarty_tpl->tpl_vars['baseCategory']->_loop = true;
             </div>
         </div>
     </div>
+</div>
+<div class="errorsParent">
+    <?php  $_smarty_tpl->tpl_vars['ERROR'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['ERROR']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['FIELD_ERRORS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['ERROR']->key => $_smarty_tpl->tpl_vars['ERROR']->value) {
+$_smarty_tpl->tpl_vars['ERROR']->_loop = true;
+?>
+        <div class="alert alert-danger errorsAlert"><?php echo $_smarty_tpl->tpl_vars['ERROR']->value;?>
+</div>
+    <?php } ?>
 </div><?php }} ?>

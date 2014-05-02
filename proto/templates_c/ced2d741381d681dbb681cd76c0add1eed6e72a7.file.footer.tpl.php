@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-04-24 14:59:16
+<?php /* Smarty version Smarty-3.1.15, created on 2014-05-02 09:30:59
          compiled from "/srv/www/htdocs/realezy/proto/templates/common/footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7338500575359071a853172-35421894%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ced2d741381d681dbb681cd76c0add1eed6e72a7' => 
     array (
       0 => '/srv/www/htdocs/realezy/proto/templates/common/footer.tpl',
-      1 => 1398351529,
+      1 => 1399023058,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5359071a8541d1_17631292')) {function content_5359071a8541d1_17631292($_smarty_tpl) {?><div class="navbar navbar-default navbar-fixed-bottom">
+<?php if ($_valid && !is_callable('content_5359071a8541d1_17631292')) {function content_5359071a8541d1_17631292($_smarty_tpl) {?>
+<div class="navbar navbar-default navbar-fixed-bottom">
 
     <div class="container ">
         <p class="navbar-text pull-left">Site built by Realezy Team</p>
@@ -183,13 +184,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
 </div>
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/bootstrap.min.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/login.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/productsSearch.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/warnings.js"></script>
 
 </body>
 </html><?php }} ?>

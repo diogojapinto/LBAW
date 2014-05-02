@@ -56,9 +56,24 @@ body {
 .carousel-indicators {
     position: inherit;
     padding-top: -50px;
+    z-index: 0;
 }
 
 #btnCategory {
     width: 110px;
     overflow: hidden;
+}
+
+.errorsParent {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.errorsAlert {
+    width: 100%;
+    height: 25px;
+    padding: 2px 15px;
+    margin-bottom: 1px;
+    text-align: center;
 }

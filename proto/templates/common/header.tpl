@@ -32,42 +32,36 @@
 
             <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px">
                 <form role="form" method="post" action="{$BASE_URL}pages/products/search.php">
-                <div class="container col-md-8">
-                    <div class="col-md-6 navbar-search">
-                        <input type="text" value="{$FORM_VALUES.name}" placeholder="Produto" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="btn-group">
-                            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
-                                Categorias
-                            </button>
-                            <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
-                                    data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                {foreach $baseCategorfies as $baseCategory}
-                                    <li ><a href="#" class="categoryLink">{$baseCategory.name}</a></li>
-                                {/foreach}
-                            </ul><!--
-                            <select name="category" class="dropdown-menu" role="menu">
-                                <option value="null"><a href="#"> Categorias </a></option>
-                                {foreach $baseCategories as $baseCategory}
-                                    <option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
-                                {/foreach}
-                            </select>-->
-                            <button type="submit"
-                                    style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
-                                    class="btn btn-success">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
+                    <div class="container col-md-8">
+                        <div class="col-md-6 navbar-search">
+                            <input type="text" value="{$FORM_VALUES.name}" placeholder="Produto" class="form-control">
                         </div>
-                        <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
-                            Avan&ccedil;ada</a>
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
+                                    Categorias
+                                </button>
+                                <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    {foreach $baseCategories as $baseCategory}
+                                        <li><a href="#" class="categoryLink">{$baseCategory.name}</a></li>
+                                    {/foreach}
+                                </ul>
+                                <button type="submit"
+                                        style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
+                                        class="btn btn-success">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                            </div>
+                            <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
+                                Avan&ccedil;ada</a>
+                        </div>
                     </div>
-                </div>
                 </form>
                 {if $USERNAME}
                     {include file='common/menu_logged_in.tpl'}
@@ -77,4 +71,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="errorsParent">
+    {foreach $FIELD_ERRORS as $ERROR}
+        <div class="alert alert-danger errorsAlert">{$ERROR}</div>
+    {/foreach}
 </div>
