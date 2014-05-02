@@ -46,12 +46,17 @@
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
+                            <ul class="dropdown-menu" role="menu">
+                                {foreach $baseCategorfies as $baseCategory}
+                                    <li ><a href="#" class="categoryLink">{$baseCategory.name}</a></li>
+                                {/foreach}
+                            </ul><!--
                             <select name="category" class="dropdown-menu" role="menu">
                                 <option value="null"><a href="#"> Categorias </a></option>
                                 {foreach $baseCategories as $baseCategory}
                                     <option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
                                 {/foreach}
-                            </select>
+                            </select>-->
                             <button type="submit"
                                     style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
                                     class="btn btn-success">
