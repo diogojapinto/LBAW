@@ -27,4 +27,4 @@ $smarty->assign('products', $products);
 
 $smarty->assign('baseCategories', $baseCategories);
 
-$smarty->display('products/list.tpl');
+$smarty->display('products/searchList.tpl');
