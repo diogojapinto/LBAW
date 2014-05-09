@@ -9,10 +9,8 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/products.php');
 
-$baseCategories = getRootCategories();
+include_once($BASE_DIR . 'pages/common/initializer.php');
 
 $smarty->assign('products', $products);
-
-$smarty->assign('baseCategories', $baseCategories);
 
 $smarty->display('products/add.tpl');

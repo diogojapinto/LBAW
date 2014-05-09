@@ -2,3 +2,7 @@ proto/config/*
 proto/.idea/
 proto/proto.iml
 proto/templates_c/
+.idea
+realezy.iml
+.gitignore
+
