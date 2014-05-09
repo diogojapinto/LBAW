@@ -37,8 +37,8 @@ function getProductsByName($name)
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
                             AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
-                            AND to_tsvector('portuguese', name) @@ to_tsquery('portuguese', :name);");
-    $stmt->execute(array(':name', $name));
+                            AND to_tsvector('portuguese', Product.name) @@ to_tsquery('portuguese', ?);");
+    $stmt->execute(array($name));
     return $stmt->fetchAll();
 }
 
@@ -56,6 +56,24 @@ function getProductsByCategory($category)
     return $stmt->fetchAll();
 }
 
+function search($name, $category)
+{
+    global $conn;
+    if (!isset($category) || $category == "All") {
+        return getProductsByName($name);
+    } else {
+        $stmt = $conn->prepare("SELECT Product.*
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND to_tsvector('portuguese', Product.name) @@ to_tsquery('portuguese', :name)
+                            AND ProductCategory.name = :category;");
+
+        $stmt->execute(array(':name' => $name, ':category' => $category));
+    }
+
+    return $stmt->fetchAll();
+}
 
 function getRootCategories()
 {
@@ -96,12 +114,13 @@ function getHighestRatedProducts()
     }
 }
 
-function insertProduct($name, $description, $category){
+function insertProduct($name, $description, $category)
+{
     global $conn;
-    try{
+    try {
         $sqlIns = "INSERT INTO Product(name, description)";
         $sqlIns .= " VALUES (" . $name . ", " . $description;
-        $sqlIns .=  ");";
+        $sqlIns .= ");";
         $stmt = $conn->prepare($sqlIns);
         $stmt->execute();
 
@@ -117,28 +136,10 @@ function insertProduct($name, $description, $category){
         $prodIns = $conn->prepare($sqlInsP);
         $prodIns->execute();
 
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
         echo $e->errorInfo;
     }
 }
 
-function search($name=null, $category=null){
-    global $conn;
-    try{
-        $sqlGet = "SELECT Product.* FROM Product, ProductCategory";
-        $sqlGet .= " WHERE ";
-        if(!is_null($name))
-            $sqlGet .= " name LIKE %" . $name . "%";
-        if(!is_null($category)) {
-            if(!is_null($name))
-                $sqlGet .= " AND ";
-            $sqlGet .= "ProductCategory.idCategory = " . $category;
-        }
-        $idGet = $conn->prepare($sqlGet);
-        $idGet->execute();
-        return $idGet->fetchAll();
-    } catch(PDOException $e) {
-        echo $e->errorInfo;
-    }
-}
+
 ?>
