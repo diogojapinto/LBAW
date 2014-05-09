@@ -17,14 +17,8 @@ $products = search($name, $cat);
 
 $baseCategories = getRootCategories();
 
-$notifications['privateMessages'] = getUnreadPrivateMessages($_SESSION['iduser']);
-
-$notifications['interactions'] = getUnreadInteractions($_SESSION['iduser']);
-
-$smarty->assign('notifications', $notifications);
-
 $smarty->assign('products', $products);
 
 $smarty->assign('baseCategories', $baseCategories);
 
-$smarty->display('products/list.tpl');
+$smarty->display('products/searchList.tpl');
