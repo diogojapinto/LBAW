@@ -228,12 +228,81 @@ function getPrivateMessage($privateMessageId)
 
 function updateUserEmail($userid, $email) {
 	global $conn;
-    $stmt = $conn->prepare("UPDATE RegistredUser SET email = :email WHERE idUser = :id");
+    $stmt = $conn->prepare("UPDATE RegisteredUser SET email = :email WHERE idUser = :id");
     return $stmt->execute(array(':email' => $email, ':id' => $userid));
 }
 
 function updateUserPassword($userid, $password) {
-	global $conn;
-    $stmt = $conn->prepare("UPDATE RegistredUser SET password = :password WHERE idUser = :id");
+    global $conn;
+    $stmt = $conn->prepare("UPDATE RegisteredUser SET password = :password WHERE idUser = :id");
     return $stmt->execute(array(':password' => $password, ':id' => $userid));
+}
+
+function updateSellerCellphone($userid, $cellphone) {
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE Seller SET cellphone = :cellphone WHERE idUser = :id");
+    return $stmt->execute(array(':cellphone' => $cellphone, ':id' => $userid));
+}
+
+function updateSellerCompanyName($userid, $companyname) {
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE Seller SET companyname = :companyname WHERE idSeller = :id");
+    return $stmt->execute(array(':companyname' => $companyname, ':id' => $userid));
+}
+
+function updateSellerDescription($userid, $description) {
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE Seller SET description = :description WHERE idSeller = :id");
+    return $stmt->execute(array(':description' => $description, ':id' => $userid));
+}
+
+function updateSellerAddressLine($userid, $address) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
+    $stmt->execute(array(':id' => $userid));
+    $result = $stmt->fetch();
+    $idAddress = $result['idaddress'];
+
+    $stmt = $conn->prepare("UPDATE Address SET addressline = :addressline WHERE idAddress = :id");
+    return $stmt->execute(array(':addressline' => $address, ':id' => $idAddress));
+}
+
+function updateSellerCity($userid, $city) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
+    $stmt->execute(array(':id' => $userid));
+    $result = $stmt->fetch();
+    $idAddress = $result['idaddress'];
+
+    $stmt = $conn->prepare("UPDATE Address SET city = :city WHERE idAddress = :id");
+    return $stmt->execute(array(':city' => $city, ':id' => $idAddress));
+}
+
+function updateSellerPostalCode($userid, $postalcode) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
+    $stmt->execute(array(':id' => $userid));
+    $result = $stmt->fetch();
+    $idAddress = $result['idaddress'];
+
+    $stmt = $conn->prepare("UPDATE Address SET postalcode = :postalcode WHERE idAddress = :id");
+    return $stmt->execute(array(':postalcode' => $postalcode, ':id' => $idAddress));
+}
+
+function updateSellerCountry($userid, $country) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
+    $stmt->execute(array(':id' => $userid));
+    $result = $stmt->fetch();
+    $idAddress = $result['idaddress'];
+
+    $stmt = $conn->prepare("UPDATE Address SET idcountry = :country WHERE idAddress = :id");
+    return $stmt->execute(array(':country' => $country, ':id' => $idAddress));
 }
