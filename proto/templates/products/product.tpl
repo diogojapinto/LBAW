@@ -1,89 +1,63 @@
 {include file='common/header.tpl'}
-<div class = "container">
+<div class="container">
+    <div class="jumbotron">
 
-    <div class = "row">
+        <div class="row">
 
-        <div class = "col-md-5 thumbnail">
+            <div class="col-md-5 thumbnail">
 
-            <img src = "images/products/{$product.idproduct}.png" class = "img-responsive">
+                <img src="{$BASE_URL}images/products/{$product.idproduct}.jpg" alt="Image of {$product.name}"
+                     class="img-responsive">
 
-        </div>
+            </div>
 
-        <div class = "col-md-7 thumbnail">
+            <div class="col-md-7 thumbnail">
 
-            <h3><a href = "#">{$product.name}</a></h3>
-            <p class = "text-justify">{$product.description}</p>
+                <h3><a href="#">{$product.name}</a></h3>
 
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="offered" class="col-sm-2 control-label">Proposta</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" id="offered" placeholder="100€">
+                <p class="text-justify">{$product.description}</p>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="offered" class="col-sm-2 control-label">Proposta</label>
+
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="offered" placeholder="100€">
+                        </div>
+                        <button type="submit" class="btn btn-info">Submeter</button>
                     </div>
-                    <button type="submit" class="btn btn-info">Submeter</button>
-                </div>
-            </form>
+                </form>
 
+            </div>
         </div>
 
     </div>
+</div>
+<div class="container">
 
-    <div class = "row">
+    <div class="row">
         <hr/>
         <h3>Produtos Relacionados</h3>
         <hr/>
     </div>
 
-    <div class = "row">
+    <div class="container">
+        <div class="row productThumbnails">
+            {for $i=0 to $productsCount - 1}
+                <a href="{$BASE_URL}pages/products/product.php?productId={$relatedProducts[$i].idproduct}">
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <img src="{$BASE_URL}images/products/{$relatedProducts[$i].idproduct}.jpg" alt="Image of {$relatedProducts[$i].name}">
 
-        <div class = "col-md-3">
-
-            <div class="thumbnail">
-                <img src="imgs/{$relatedProducts[0].idproduct}.jpg" alt="...">
-                <div class="caption">
-                    <h3>{$relatedProducts[0].name}</h3>
-                    <p>{$relatedProducts[0].description}</p>
-                </div>
-            </div>
-
+                            <div class="caption">
+                                <h3>{$relatedProducts[$i].name}</h3>
+                                <p>{$relatedProducts[$i].description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {/for}
         </div>
-
-        <div class = "col-md-3">
-
-            <div class="thumbnail">
-                <img src="imgs/{$relatedProducts[1].idproduct}.jpg" alt="...">
-                <div class="caption">
-                    <h3>{$relatedProducts[1].name}</h3>
-                    <p>{$relatedProducts[1].description}</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class = "col-md-3">
-
-            <div class="thumbnail">
-                <img src="imgs/{$relatedProducts[2].idproduct}.jpg" alt="...">
-                <div class="caption">
-                    <h3>{$relatedProducts[2].name}</h3>
-                    <p>{$relatedProducts[2].description}</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class = "col-md-3">
-
-            <div class="thumbnail">
-                <img src="imgs/{$relatedProducts[3].idproduct}.jpg" alt="...">
-                <div class="caption">
-                    <h3>{$relatedProducts[3].name}</h3>
-                    <p>{$relatedProducts[3].description}</p>
-                </div>
-            </div>
-
-        </div>
-
     </div>
 
 </div>

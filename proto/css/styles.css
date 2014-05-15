@@ -3,11 +3,11 @@ body {
 }
 
 .navbar {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .carousel-control {
-	margin-top:80px;
+    margin-top: 80px;
 }
 
 .page-header {
@@ -22,16 +22,16 @@ body {
     margin-top: 3px;
 }
 
-#advSearchBtn{
-	color:white;
+#advSearchBtn {
+    color: white;
 }
 
-#advSearchBtn:hover{
-	color:grey;
+#advSearchBtn:hover {
+    color: grey;
 }
 
 #dealsTable td {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 .jumbotron {
@@ -39,8 +39,8 @@ body {
 }
 
 .home-jumbotron {
-	height: 500px;
-	margin-bottom: 10px;
+    height: 500px;
+    margin-bottom: 10px;
 }
 
 .carousel {
@@ -49,8 +49,8 @@ body {
 }
 
 .carousel-control {
-	margin-top: 50px;
-	height:500px;
+    margin-top: 50px;
+    height: 500px;
 }
 
 .carousel-indicators {
@@ -76,4 +76,23 @@ body {
     padding: 2px 15px;
     margin-bottom: 1px;
     text-align: center;
+    opacity: 0.8;
+}
+
+.searchText {
+    padding-right: 1px;
+}
+
+.searchButtons {
+    padding-left: 1px;
+}
+
+#sessionTab {
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#sessionLink {
+    text-decoration: none;
+    color: floralwhite;
 }

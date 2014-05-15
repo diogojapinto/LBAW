@@ -3,5 +3,5 @@
  */
 
 $(document).ready(function () {
-    $('.errorsAlert').delay(2000).slideUp(400);
+    $('.errorsAlert').delay(2000).slideUp(600);
 });

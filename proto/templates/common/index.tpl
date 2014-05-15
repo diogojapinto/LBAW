@@ -21,7 +21,6 @@
                 <div class="item">
                     <h2>
                         É comprador?
-
                     </h2>
 
                     <p>Para si, para além de poder conhecer vários produtos, temos a possibilidade de dar a conhecer o
@@ -34,14 +33,14 @@
                     <h2>
                         É vendedor?
                     </h2>
-
                     <img height="200px" width="200px" style="float:left; top:50px" class="img img-responsive"
                          src="{$BASE_URL}images/icon_set/seller.png">
-                        <p>Através desta plataforma poderá conhecer os seus clientes. Terá acesso ao preço que estes
-                            estão
-                            dispostos a pagar pelos seus produtos, bem como ser avaliado por estes pelos seus
-                            serviços.
-                        </p>
+
+                    <p>Através desta plataforma poderá conhecer os seus clientes. Terá acesso ao preço que estes
+                        estão
+                        dispostos a pagar pelos seus produtos, bem como ser avaliado por estes pelos seus
+                        serviços.
+                    </p>
                 </div>
             </div>
 
@@ -59,25 +58,22 @@
 
 
 <div class="container">
-
-    <div class="row">
-
+    <div class="row productThumbnails">
         {foreach $highestRatedProducts as $product}
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{$BASE_URL}images/products/{$product.idProduct}.jpg" alt="Image of {$product.name}">
+            <a href="{$BASE_URL}pages/products/product.php?productId={$product.idproduct}">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="{$BASE_URL}images/products/{$product.idproduct}.jpg" alt="Image of {$product.name}">
 
-                <div class="caption">
-                    <h3>{$product.name}</h3>
-
-                    <p>{$product.description}</p>
-                </div
-            </div>
-        </div>
+                        <div class="caption">
+                            <h3>{$product.name}</h3>
+                            <p>{$product.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {/foreach}
     </div>
-    {/foreach}
-
-</div>
 </div>
 
 {include file='common/footer.tpl'}

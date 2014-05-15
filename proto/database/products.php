@@ -9,7 +9,7 @@
 function getAllProducts()
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT Product.*, description, ProductCategory.name as category
+    $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
                             AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
@@ -20,7 +20,7 @@ function getAllProducts()
 function getProduct($id)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT Product.name, description, ProductCategory.name as category
+    $stmt = $conn->prepare("SELECT Product.idproduct, Product.name, description, ProductCategory.idcategory, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
                             AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
@@ -49,14 +49,17 @@ function getProductsByCategory($category)
     $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
-                            AND ProductCategory.name = ?;");
+                            AND ProductCategoryProduct.idcategory IN (SELECT idcategory
+                                                                      FROM ProductCategory
+                                                                      WHERE idcategory = :category
+                                                                      OR idparent = :category)
+                            AND ProductCategory.idcategory = ProductCategoryProduct.idcategory;");
     $stmt->execute(array($category));
 
     return $stmt->fetchAll();
 }
 
-function search($name, $category)
+function getProductsByNameAndCategory($name, $category)
 {
     global $conn;
     if (!isset($category) || $category == "All") {
@@ -64,10 +67,10 @@ function search($name, $category)
     } else {
         $stmt = $conn->prepare("SELECT Product.*
                             FROM Product, ProductCategoryProduct, ProductCategory
-                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            WHERE ProductCategory.idcategory = :category
                             AND to_tsvector('portuguese', Product.name) @@ to_tsquery('portuguese', :name)
-                            AND ProductCategory.name = :category;");
+                            AND Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
 
         $stmt->execute(array(':name' => $name, ':category' => $category));
     }

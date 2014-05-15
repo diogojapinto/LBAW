@@ -6,6 +6,7 @@
     <meta content="text/html; charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <link href="{$BASE_URL}css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png">
 </head>
 
 <body>
@@ -31,12 +32,16 @@
             </button>
 
             <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px">
-                <form role="form" method="post" action="{$BASE_URL}pages/products/search.php">
-                    <div class="container col-md-8">
-                        <div class="col-md-6 navbar-search">
-                            <input type="text" value="{$FORM_VALUES.name}" placeholder="Produto" class="form-control">
+                <form method="post" action="{$BASE_URL}pages/products/search.php">
+                    <div class="container col-md-7">
+                        <div class="col-md-2">
+
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 navbar-search searchText">
+                            <input type="text" name="productName" value="{$FORM_VALUES.name}" placeholder="Produto"
+                                   class="form-control">
+                        </div>
+                        <div class="col-md-4 searchButtons">
                             <div class="btn-group">
                                 <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
                                     Categorias
@@ -48,18 +53,20 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     {foreach $baseCategories as $baseCategory}
-                                        <li><a href="#" class="categoryLink">{$baseCategory.name}</a></li>
+                                        <li>
+                                            <a href="#" class="categoryLink">{$baseCategory.name}</a>
+                                            <span style="display: none">{$baseCategory.idcategory}</span>
+                                        </li>
                                     {/foreach}
                                 </ul>
-                                <button type="submit"
-                                        style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
-                                        class="btn btn-success">
+                                <input type="hidden" id="searchCategory" name="productCategory" value="All">
+                                <button style="z-index:0;left:-4px;border-top-right-radius:4px; border-bottom-right-radius:4px;"
+                                        class="btn btn-success" id="coiso">
                                     <span class="glyphicon glyphicon-search"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                             </div>
-                            <a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
-                                Avan&ccedil;ada</a>
+                            <!--<a data-toggle="modal" id="advSearchBtn" href="#advSearch" class="btn">Pesquisa
+                                Avan&ccedil;ada</a>-->
                         </div>
                     </div>
                 </form>
@@ -73,7 +80,10 @@
     </div>
 </div>
 <div class="errorsParent">
-    {foreach $FIELD_ERRORS as $ERROR}
+    {foreach $ERROR_MESSAGES as $ERROR}
         <div class="alert alert-danger errorsAlert">{$ERROR}</div>
+    {/foreach}
+    {foreach $SUCCESS_MESSAGES as $SUCCSESS}
+        <div class="alert alert-success errorsAlert">{$SUCCSESS}</div>
     {/foreach}
 </div>

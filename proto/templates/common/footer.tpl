@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-default navbar-fixed-bottom">
 
     <div class="container ">
@@ -8,7 +7,7 @@
     </div>
 
 </div>
-
+<!--
 <div class="modal fade" id="advSearch" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -24,8 +23,6 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="palavraschave" placeholder="Palavras-Chave"
                                    type="search" required>
-                            <!-- </div>
-                            <div class = "col-sm-4"> -->
                             <select class="form-control">
                                 <option value="all-any">Todas as palavras, qualquer Ordem</option>
                                 <option value="any-any">Qualquer palavra, qualquer Ordem</option>
@@ -109,6 +106,7 @@
         </div>
     </div>
 </div>
+-->
 
 <div class="modal fade" id="contact" role="dialog">
     <div class="modal-dialog">
@@ -161,7 +159,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
-<script src="{$BASE_URL}javascript/login.js"></script>
+<script src="{$BASE_URL}javascript/session.js"></script>
 <script src="{$BASE_URL}javascript/productsSearch.js"></script>
 <script src="{$BASE_URL}javascript/warnings.js"></script>
 
