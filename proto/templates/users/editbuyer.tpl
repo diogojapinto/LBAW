@@ -1,4 +1,4 @@
-{include file='common/header.tpl'}
+ï»¿{include file='common/header.tpl'}
 
 <div class = "container">
 
@@ -12,19 +12,25 @@
 			  <div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
 				<div class="col-sm-2">
-				  <input value="{$FORM_VALUES.email}" type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
+				  <input value="{$FORM_VALUES.email}" type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" >
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-2">
-				  <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password1" required>
+				  <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password1" >
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Confirmar password</label>
 				<div class="col-sm-2">
-				  <input type="password" class="form-control" id="inputPassword3" placeholder="Confirmar password" name="password2" required>
+				  <input type="password" class="form-control" id="inputPassword3" placeholder="Confirmar password" name="password2" >
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">Password antiga</label>
+				<div class="col-sm-2">
+				  <input type="password" class="form-control" id="inputPassword4" placeholder="Password antiga" name="oldpassword" required>
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -33,7 +39,7 @@
 			  </div>
 			  <div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-				  <button type="submit" class="btn btn-primary">Submeter alterações</button>
+				  <button type="submit" class="btn btn-primary">Submeter alteraÃ§Ãµes</button>
 				</div>
 			  </div>
 			</form>

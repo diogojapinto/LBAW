@@ -57,13 +57,13 @@
 				</div>
 			  </div>
 			<div class="form-group">
-				<label for="inputCity4" class="col-sm-2 control-label">Código Postal</label>
+				<label for="inputCity4" class="col-sm-2 control-label">CÃ³digo Postal</label>
 				<div class="col-sm-2">
 				  <input type="text" class="form-control" id="inputCity4" placeholder="4400-404" value="{$FORM_VALUES.postalcode}" name="postalcode" required>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputCountry3" class="col-sm-2 control-label">País</label>
+				<label for="inputCountry3" class="col-sm-2 control-label">PaÃ­s</label>
 				<div class="col-sm-2">
 				  <select name="country" id="inputCountry3" class="form-control">
     						<option value="-1"></option>
@@ -74,7 +74,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputCellphone3" class="col-sm-2 control-label">Contacto telefónico</label>
+				<label for="inputCellphone3" class="col-sm-2 control-label">Contacto telefÃ³nico</label>
 				<div class="col-sm-2">
 				  <input type="text" class="form-control" id="inputCellphone3" placeholder="+351 22578467" value="{$FORM_VALUES.cellphone}" name="cellphone" required>
 				</div>
