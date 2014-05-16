@@ -20,6 +20,19 @@ shuffle($relatedProducts);
 
 $productsCount = min(sizeof($relatedProducts), 4);
 
+$userType;
+
+if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
+    if (isBuyer($_SESSION['username'])) {
+        $userType = "buyer";
+    } else {
+        $userType = "seller";
+    }
+} else {
+    $userType = "unspecified";
+}
+
+$smarty->assign("userType", $userType);
 $smarty->assign('product', $product);
 $smarty->assign('productsCount', $productsCount);
 $smarty->assign('relatedProducts', $relatedProducts);

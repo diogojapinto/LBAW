@@ -17,16 +17,44 @@
 
                 <p class="text-justify">{$product.description}</p>
 
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="offered" class="col-sm-2 control-label">Proposta</label>
+                <div class="alert alert-warning">
+                {if userType == "buyer" }
+                    <h2>Adicionar proposta de compra:</h2>
+                    <form class="form-horizontal" role="form" action="{$BASE_URL}action/addProductToBuy.php">
+                        <div class="form-group">
+                            <label for="offered" class="col-sm-2 control-label">Proposta</label>
 
-                        <div class="col-sm-2">
-                            <input type="number" class="form-control" id="offered" placeholder="100€">
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="offered" placeholder="100">
+                                <span class="glyphicon glyphicon-euro"></span><br>
+                            </div>
+                            <button type="submit" class="btn btn-info">Confirmar</button>
                         </div>
-                        <button type="submit" class="btn btn-info">Submeter</button>
+                    </form>
+                {elseif userType == "seller" }
+                    <h2>Adicionar produto para venda:</h2>
+                    <form class="form-horizontal" role="form" action="{$BASE_URL}action/addProductToBuy.php">
+                        <div class="form-group">
+                            <label for="offered" class="col-sm-2 control-label">Proposta</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="minimum" placeholder="50">
+                                <span class="glyphicon glyphicon-euro"></span><br>
+                                <input type="text" class="form-control" id="average" placeholder="100">
+                                <span class="glyphicon glyphicon-euro"></span><br>
+                            </div>
+                            <button type="submit" class="btn btn-info">Confirmar</button>
+                        </div>
+                    </form>
+                {else}
+                    <h5>
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">-->
+                            Registe-se ou inicie sessão
+                       <!-- </a> -->
+                        para aceder às suas opções de produtos
+                    </h5>
+                {/if}
                     </div>
-                </form>
 
             </div>
         </div>
@@ -47,10 +75,12 @@
                 <a href="{$BASE_URL}pages/products/product.php?productId={$relatedProducts[$i].idproduct}">
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="{$BASE_URL}images/products/{$relatedProducts[$i].idproduct}.jpg" alt="Image of {$relatedProducts[$i].name}">
+                            <img src="{$BASE_URL}images/products/{$relatedProducts[$i].idproduct}.jpg"
+                                 alt="Image of {$relatedProducts[$i].name}">
 
                             <div class="caption">
                                 <h3>{$relatedProducts[$i].name}</h3>
+
                                 <p>{$relatedProducts[$i].description}</p>
                             </div>
                         </div>
