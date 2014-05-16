@@ -1,17 +1,26 @@
 <?php
 
-function deleteUserById($userId)
+function deleteUser($username)
 {
     global $conn;
-    $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE idUser = :id;");
-    return $stmt->execute(array(':id' => $userId));
-}
 
-function deleteUserByUserName($userName)
-{
-    global $conn;
+    $stmt = $conn->prepare("SELECT iduser FROM RegisteredUser WHERE username = :username");
+    $stmt->execute(array(':username' => $username));
+    $result = $stmt->fetch();
+    $id = $result['idUser'];
+
+    if(!$id)
+        return;
+
+    $conn->beginTransaction();
+
+    $stmt = $conn->prepare("DELETE FROM Address WHERE username = :username;");
+    $stmt->execute(array(':username' => $username));
+
     $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE username = :username;");
-    return $stmt->execute(array(':username' => $userName));
+    $stmt->execute(array(':username' => $username));
+
+    $conn->commit();
 }
 
 function checkUsernameById($id)
@@ -35,7 +44,7 @@ function checkUsernameByName($userName)
     if (sizeof($results) == 0)
         return true;
     else
-      return false;
+        return false;
 }
 
 function checkEmail($email)
@@ -52,39 +61,39 @@ function checkEmail($email)
 
 function registerBuyer($userName, $password, $email)
 {
-        global $conn;
-        $conn->beginTransaction();
+    global $conn;
+    $conn->beginTransaction();
 
-        $stmt = $conn->prepare("INSERT INTO RegisteredUser(username, password, email) VALUES (:username, :password, :email);");
+    $stmt = $conn->prepare("INSERT INTO RegisteredUser(username, password, email) VALUES (:username, :password, :email);");
 
-        $stmt->execute(array(':username' => $userName, ':password' => $password, ':email' => $email));
+    $stmt->execute(array(':username' => $userName, ':password' => sha1($password), ':email' => $email));
 
-        $stmt = $conn->prepare("INSERT INTO Buyer(idBuyer) VALUES (currval('RegisteredUser_idUser_seq'));");
+    $stmt = $conn->prepare("INSERT INTO Buyer(idBuyer) VALUES (currval('RegisteredUser_idUser_seq'));");
 
-        $stmt->execute();
+    $stmt->execute();
 
-        return $conn->commit() == true;
+    return $conn->commit() == true;
 }
 
 function registerSeller($userName, $password, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone)
 {
-        global $conn;
-        $conn->beginTransaction();
+    global $conn;
+    $conn->beginTransaction();
 
-        $stmt = $conn->prepare("INSERT INTO RegisteredUser(username, password, email) VALUES (:username, :password, :email);");
+    $stmt = $conn->prepare("INSERT INTO RegisteredUser(username, password, email) VALUES (:username, :password, :email);");
 
-        $stmt->execute(array(':username' => $userName, ':password' => $password, ':email' => $email));
+    $stmt->execute(array(':username' => $userName, ':password' => sha1($password), ':email' => $email));
 
-        $stmt = $conn->prepare("INSERT INTO Address(addressLine, postalCode, city, idCountry) VALUES (:addressLine, :postalCode, :city, :idCountry);");
+    $stmt = $conn->prepare("INSERT INTO Address(addressLine, postalCode, city, idCountry) VALUES (:addressLine, :postalCode, :city, :idCountry);");
 
-        $stmt->execute(array(':addressLine' => $addressLine, ':postalCode' => $postalCode, ':city' => $city, ':idCountry' => $idCountry));
+    $stmt->execute(array(':addressLine' => $addressLine, ':postalCode' => $postalCode, ':city' => $city, ':idCountry' => $idCountry));
 
-        $stmt = $conn->prepare("INSERT INTO Seller(idSeller, idAddress, companyName, cellPhone)
+    $stmt = $conn->prepare("INSERT INTO Seller(idSeller, idAddress, companyName, cellPhone)
                                 VALUES (currval('RegisteredUser_idUser_seq'), currval('Address_idAddress_seq'), :companyName, :cellphone);");
 
-        $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone));
+    $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone));
 
-        return $conn->commit() == true;
+    return $conn->commit() == true;
 }
 
 function userLogin($username, $password)
@@ -93,7 +102,7 @@ function userLogin($username, $password)
     $stmt = $conn->prepare("SELECT username
                             FROM RegisteredUser
                             WHERE username = ? AND password = ?");
-    $stmt->execute(array($username, $password));
+    $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch() == true;
 }
 
@@ -103,16 +112,6 @@ function isBuyer($username)
     $stmt = $conn->prepare("SELECT username
                             FROM RegisteredUser, Buyer
                             WHERE username = ? AND idUser = idBuyer");
-    $stmt->execute(array($username));
-    return $stmt->fetch() == true;
-}
-
-function isSeller($username)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT username
-                            FROM RegisteredUser, Seller
-                            WHERE username = ? AND idUser = idSeller");
     $stmt->execute(array($username));
     return $stmt->fetch() == true;
 }
@@ -175,7 +174,7 @@ function getUnreadPrivateMessages($userId)
     global $conn;
     $stmt = $conn->prepare("SELECT idPM, subject FROM PrivateMessage WHERE idUser = :id AND state = 'Unread';");
     $stmt->execute(array(':id' => $userId));
-	
+
     return $stmt->fetchAll();
 }
 
@@ -189,18 +188,18 @@ function getIdUser($username)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT idUser FROM RegisteredUser WHERE username = :username;");
-	$stmt->execute(array(':username' => $username));
-	
-	return $stmt->fetch();
+    $stmt->execute(array(':username' => $username));
+
+    return $stmt->fetch();
 }
 
 function getRegistredUser($id)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE idUser = :id;");
-	$stmt->execute(array(':id' => $id));
-	
-	return $stmt->fetch();
+    $stmt->execute(array(':id' => $id));
+
+    return $stmt->fetch();
 }
 
 function getSeller($id)
@@ -210,9 +209,9 @@ function getSeller($id)
 	FROM Seller, Address, Country
 	WHERE Seller.idSeller = :id AND Seller.idAddress = Address.idAddress AND
 		Country.idCountry = Address.idCountry;");
-	$stmt->execute(array(':id' => $id));
-	
-	return $stmt->fetch();
+    $stmt->execute(array(':id' => $id));
+
+    return $stmt->fetch();
 }
 
 function getPrivateMessage($privateMessageId)
@@ -237,7 +236,7 @@ function getPrivateMessage($privateMessageId)
 }
 
 function updateUserEmail($userid, $email) {
-	global $conn;
+    global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET email = :email WHERE idUser = :id");
     return $stmt->execute(array(':email' => $email, ':id' => $userid));
 }
@@ -245,7 +244,7 @@ function updateUserEmail($userid, $email) {
 function updateUserPassword($userid, $password) {
     global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET password = :password WHERE idUser = :id");
-    return $stmt->execute(array(':password' => $password, ':id' => $userid));
+    return $stmt->execute(array(':password' => sha1($password), ':id' => $userid));
 }
 
 function updateSellerCellphone($userid, $cellphone) {
@@ -315,4 +314,11 @@ function updateSellerCountry($userid, $country) {
 
     $stmt = $conn->prepare("UPDATE Address SET idcountry = :country WHERE idAddress = :id");
     return $stmt->execute(array(':country' => $country, ':id' => $idAddress));
+}
+
+function hashPass() {
+    for($i = 1; $i<=100; $i++) {
+        $user = getRegistredUser($i);
+        updateUserPassword($i, sha1($user['password']));
+    }
 }

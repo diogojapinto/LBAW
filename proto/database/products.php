@@ -33,7 +33,7 @@ function getProduct($id)
 function getProductsByName($name)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT Product.name, description, ProductCategory.name as category
+    $stmt = $conn->prepare("SELECT Product.name, Product.idproduct, description, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
                             AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
