@@ -26,6 +26,13 @@ function checkUsernameById($id)
         return false;
 }
 
+function hashPass() {
+    for($i = 1; $i<=100; $i++) {
+        $user = getRegistredUser($i);
+        updateUserPassword($i, sha1($user['password']));
+    }
+}
+
 function checkUsernameByName($userName)
 {
     global $conn;
