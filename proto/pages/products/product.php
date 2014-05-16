@@ -23,13 +23,13 @@ $productsCount = min(sizeof($relatedProducts), 4);
 $userType;
 
 if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
+    $userType = "unspecified";
+} else {
     if (isBuyer($_SESSION['username'])) {
         $userType = "buyer";
     } else {
         $userType = "seller";
     }
-} else {
-    $userType = "unspecified";
 }
 
 $smarty->assign("userType", $userType);

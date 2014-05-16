@@ -2,7 +2,7 @@
 
 <div class="container home-jumbotron">
 
-    <div class="jumbotron text-center">
+    <div class="jumbotron home-slider text-center">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>

@@ -34,7 +34,7 @@ body {
     vertical-align: middle;
 }
 
-.jumbotron {
+.home-slider {
     height: 495px;
 }
 
@@ -95,4 +95,37 @@ body {
 #sessionLink {
     text-decoration: none;
     color: floralwhite;
+}
+
+#imageInput {
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 25px;
+}
+
+.addProduct {
+    float: right;
+    margin-top: 25px;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+#productEuroGlyphicon {
+    padding-left: 0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#productPriceInput {
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+#productLabel {
+    text-align: left;
+}
+
+#productProposeButton {
+    margin-left: 15px;
 }

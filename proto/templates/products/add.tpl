@@ -13,23 +13,22 @@
 
         <div class="input-group col-md-5">
             <span class="input-group-addon">Imagem</span>
-            <!-- TODO: Add verification of file extension (must be jpg) -->
-            <input value="{$FORM_VALUES.image}" type="file" name="image" class="form-control" accept="image/jpg">
+            <input type="file" name="image" id="imageInput" class="form-control" accept="image/jpeg">
         </div>
         <br>
 
         <div class="input-group col-md-5 panel panel-default">
             <div class="panel-heading">Descri&ccedil;&atilde;o</div>
-            <textarea value="{$FORM_VALUES.description}" name="description" class="form-control panel-body" rows="3"
-                      placeholder="Descrição do Produto"></textarea>
+            <textarea name="description" class="form-control panel-body" rows="3"
+                      placeholder="Descrição do Produto">{$FORM_VALUES.description}</textarea>
         </div>
 
-        <div class="btn-group col-md-5" style="padding-left:0;">
-            <button id="btnCategory" style="width:80%" type="button" class="btn" data-toggle="dropdown">
-                {if !$FORM_VALUES}
+        <div class="btn-group col-md-5 col-sm-3" style="padding-left:0;padding-right: 0">
+            <button id="btnCategory" style="width:94.7%" type="button" class="btn" data-toggle="dropdown">
+                {if !$FORM_VALUES.productCategory}
                     Selecione uma categoria
                 {else}
-                    {$baseCategories[$FORM_VALUES.productCategory - 1].name}
+                    {$baseCategories[$FORM_VALUES.productCategory].name}
                 {/if}
             </button>
             <button type="button" style="z-index:1" class="btn dropdown-toggle"

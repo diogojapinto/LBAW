@@ -5,6 +5,7 @@
  * Date: 23-Apr-14
  * Time: 9:13 PM
  */
+include_once($BASE_DIR . 'database/users.php');
 
 function getAllProducts()
 {
@@ -141,6 +142,34 @@ function insertProduct($name, $description, $category)
     $conn->commit();
 
     return $id;
+}
+
+function addToBuying($idProduct, $username, $proposedPrice)
+{
+    global $conn;
+
+    if (isSeller($username)) {
+        $id = getIdUser($username);
+        $stmt = $conn->prepare("INSERT INTO WantsToBuy(idproduct, idbuyer, proposedPrice)
+                                VALUES (:id, :idProduct, :proposedPrice);");
+        return $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':proposedPrice' => $proposedPrice));
+    } else {
+        return false;
+    }
+}
+
+function addToSelling($idProduct, $username, $minimumPrice, $averagePrice)
+{
+    global $conn;
+
+    if (isSeller($username)) {
+        $id = getIdUser($username);
+        $stmt = $conn->prepare("INSERT INTO WantsToSell(idseller, idproduct, minumumprice, averageprice)
+                                VALUES (:id, :idProduct, :minimumPrice, :averagePrice);");
+        return $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':minimumPrice' => $minimumPrice, ':averagePrice' => $averagePrice));
+    } else {
+        return false;
+    }
 }
 
 

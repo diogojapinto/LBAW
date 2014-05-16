@@ -17,7 +17,6 @@ $_SESSION['iduser'] = $id['iduser'];
 if (userLogin($username, $password)) {
     $_SESSION['username'] = $username;
     $_SESSION['success_messages'][] = 'Login successful';
-    var_dump($_SESSION);
 } else {
     $_SESSION['error_messages'][] = 'Login failed';
 }
