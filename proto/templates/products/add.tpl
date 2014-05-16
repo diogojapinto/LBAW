@@ -24,19 +24,23 @@
         </div>
 
         <div class="btn-group">
-            <button type="button" class="btn btn-info">Categoria</button>
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
+                Categorias
+            </button>
+            <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
+                    data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <div>
-				<select name="category" id="catID" class="form-control">
-					<option value="-1"></option>
-					{foreach $baseCategories as $baseCategory}
-					<option value="{$baseCategory.idCategory}">{$baseCategory.name}</option>
-					{/foreach}
-				</select>
-			</div>
+            <ul class="dropdown-menu" role="menu">
+                {foreach $baseCategories as $baseCategory}
+                    <li>
+                        <a href="#" class="categoryLink">{$baseCategory.name}</a>
+                        <span style="display: none">{$baseCategory.idcategory}</span>
+                    </li>
+                {/foreach}
+            </ul>
+            <input type="hidden" id="searchCategory" name="productCategory" value="All">
         </div>
         <br><br>
         <button type="submit" class="btn btn-default">Submit</button>
