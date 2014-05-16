@@ -13,6 +13,7 @@
 <b>Descri&ccedil;&atilde;o:</b>    {$SELLER.description}<br/>
 </div>
 </div>
+	<a class="btn btn-danger" href="{$BASE_URL}actions/users/deleteuser.php" role="button">Apagar Utilizador</a><br/><br/>
     <a class="btn btn-default" href="{$BASE_URL}pages/products/add.php" role="button">Adicionar Produto</a>
 </div>
 

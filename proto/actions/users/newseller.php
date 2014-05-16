@@ -4,7 +4,7 @@ include_once($BASE_DIR . 'database/users.php');
 
 if (!$_POST['password1'] || !$_POST['password2'] || !$_POST['email'] || !$_POST['username'] || !$_POST['address'] || !$_POST['postalcode'] || !$_POST['city'] || $_POST['country'] === '-1' || !$_POST['companyname'] || !$_POST['cellphone']) {
     $_SESSION['form_values'] = $_POST;
-    $_SESSION['form_values']['errors'] = array('Todos os campos s�o obrigat�rios.');
+    $_SESSION['form_values']['errors'] = array('Todos os campos são obrigatórios.');
 
     header("Location: $BASE_URL" . 'pages/users/registerseller.php');
     exit;
@@ -59,7 +59,6 @@ if($error) {
 try {
     registerSeller($username, $password1, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone);
 } catch (PDOException $e) {
-
     $_SESSION['form_values'] = $_POST;
     if (strpos($e->getMessage(), 'registereduser_email_key') !== false) {
         $_SESSION['form_values']['errors'] = array('Email duplicado.');
@@ -78,7 +77,11 @@ try {
 }
 
 $id = getIdUser($username);
+session_regenerate_id();
 $_SESSION['iduser'] = $id['iduser'];
+$_SESSION['username'] = $username;
+$_SESSION['usertype'] = 'seller';
+$_SESSION['success_messages'][] = 'Login successful';
 
 header("Location: $BASE_URL");
 ?>

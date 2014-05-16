@@ -4,5 +4,5 @@
 
 include_once($BASE_DIR . 'pages/common/initializer.php');
     
-  $smarty->display('users/editbuyer.tpl');
+  $smarty->display('users/edituser.tpl');
 ?>

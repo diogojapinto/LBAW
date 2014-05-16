@@ -1,6 +1,4 @@
-﻿{include file='common/header.tpl'}
-
-<div class = "container">
+﻿<div class = "container">
 
         <div class = "row">
 			<h1>Modificar dados de utilizador</h1><br/>
@@ -47,6 +45,3 @@
         </div>
 
     </div>
-
-
-{include file='common/footer.tpl'}

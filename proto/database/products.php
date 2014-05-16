@@ -131,8 +131,8 @@ function insertProduct($name, $description, $category)
 
     $stmt = $conn->prepare("SELECT currval('product_idproduct_seq');");
     $stmt->execute();
-
-    $id = $stmt->fetch()['currval'];
+    $result = $stmt->fetch();
+    $id = $result['currval'];
 
     $stmt = $conn->prepare("INSERT INTO ProductCategoryProduct(idproduct, idcategory)
                             VALUES (:productid, :category);");

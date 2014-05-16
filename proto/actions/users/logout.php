@@ -1,7 +1,9 @@
 <?php
-include_once('../../config/init.php');
+  include('../../config/init.php');
+  session_destroy();
+  
+  include('../../config/init.php');
+  $_SESSION['success_messages'][] = 'Logout successful';
 
-session_destroy();
-
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: ' . $BASE_URL);
 ?>

@@ -1,24 +1,21 @@
 <?php
 
-function deleteUser($username)
+function deleteUser($iduser)
 {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT iduser FROM RegisteredUser WHERE username = :username");
-    $stmt->execute(array(':username' => $username));
-    $result = $stmt->fetch();
-    $id = $result['idUser'];
-
-    if (!$id)
-        return;
-
     $conn->beginTransaction();
 
-    $stmt = $conn->prepare("DELETE FROM Address WHERE username = :username;");
-    $stmt->execute(array(':username' => $username));
+    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :iduser;");
+    $stmt->execute(array(':iduser' => $iduser));
+    $result = $stmt->fetch();
+    $idAddress = $result['idaddress'];
 
-    $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE username = :username;");
-    $stmt->execute(array(':username' => $username));
+    $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE iduser = :iduser;");
+    $stmt->execute(array(':iduser' => $iduser));
+
+    $stmt = $conn->prepare("DELETE FROM Address WHERE idAddress = :idAddress;");
+    $stmt->execute(array(':idAddress' => $idAddress));
 
     $conn->commit();
 }
@@ -101,39 +98,19 @@ function userLogin($username, $password)
     global $conn;
     $stmt = $conn->prepare("SELECT username
                             FROM RegisteredUser
-                            WHERE username = ? AND password = ?;");
+                            WHERE username = ? AND password = ?");
     $stmt->execute(array($username, sha1($password)));
-
-    $ret = $stmt->fetch();
-    return $ret == true;
+    return $stmt->fetch() == true;
 }
 
 function isBuyer($username)
 {
-    if (!isset($username) || $username == "") {
-        return false;
-    }
-
     global $conn;
     $stmt = $conn->prepare("SELECT username
                             FROM RegisteredUser, Buyer
                             WHERE username = ? AND idUser = idBuyer");
     $stmt->execute(array($username));
-    return $stmt->fetch() == $username;
-}
-
-function isSeller($username)
-{
-    if (!isset($username) || $username == "") {
-        return false;
-    }
-
-    global $conn;
-    $stmt = $conn->prepare("SELECT username
-                            FROM RegisteredUser, Seller
-                            WHERE username = ? AND idUser = idSeller");
-    $stmt->execute(array($username));
-    return $stmt->fetch() == $username;
+    return $stmt->fetch() == true;
 }
 
 function getInteractions($userId)
@@ -255,46 +232,40 @@ function getPrivateMessage($privateMessageId)
     return $result;
 }
 
-function updateUserEmail($userid, $email)
-{
+function updateUserEmail($userid, $email) {
     global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET email = :email WHERE idUser = :id");
     return $stmt->execute(array(':email' => $email, ':id' => $userid));
 }
 
-function updateUserPassword($userid, $password)
-{
+function updateUserPassword($userid, $password) {
     global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET password = :password WHERE idUser = :id");
     return $stmt->execute(array(':password' => sha1($password), ':id' => $userid));
 }
 
-function updateSellerCellphone($userid, $cellphone)
-{
+function updateSellerCellphone($userid, $cellphone) {
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET cellphone = :cellphone WHERE idUser = :id");
     return $stmt->execute(array(':cellphone' => $cellphone, ':id' => $userid));
 }
 
-function updateSellerCompanyName($userid, $companyname)
-{
+function updateSellerCompanyName($userid, $companyname) {
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET companyname = :companyname WHERE idSeller = :id");
     return $stmt->execute(array(':companyname' => $companyname, ':id' => $userid));
 }
 
-function updateSellerDescription($userid, $description)
-{
+function updateSellerDescription($userid, $description) {
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET description = :description WHERE idSeller = :id");
     return $stmt->execute(array(':description' => $description, ':id' => $userid));
 }
 
-function updateSellerAddressLine($userid, $address)
-{
+function updateSellerAddressLine($userid, $address) {
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -306,8 +277,7 @@ function updateSellerAddressLine($userid, $address)
     return $stmt->execute(array(':addressline' => $address, ':id' => $idAddress));
 }
 
-function updateSellerCity($userid, $city)
-{
+function updateSellerCity($userid, $city) {
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -319,8 +289,7 @@ function updateSellerCity($userid, $city)
     return $stmt->execute(array(':city' => $city, ':id' => $idAddress));
 }
 
-function updateSellerPostalCode($userid, $postalcode)
-{
+function updateSellerPostalCode($userid, $postalcode) {
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -332,8 +301,7 @@ function updateSellerPostalCode($userid, $postalcode)
     return $stmt->execute(array(':postalcode' => $postalcode, ':id' => $idAddress));
 }
 
-function updateSellerCountry($userid, $country)
-{
+function updateSellerCountry($userid, $country) {
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -345,10 +313,9 @@ function updateSellerCountry($userid, $country)
     return $stmt->execute(array(':country' => $country, ':id' => $idAddress));
 }
 
-function hashPass()
-{
-    for ($i = 1; $i <= 100; $i++) {
+function hashPass() {
+    for($i = 1; $i<=100; $i++) {
         $user = getRegistredUser($i);
-        updateUserPassword($user['iduser'], $user['password']);
+        updateUserPassword($i, sha1($user['password']));
     }
 }
