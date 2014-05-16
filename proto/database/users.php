@@ -107,6 +107,16 @@ function isBuyer($username)
     return $stmt->fetch() == true;
 }
 
+function isSeller($username)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT username
+                            FROM RegisteredUser, Seller
+                            WHERE username = ? AND idUser = idSeller");
+    $stmt->execute(array($username));
+    return $stmt->fetch() == true;
+}
+
 function getInteractions($userId)
 {
     global $conn;
