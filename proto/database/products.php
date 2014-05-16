@@ -120,28 +120,27 @@ function getHighestRatedProducts()
 function insertProduct($name, $description, $category)
 {
     global $conn;
-    try {
-        $sqlIns = "INSERT INTO Product(name, description)";
-        $sqlIns .= " VALUES (" . $name . ", " . $description;
-        $sqlIns .= ");";
-        $stmt = $conn->prepare($sqlIns);
-        $stmt->execute();
 
-        $sqlGet = "SELECT idProduct FROM Product";
-        $sqlGet .= " WHERE name = " . $name;
-        $idGet = $conn->prepare($sqlGet);
-        $idGet->execute();
-        $idP = $idGet->fetch();
+    $conn->beginTransaction();
 
-        $sqlInsP = "INSERT INTO ProductCategory(idProduct, idCategory)";
-        $sqlInsP .= " VALUES(" . $idP["idProduct"] . ", " . $category;
-        $sqlInsP .= ");";
-        $prodIns = $conn->prepare($sqlInsP);
-        $prodIns->execute();
+    $stmt = $conn->prepare("INSERT INTO Product(name, description)
+                            VALUES (:name, :description);");
 
-    } catch (PDOException $e) {
-        echo $e->errorInfo;
-    }
+    $stmt->execute(array(':name' => $name, ':description' => $description));
+
+    $stmt = $conn->prepare("SELECT currval('product_idproduct_seq');");
+    $stmt->execute();
+
+    $id = $stmt->fetch()['currval'];
+
+    $stmt = $conn->prepare("INSERT INTO ProductCategoryProduct(idproduct, idcategory)
+                            VALUES (:productid, :category);");
+
+    $stmt->execute(array(':productid' => $id, ':category' => $category));
+
+    $conn->commit();
+
+    return $id;
 }
 
 

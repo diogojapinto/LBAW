@@ -27,6 +27,12 @@ if (!isset($name) || $name == "") {
     }
 }
 
+if (sizeof($products) == 0) {
+    $_SESSION['error_messages'][] = 'A sua pesquisa não retornou resultados';
+
+    header("Location: $BASE_URL" . 'index.php');
+}
+
 
 $smarty->assign('products', $products);
 

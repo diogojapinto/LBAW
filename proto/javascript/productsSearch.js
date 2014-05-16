@@ -1,8 +1,10 @@
 $(document).ready(function () {
 
     $('.categoryLink').click(function () {
-        $('#btnCategory').text($(this).text());
-        $('#searchCategory').val($(this).next("span").text());
+        var $categoryElems = $(this).parents('.btn-group');
+        console.log(JSON.stringify($categoryElems, null, 4));
+        $categoryElems.children('#btnCategory').text($(this).text());
+        $categoryElems.children('#searchCategory').val($(this).next("span").text());
     });
 
 

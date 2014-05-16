@@ -3,44 +3,53 @@
     <div class="page-header">
         <h1>Adicionar Produto</h1>
     </div>
-    <form role="form" method="post" action="{$BASE_URL}actions/products/newproduct.php">
-		{foreach $FORM_VALUES.errors as $error}
-			<div class="alert alert-danger">{$error}</div>
-		{/foreach}
+    <form role="form" method="post" action="{$BASE_URL}actions/products/newproduct.php" enctype="multipart/form-data">
         <div class="input-group col-md-5">
             <span class="input-group-addon">Nome</span>
-            <input value="{$FORM_VALUES.name}" type="text" class="form-control" placeholder="Nome do Produto">
+            <input value="{$FORM_VALUES.name}" type="text" name="name" class="form-control"
+                   placeholder="Nome do Produto">
         </div>
         <br>
+
         <div class="input-group col-md-5">
             <span class="input-group-addon">Imagem</span>
             <!-- TODO: Add verification of file extension (must be jpg) -->
-            <input value="{$FORM_VALUES.image}" type="file" class="form-control">
+            <input value="{$FORM_VALUES.image}" type="file" name="image" class="form-control" accept="image/jpg">
         </div>
         <br>
+
         <div class="input-group col-md-5 panel panel-default">
             <div class="panel-heading">Descri&ccedil;&atilde;o</div>
-            <textarea value="{$FORM_VALUES.description}" class="form-control panel-body" rows="3" placeholder="Descrição do Produto"></textarea>
+            <textarea value="{$FORM_VALUES.description}" name="description" class="form-control panel-body" rows="3"
+                      placeholder="Descrição do Produto"></textarea>
         </div>
 
-        <div class="btn-group">
-            <button id="btnCategory" type="button" class="btn btn-danger" data-toggle="dropdown">
-                Categorias
+        <div class="btn-group col-md-5" style="padding-left:0;">
+            <button id="btnCategory" style="width:80%" type="button" class="btn" data-toggle="dropdown">
+                {if !$FORM_VALUES}
+                    Selecione uma categoria
+                {else}
+                    {$baseCategories[$FORM_VALUES.productCategory - 1].name}
+                {/if}
             </button>
-            <button type="button" style="z-index:1" class="btn btn-danger dropdown-toggle"
+            <button type="button" style="z-index:1" class="btn dropdown-toggle"
                     data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
                 {foreach $baseCategories as $baseCategory}
+                    {if $baseCategory.name == "All"}
+                        {continue}
+                    {/if}
                     <li>
                         <a href="#" class="categoryLink">{$baseCategory.name}</a>
                         <span style="display: none">{$baseCategory.idcategory}</span>
                     </li>
                 {/foreach}
             </ul>
-            <input type="hidden" id="searchCategory" name="productCategory" value="All">
+            <input type="hidden" id="searchCategory" name="productCategory"
+                   value="{if $FORM_VALUES}{$FORM_VALUES.productCategory}{/if}">
         </div>
         <br><br>
         <button type="submit" class="btn btn-default">Submit</button>
