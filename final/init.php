@@ -1,5 +1,5 @@
 <?php
-  session_set_cookie_params(3600, '/~lbaw1312');
+  session_set_cookie_params(3600, '/~lbaw1312'); //
   session_start();
 
   $BASE_DIR = '/opt/lbaw/lbaw1312/public_html/proto/';
