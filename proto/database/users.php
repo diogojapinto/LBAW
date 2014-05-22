@@ -110,7 +110,18 @@ function isBuyer($username)
                             FROM RegisteredUser, Buyer
                             WHERE username = ? AND idUser = idBuyer");
     $stmt->execute(array($username));
-    return $stmt->fetch() == true;
+
+    return $stmt->fetch()['username'] == $username;
+}
+
+function isSeller($username)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT username
+                            FROM RegisteredUser, Seller
+                            WHERE username = ? AND idUser = idSeller");
+    $stmt->execute(array($username));
+    return $stmt->fetch()['username'] == $username;
 }
 
 function getInteractions($userId)
@@ -316,6 +327,6 @@ function updateSellerCountry($userid, $country) {
 function hashPass() {
     for($i = 1; $i<=100; $i++) {
         $user = getRegistredUser($i);
-        updateUserPassword($i, sha1($user['password']));
+        updateUserPassword($i,$user['password']);
     }
 }

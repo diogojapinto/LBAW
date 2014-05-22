@@ -8,5 +8,8 @@ proto/templates_c/
 realezy.iml
 final/images/products
 proto/images/products
-
+.gitignore
+images/
+proto/.idea
+proto/proto.iml
 
