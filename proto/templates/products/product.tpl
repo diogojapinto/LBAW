@@ -19,26 +19,32 @@
 
                 <div class="alert alert-warning">
                     {if $userType == "buyer" }
-                        <h2>Adicionar proposta de compra:</h2>
-                        <form class="form-horizontal" role="form" method="post"
-                              action="{$BASE_URL}action/addProductToBuy.php">
-                            <input type="hidden" value={$product.idproduct} name="idProduct">
+                        {if $isAlreadyBuying}
+                            <h5>Já tem este produto adicionado</h5>
+                        {else}
+                            <h2>Adicionar proposta de compra:</h2>
+                            <form class="form-horizontal" role="form" method="post"
+                                  action="{$BASE_URL}actions/users/addProductToBuy.php">
+                                <input type="hidden" value={$product.idproduct} name="idProduct">
 
-                            <div class="form-group">
-                                <label for="offered" class="col-sm-2 control-label" id="productLabel">Proposta</label>
+                                <div class="form-group">
+                                    <label for="offered" class="col-sm-2 control-label" id="productLabel"
+                                           style="padding-top:16px">Proposta</label>
 
-                                <div class="col-sm-2" id="productPriceInput">
-                                    <input type="text" class="form-control" id="offered" placeholder="100"
-                                           name="proposedValue">
+                                    <div class="col-sm-2" id="productPriceInput">
+                                        <input type="text" class="form-control" id="offered" placeholder="100"
+                                               name="proposedValue">
+                                    </div>
+                                    <span class="col-sm-2 glyphicon glyphicon-euro" id="productEuroGlyphicon"></span>
+                                    <button type="submit" class="btn btn-info">Confirmar</button>
                                 </div>
-                                <span class="col-sm-2 glyphicon glyphicon-euro" id="productEuroGlyphicon"></span>
-                                <button type="submit" class="btn btn-info">Confirmar</button>
-                            </div>
-                        </form>
+                            </form>
+                        {/if}
+
                     {elseif $userType == "seller" }
                         <h2>Adicionar produto para venda:</h2>
                         <form class="form-horizontal" role="form" method="post"
-                              action="{$BASE_URL}action/addProductToSell.php">
+                              action="{$BASE_URL}actions/users/addProductToSell.php">
                             <input type="hidden" value={$product.idproduct} name="idProduct">
 
                             <div class="form-group">
@@ -65,9 +71,9 @@
                         </form>
                     {else}
                         <h5>
-                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">-->
-                            Registe-se ou inicie sessão
-                            <!-- </a> -->
+                            <a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
+                                Registe-se ou inicie sessão
+                            </a>
                             para aceder às suas opções de produtos
                         </h5>
                     {/if}

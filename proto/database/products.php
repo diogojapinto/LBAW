@@ -145,9 +145,9 @@ function addToBuying($idProduct, $username, $proposedPrice)
 {
     global $conn;
 
-    if (isSeller($username)) {
+    if (isBuyer($username)) {
         $id = getIdUser($username);
-        $stmt = $conn->prepare("INSERT INTO WantsToBuy(idproduct, idbuyer, proposedPrice)
+        $stmt = $conn->prepare("INSERT INTO WantsToBuy(idbuyer, idproduct, proposedPrice)
                                 VALUES (:id, :idProduct, :proposedPrice);");
         return $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':proposedPrice' => $proposedPrice));
     } else {
@@ -169,5 +169,20 @@ function addToSelling($idProduct, $username, $minimumPrice, $averagePrice)
     }
 }
 
+function isUserBuying($idUser, $idProduct) {
+    global $conn;
+
+    if (isBuyer($idUser)) {
+        $stmt = $conn->prepare("SELECT idBuyer
+                                FROM Buyer NATURAL JOIN WantsToBuy
+                                WHERE idProduct = :idProduct
+                                    AND idBuyer = :idBuyer;");
+        $user = $stmt->execute(array(':idProduct' => $idProduct, ':idBuyer' => $idUser));
+        $_SESSION['error_message'][] = $user['iduser'];
+        return $user['iduser'] == $idUser;
+    } else {
+        return false;
+    }
+}
 
 ?>

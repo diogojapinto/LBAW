@@ -27,6 +27,8 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
 } else {
     if (isBuyer($_SESSION['username'])) {
         $userType = "buyer";
+        $isBuying = isUserBuying(getIdUser($_SESSION['username']), $product['idproduct']);
+        $smarty->assign("isAlreadyBuying", $isBuying);
     } else {
         $userType = "seller";
     }

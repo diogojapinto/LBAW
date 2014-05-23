@@ -198,7 +198,8 @@ function getIdUser($username)
     $stmt = $conn->prepare("SELECT idUser FROM RegisteredUser WHERE username = :username;");
     $stmt->execute(array(':username' => $username));
 
-    return $stmt->fetch();
+    $user = $stmt->fetch();
+    return $user['iduser'];
 }
 
 function getRegistredUser($id)
