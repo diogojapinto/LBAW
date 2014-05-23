@@ -67,60 +67,6 @@ if ($_POST['email']) {
         } else $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
     }
 }
-if ($_POST['address']) {
-    try {
-        updateSellerAddressLine($_SESSION['iduser'], $_POST['address']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
-if ($_POST['description']) {
-    try {
-        updateSellerDescription($_SESSION['iduser'], $_POST['description']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
-if ($_POST['city']) {
-    try {
-        updateSellerCity($_SESSION['iduser'], $_POST['city']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
-if ($_POST['postalcode']) {
-    try {
-        updateSellerPostalCode($_SESSION['iduser'], $_POST['postalcode']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        if (strpos($e->getMessage(), 'validpostalcode') !== false)
-            $_SESSION['form_values']['errors'] = array('Formato de código postal inválido.');
-        else
-            $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
-if ($_POST['country'] && $_POST['country'] > 0) {
-    try {
-        updateSellerCountry($_SESSION['iduser'], $_POST['country']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
-if ($_POST['cellphone']) {
-    try {
-        updateSellerCellphone($_SESSION['iduser'], $_POST['cellphone']);
-    } catch (PDOException $e) {
-        $_SESSION['form_values'] = $_POST;
-        if (strpos($e->getMessage(), 'validcellnumber') !== false)
-            $_SESSION['form_values']['errors'] = array('Formato de número de telefone inválido.');
-        else
-            $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
-    }
-}
 
 $_SESSION['success_messages'][] = "Edição bem sucedida.";
 header('Location: ' . $BASE_URL . 'pages/users/showuser.php');
