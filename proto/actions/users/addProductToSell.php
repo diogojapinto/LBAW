@@ -11,13 +11,14 @@ if (!$_SESSION['username']) {
 
 if (!isset($_POST['idProduct']) || $_POST['idProduct'] == "" || !isset($_POST['minimumValue']) || $_POST['minimumValue'] == "" || !isset($_POST['averageValue']) || $_POST['averageValue'] == "") {
     $_SESSION['form_values'] = $_POST;
-    $_SESSION['error_messages'][] = 'Tem que iniciar sessão';
+    $_SESSION['error_messages'][] = 'Insira valores para a proposta';
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 }
 
 $idProduct = $_POST['idProduct'];
-$username = $_POST['username'];
+$username = $_SESSION['username'];
 $minimumValue = $_POST['minimumValue'];
 $averageValue = $_POST['averageValue'];
 
@@ -26,10 +27,12 @@ try {
     addToSelling($idProduct, $username, $minimumValue, $averageValue);
 
     header('Location: ' . 'pages/negotiation/queryBuyers.php');
+    exit;
 
 } catch (PDOException $e) {
     $_SESSION["error_messages"][] = $e->getMessage();
     $_SESSION['form_values'] = $_POST;
     header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 }
 ?>

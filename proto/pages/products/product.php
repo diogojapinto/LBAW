@@ -24,13 +24,20 @@ $userType;
 
 if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
     $userType = "unspecified";
+    $username = $_SESSION['username'];
 } else {
     if (isBuyer($_SESSION['username'])) {
         $userType = "buyer";
-        $isBuying = isUserBuying(getIdUser($_SESSION['username']), $product['idproduct']);
+        $isBuying = isUserBuying($_SESSION['username'], $product['idproduct']);
         $smarty->assign("isAlreadyBuying", $isBuying);
     } else {
         $userType = "seller";
+        $isDealRunning = isDealRunning($username, $product['idproduct']);
+        $smarty->assign("isDealRunning", $isDealRunning);
+
+        if ($isDealRunning) {
+            getSellingInfo($username, $product['idproduct']);
+        }
     }
 }
 
