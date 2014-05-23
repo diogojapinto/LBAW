@@ -371,6 +371,14 @@ SET SCHEMA 'public';
     END
     $$ LANGUAGE plpgsql;
 
+    CREATE OR REPLACE FUNCTION delete_seller_trigger() RETURNS TRIGGER AS $$
+    BEGIN
+      DELETE FROM Address WHERE Address.idAddress = OLD.idAddress;
+
+      RETURN NEW;
+    END
+    $$ LANGUAGE plpgsql;
+
     DROP TRIGGER IF EXISTS new_buyerinfo_trigger ON BuyerInfo;
     CREATE TRIGGER new_buyerinfo_trigger
         BEFORE INSERT ON BuyerInfo
@@ -400,6 +408,11 @@ SET SCHEMA 'public';
     CREATE TRIGGER update_selling_product_trigger
         BEFORE INSERT ON WantsToSell
         FOR EACH ROW EXECUTE PROCEDURE update_selling_product_trigger();
+
+    DROP TRIGGER IF EXISTS delete_seller_trigger ON Seller;
+    CREATE TRIGGER delete_seller_trigger
+        AFTER DELETE ON Seller
+        FOR EACH ROW EXECUTE PROCEDURE delete_seller_trigger();
 
 
         -- ########### RegisteredUser #################
