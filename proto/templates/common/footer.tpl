@@ -3,7 +3,7 @@
     <div class="container ">
         <p class="navbar-text pull-left">Site built by Realezy Team</p>
         <a href="http://www.paypal.com" class="navbar-btn btn-success btn pull-right">Donate</a>
-        <a href="#contact" class="navbar-btn btn-default btn pull-right" data-toggle="modal">Contact</a>
+        <a href="#contact" class="navbar-btn btn-default btn pull-right" style="margin-right: 3px;" data-toggle="modal">Contact</a>
     </div>
 
 </div>

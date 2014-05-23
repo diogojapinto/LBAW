@@ -3,7 +3,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'pages/common/initializer.php');
 include_once($BASE_DIR . 'database/users.php');
 
-$common = getRegistredUser($_SESSION['iduser']);
+$common = getRegisteredUser($_SESSION['iduser']);
 $smarty->assign('COMMON', $common);
 
 if (isBuyer($_SESSION['username'])) {

@@ -202,10 +202,11 @@ function getIdUser($username)
     $stmt = $conn->prepare("SELECT idUser FROM RegisteredUser WHERE username = :username;");
     $stmt->execute(array(':username' => $username));
 
-    return $stmt->fetch();
+    $user = $stmt->fetch();
+    return $user['iduser'];
 }
 
-function getRegistredUser($id)
+function getRegisteredUser($id)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE idUser = :id;");
@@ -329,8 +330,9 @@ function updateSellerCountry($userid, $country) {
 }
 
 function hashPass() {
-    for($i = 1; $i<=100; $i++) {
-        $user = getRegistredUser($i);
+    $i = 1;
+    while (($user = getRegisteredUser($i)) != false) {
         updateUserPassword($i,$user['password']);
+        $i++;
     }
 }
