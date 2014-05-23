@@ -129,10 +129,7 @@ function insertProduct($name, $description, $category)
 
     $stmt->execute(array(':name' => $name, ':description' => $description));
 
-    $stmt = $conn->prepare("SELECT currval('product_idproduct_seq');");
-    $stmt->execute();
-    $result = $stmt->fetch();
-    $id = $result['currval'];
+    $id = $conn->lastInsertId('product_idproduct_seq');
 
     $stmt = $conn->prepare("INSERT INTO ProductCategoryProduct(idproduct, idcategory)
                             VALUES (:productid, :category);");
