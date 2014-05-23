@@ -1,23 +1,24 @@
 <?php
 
-function deleteUser($iduser)
+function deleteUser($username)
 {
     global $conn;
+    /*
+        $stmt = $conn->prepare("SELECT iduser FROM RegisteredUser WHERE username = :username");
+        $stmt->execute(array(':username' => $username));
+        $result = $stmt->fetch();
+        $id = $result['iduser'];
 
-    $conn->beginTransaction();
+        if(!$id)
+            return;
 
-    $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :iduser;");
-    $stmt->execute(array(':iduser' => $iduser));
-    $result = $stmt->fetch();
-    $idAddress = $result['idaddress'];
+        $conn->beginTransaction();
 
-    $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE iduser = :iduser;");
-    $stmt->execute(array(':iduser' => $iduser));
+        $stmt = $conn->prepare("DELETE FROM Address WHERE username = :username;");
+        $stmt->execute(array(':username' => $username));*/
 
-    $stmt = $conn->prepare("DELETE FROM Address WHERE idAddress = :idAddress;");
-    $stmt->execute(array(':idAddress' => $idAddress));
-
-    $conn->commit();
+    $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE username = :username;");
+    $stmt->execute(array(':username' => $username));
 }
 
 function checkUsernameById($id)
@@ -110,8 +111,9 @@ function isBuyer($username)
                             FROM RegisteredUser, Buyer
                             WHERE username = ? AND idUser = idBuyer");
     $stmt->execute(array($username));
+    $result = $stmt->fetch();
 
-    return $stmt->fetch()['username'] == $username;
+    return $result['username'] == $username;
 }
 
 function isSeller($username)
@@ -121,7 +123,9 @@ function isSeller($username)
                             FROM RegisteredUser, Seller
                             WHERE username = ? AND idUser = idSeller");
     $stmt->execute(array($username));
-    return $stmt->fetch()['username'] == $username;
+    $result = $stmt->fetch();
+
+    return $result['username'] == $username;
 }
 
 function getInteractions($userId)
