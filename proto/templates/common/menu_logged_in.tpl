@@ -7,15 +7,20 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     {foreach from=$notifications['interactions'] key=interactionno item=interaction}
-                        <li><a href="#">Nova oferta no produto {$interaction.name}</a></li>
-                        <li><a href="#">Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b></a>
-                        </li>
+                        <li><a href="#">
+                                Nova oferta no produto {$interaction.name} <br/>
+                                Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b>
+                        </a></li>
                     {/foreach}
                     <li class="divider"></li>
                     {foreach from=$notifications['privateMessages'] key=messageno item=message}
-                        <li><a href="#">Mensagem {$message@iteration}</a></li>
-                        <li><a href="#">Assunto: {$message.subject}</a></li>
+                        <li><a href="#">
+                                Mensagem {$message@iteration} <br/>
+                                Assunto: {$message.subject}
+                        </a></li>
                     {/foreach}
+                    <li class="divider"></li>
+                    <div style="text-align: center;"><b>Ver todos</b></div>
                 </ul>
             </li>
             <li>
