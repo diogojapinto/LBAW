@@ -362,7 +362,8 @@ SET SCHEMA 'public';
         IF EXISTS (SELECT idProduct 
             FROM Deal
             WHERE dealState = 'Pending'
-                AND idSeller = NEW.idSeller)
+                AND idSeller = NEW.idSeller
+                AND idProduct = NEW.idProduct)
         THEN
             RAISE EXCEPTION 'Product currently being sold';
         END IF;

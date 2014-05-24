@@ -13,67 +13,79 @@
 
             <div class="col-md-7 thumbnail">
 
-                <h3><a href="#">{$product.name}</a></h3>
+                <h1>
+                    <small>{$product.name}</small>
+                </h1>
 
                 <p class="text-justify">{$product.description}</p>
 
                 <div class="alert alert-warning">
                     {if $userType == "buyer" }
-                        {if $isAlreadyBuying}
-                            <h5>Já tem este produto adicionado</h5>
+                        <h2>{if $isAlreadyBuying}
+                                Alterar
+                            {else}
+                                Adicionar
+                            {/if}  proposta de compra:</h2>
+                        <form class="form-horizontal" role="form" method="post"
+                              action="{$BASE_URL}actions/users/addProductToBuy.php">
+                            <input type="hidden" value={$product.idproduct} name="idProduct"">
+
+                            <div class="form-group">
+                                <label for="offered" class="col-sm-2 control-label" id="productLabel"
+                                       style="padding-top:16px">Proposta</label>
+
+                                <div class="col-sm-2" id="productPriceInput">
+                                    <input type="text" class="form-control" id="offered" placeholder="{$buyingPrice}"
+                                           name="proposedValue" value="{$buyingPrice}">
+                                </div>
+                                <span class="col-sm-2 glyphicon glyphicon-euro" id="productEuroGlyphicon"></span>
+                                <button type="submit" class="btn btn-info">Confirmar</button>
+                            </div>
+                        </form>
+                    {elseif $userType == "seller" }
+                        {if $isDealRunning}
+                            <h5>Não pode modificar os valores associados ao produto enquanto tem vendas a
+                                decorrer</h5>
                         {else}
-                            <h2>Adicionar proposta de compra:</h2>
+                            <h2>
+                                {if isset($averagePrice)}
+                                    Modificar
+                                {else}
+                                    Adicionar
+                                {/if} produto para venda:</h2>
                             <form class="form-horizontal" role="form" method="post"
-                                  action="{$BASE_URL}actions/users/addProductToBuy.php">
+                                  action="{$BASE_URL}actions/users/addProductToSell.php">
                                 <input type="hidden" value={$product.idproduct} name="idProduct">
 
                                 <div class="form-group">
-                                    <label for="offered" class="col-sm-2 control-label" id="productLabel"
-                                           style="padding-top:16px">Proposta</label>
+                                    <label for="offered" class="col-sm-2 control-label" id="productLabel">Preço
+                                        Mínimo</label>
 
                                     <div class="col-sm-2" id="productPriceInput">
-                                        <input type="text" class="form-control" id="offered" placeholder="100"
-                                               name="proposedValue">
+                                        <input type="text" class="form-control" id="minimum" placeholder="{$minimumPrice}"
+                                               name="minimumValue" value="{$minimumPrice}">
                                     </div>
-                                    <span class="col-sm-2 glyphicon glyphicon-euro" id="productEuroGlyphicon"></span>
-                                    <button type="submit" class="btn btn-info">Confirmar</button>
+                                    <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>
+
+                                    <label for="offered" class="col-sm-2 control-label" id="productLabel">Preço
+                                        Médio</label>
+
+                                    <div class="col-sm-2" id="productPriceInput">
+                                        <input type="text" class="form-control" id="average" placeholder="{$averagePrice}"
+                                               name="averageValue" value="{$averagePrice}">
+                                    </div>
+                                    <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>
+
+                                    <button type="submit" class="btn btn-info" id="productProposeButton">Confirmar
+                                    </button>
                                 </div>
                             </form>
                         {/if}
-
-                    {elseif $userType == "seller" }
-                        <h2>Adicionar produto para venda:</h2>
-                        <form class="form-horizontal" role="form" method="post"
-                              action="{$BASE_URL}actions/users/addProductToSell.php">
-                            <input type="hidden" value={$product.idproduct} name="idProduct">
-
-                            <div class="form-group">
-                                <label for="offered" class="col-sm-2 control-label" id="productLabel">Preço
-                                    Mínimo</label>
-
-                                <div class="col-sm-2" id="productPriceInput">
-                                    <input type="text" class="form-control" id="minimum" placeholder="50"
-                                           name="minimumValue">
-                                </div>
-                                <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>
-
-                                <label for="offered" class="col-sm-2 control-label" id="productLabel">Preço
-                                    Médio</label>
-
-                                <div class="col-sm-2" id="productPriceInput">
-                                    <input type="text" class="form-control" id="average" placeholder="100"
-                                           name="averageValue">
-                                </div>
-                                <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>
-
-                                <button type="submit" class="btn btn-info" id="productProposeButton">Confirmar</button>
-                            </div>
-                        </form>
                     {else}
                         <h5>
-                            <a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
-                                Registe-se ou inicie sessão
-                            </a>
+                            <!--<a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">-->
+                            Registe-se ou inicie sessão
+                            <!--</a>-->
                             para aceder às suas opções de produtos
                         </h5>
                     {/if}

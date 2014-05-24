@@ -169,20 +169,36 @@ function addToSelling($idProduct, $username, $minimumPrice, $averagePrice)
     }
 }
 
+function updateSelling($idProduct, $username, $minimumPrice, $averagePrice)
+{
+    global $conn;
+
+    if (isSeller($username)) {
+        $id = getIdUser($username);
+        $stmt = $conn->prepare("UPDATE WantsToSell
+                                SET minimumprice = :minimumPrice, averageprice = :averagePrice
+                                WHERE idProduct = :idProduct
+                                  AND idSeller = :id;");
+        return $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':minimumPrice' => $minimumPrice, ':averagePrice' => $averagePrice));
+    } else {
+        return false;
+    }
+}
+
 function isUserBuying($username, $idProduct)
 {
     global $conn;
 
     if (isBuyer($username)) {
         $id = getIdUser($username);
-        $stmt = $conn->prepare("SELECT idBuyer
+        $stmt = $conn->prepare("SELECT proposedPrice
                                 FROM Buyer NATURAL JOIN WantsToBuy
                                 WHERE idProduct = :idProduct
                                     AND idBuyer = :idBuyer;");
         $stmt->execute(array(':idProduct' => $idProduct, ':idBuyer' => $id));
-        $user = $stmt->fetch();
+        $result = $stmt->fetch();
 
-        return $user['idbuyer'] == $id;
+        return $result['proposedprice'];
     } else {
         return false;
     }
@@ -194,12 +210,15 @@ function isDealRunning($username, $idProduct)
 
     if (isSeller($username)) {
         $id = getIdUser($username);
+
         $stmt = $conn->prepare("SELECT idProduct
                                 FROM Deal
                                 WHERE dealState = 'Pending'
-                                  AND idSeller = idSeller;");
+                                  AND idSeller = :idSeller
+                                  AND idProduct = :idProduct;");
         $stmt->execute(array(':idProduct' => $idProduct, ':idSeller' => $id));
         $result = $stmt->fetch();
+
         return $result['idproduct'] == $idProduct;
     } else {
         return false;
@@ -210,14 +229,18 @@ function getSellingInfo($username, $idProduct)
 {
     global $conn;
 
-    if (isSeller($username) || !isDealRunning($username, $idProduct)) {
+    if (isSeller($username)) {
         $id = getIdUser($username);
-        $stmt = $conn->prepare("SELECT minimumprice, averageprice
-                                FROM WantsToSell
+        $stmt = $conn->prepare("SELECT minimumPrice, averagePrice
+                                FROM Seller NATURAL JOIN WantsToSell
                                 WHERE idProduct = :idProduct
                                     AND idSeller = :idSeller;");
         $stmt->execute(array(':idProduct' => $idProduct, ':idSeller' => $id));
-        return $stmt->fetch();
+        $result = $stmt->fetch();
+        $result['minimumprice'] = floatval($result['minimumprice']);
+        $result['averageprice'] = floatval($result['averageprice']);
+
+        return $result;
     } else {
         return false;
     }

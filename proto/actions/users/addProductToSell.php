@@ -24,15 +24,34 @@ $averageValue = $_POST['averageValue'];
 
 try {
 
-    addToSelling($idProduct, $username, $minimumValue, $averageValue);
-
-    header('Location: ' . 'pages/negotiation/queryBuyers.php');
-    exit;
+    if (addToSelling($idProduct, $username, $minimumValue, $averageValue)) {
+        header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php');
+        exit;
+    } else {
+        $_SESSION['error_messages'][] = "Something went wrong. Please try again";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
 
 } catch (PDOException $e) {
-    $_SESSION["error_messages"][] = $e->getMessage();
-    $_SESSION['form_values'] = $_POST;
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    if (strpos($e->getMessage(), 'wantstosell_pkey') != FALSE) {
+        try {
+            updateSelling($idProduct, $username, $minimumValue, $averageValue);
+            header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php?idProduct='.$idProduct);
+            exit;
+        } catch (PDOException $e) {
+            $_SESSION["error_messages"][] = $e->getMessage();
+            $_SESSION['form_values'] = $_POST;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    } else {
+        $_SESSION["error_messages"][] = $e->getMessage();
+        $_SESSION['form_values'] = $_POST;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
 }
 ?>

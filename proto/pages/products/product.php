@@ -9,12 +9,19 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/products.php');
 include_once($BASE_DIR . 'database/users.php');
-
 include_once($BASE_DIR . 'pages/common/initializer.php');
 
 $product = getProduct($_GET['productId']);
 
 $relatedProducts = getProductsByCategory($product['idcategory']);
+
+$i = 0;
+foreach($relatedProducts as $prod) {
+    if ($prod['idproduct'] == $product['idproduct']) {
+        unset($relatedProducts[$i]);
+    }
+    $i++;
+}
 
 shuffle($relatedProducts);
 
@@ -24,24 +31,29 @@ $userType;
 
 if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
     $userType = "unspecified";
-    $username = $_SESSION['username'];
 } else {
+    $username = $_SESSION['username'];
     if (isBuyer($_SESSION['username'])) {
         $userType = "buyer";
-        $isBuying = isUserBuying($_SESSION['username'], $product['idproduct']);
-        $smarty->assign("isAlreadyBuying", $isBuying);
+        $buyingPrice = isUserBuying($_SESSION['username'], $product['idproduct']);
+        if ($buyingPrice != false) {
+            $smarty->assign('isAlreadyBuying', true);
+            $smarty->assign('buyingPrice', $buyingPrice);
+        }
     } else {
-        $userType = "seller";
+        $userType = 'seller';
         $isDealRunning = isDealRunning($username, $product['idproduct']);
         $smarty->assign("isDealRunning", $isDealRunning);
 
-        if ($isDealRunning) {
-            getSellingInfo($username, $product['idproduct']);
+        if (!$isDealRunning) {
+            $previousSaleInfo = getSellingInfo($username, $product['idproduct']);
+            $smarty->assign('minimumPrice', $previousSaleInfo['minimumprice']);
+            $smarty->assign('averagePrice', $previousSaleInfo['averageprice']);
         }
     }
 }
 
-$smarty->assign("userType", $userType);
+$smarty->assign('userType', $userType);
 $smarty->assign('product', $product);
 $smarty->assign('productsCount', $productsCount);
 $smarty->assign('relatedProducts', $relatedProducts);
