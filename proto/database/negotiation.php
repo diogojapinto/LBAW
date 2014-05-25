@@ -52,8 +52,32 @@ function beginDeal($username, $idBuyer, $idProduct)
 
 function declineProposal($username) {
 
+
+
 }
 
 function acceptProposal($username) {
 
+}
+
+/*
+* @param float  $mean, desired average
+* @param number $sd, number of items in array
+* @param number $min, minimum desired random number
+* @param number $max, maximum desired random number
+* @return array
+*/
+function array_distribute($mean,$sd,$min,$max){
+    $result = array();
+    $total_mean = intval($mean*$sd);
+    while($sd>1){
+        $allowed_max = $total_mean - $sd - $min;
+        $allowed_min = intval($total_mean/$sd);
+        $random = mt_rand(max($min,$allowed_min),min($max,$allowed_max));
+        $result[]=$random;
+        $sd--;
+        $total_mean-=$random;
+    }
+    $result[] = $total_mean;
+    return $result;
 }
