@@ -12,20 +12,25 @@ function getInterestedBuyers($idProduct)
 
     $results = $stmt->fetchAll();
 
-    for($i = 0; $i < sizeof($results); $i++) {
+    for ($i = 0; $i < sizeof($results); $i++) {
         $results[$i]['proposedprice'] = floatval($results[$i]['proposedprice']);
     }
 
     return $results;
 }
 
-function beginDeal($username, $idBuyer, $idProduct) {
+function beginDeal($username, $idBuyer, $idProduct)
+{
 
     global $conn;
 
     if (!isSeller($username)) {
         return false;
     }
+
+    // determine the max selling price for this product
+    $sellingInfo = getSellingInfo($username, $idProduct);
+    $maxPrice = 2 * $sellingInfo['averageprice'] - 2 * $sellingInfo['minimumprice'];
 
     $idSeller = getIdUser($username);
 
@@ -37,8 +42,18 @@ function beginDeal($username, $idBuyer, $idProduct) {
 
     $lastDeal = $conn->lastInsertId();
 
-    $stmt = $conn->prepare("INSERT INTO Interaction (idDeal)");
+    $stmt = $conn->prepare("INSERT INTO Interaction (idDeal, InteractionNo, amount, date, interactionType)
+	                        VALUES (:idDeal, 0, :firstProposal, CURRENT_TIMESTAMP);");
+    $stmt->execute(array(':idDeal' => $lastDeal, ':firstProposal' => $maxPrice));
 
     $conn->commit();
+
+}
+
+function declineProposal($username) {
+
+}
+
+function acceptProposal($username) {
 
 }

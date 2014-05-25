@@ -18,7 +18,25 @@ if (!isset($_POST['users'])) {
     exit;
 }
 
-$_SESSION['success_messages'][] = 'Propostas enviadas com sucesso';
+$users = $_POST['users'];
+$username = $_SESSION['username'];
+
+$successes = 0;
+$failures = 0;
+
+foreach($users as $user) {
+    if (!beginDeal($username, $user, $id)) {
+        $failures++;
+    } else {
+        $successes++;
+    }
+}
+
+$_SESSION['success_messages'][] = $successes . ' propostas enviadas com sucesso';
+
+if ($failures != 0) {
+    $_SESSION['error_messages'][] = $failures . ' propostas falhadas';
+}
 
 header("Location: " . $BASE_URL . "index.php");
 exit;
