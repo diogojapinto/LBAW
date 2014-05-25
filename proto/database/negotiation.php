@@ -30,7 +30,7 @@ function beginDeal($username, $idBuyer, $idProduct)
 
     // determine the max selling price for this product
     $sellingInfo = getSellingInfo($username, $idProduct);
-    $maxPrice = 2 * $sellingInfo['averageprice'] - 2 * $sellingInfo['minimumprice'];
+    $maxPrice = 2 * $sellingInfo['averageprice'] - $sellingInfo['minimumprice'];
 
     $idSeller = getIdUser($username);
 
