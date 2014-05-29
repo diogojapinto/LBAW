@@ -54,7 +54,6 @@ try {
 
 $id = getIdUser($username);
 session_regenerate_id();
-$_SESSION['iduser'] = $id['iduser'];
 $_SESSION['username'] = $username;
 $_SESSION['usertype'] = 'buyer';
 $_SESSION['success_messages'][] = 'Login successful';

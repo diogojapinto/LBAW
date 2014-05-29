@@ -3,7 +3,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/users.php');
 
 if (!$_SESSION['username']) {
-    $_SESSION['errors'] = array('Tem que fazer login');
+    $_SESSION['error_messages'] = array('Tem que fazer login');
 
     header('Location: ' . $BASE_URL);
     exit;
@@ -47,9 +47,11 @@ if ($error) {
     exit;
 }
 
+$iduser = getIdUser($_SESSION['username']);
+
 if ($_POST['password1']) {
     try {
-        updateUserPassword($_SESSION['iduser'], $_POST['password1']);
+        updateUserPassword($iduser, $_POST['password1']);
     } catch (PDOException $e) {
         $_SESSION['form_values']['errors'] = array($e->getMessage());
     }
@@ -57,7 +59,7 @@ if ($_POST['password1']) {
 
 if ($_POST['email']) {
     try {
-        updateUserEmail($_SESSION['iduser'], $_POST['email']);
+        updateUserEmail($iduser, $_POST['email']);
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'registereduser_email_key') !== false) {
