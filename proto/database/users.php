@@ -15,7 +15,7 @@ function deleteUser($username)
         $conn->beginTransaction();
 
         $stmt = $conn->prepare("DELETE FROM Address WHERE username = :username;");
-        $stmt->execute(array(':username' => $username));*/
+        $stmt->execuite(array(':username' => $username));*/
 
     $stmt = $conn->prepare("DELETE FROM RegisteredUser WHERE username = :username;");
     $stmt->execute(array(':username' => $username));
@@ -176,7 +176,7 @@ function getInteraction($interactionId)
 function getPrivateMessages($userId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT idPM, state, subject FROM PrivateMessage WHERE idUser = :id;");
+    $stmt = $conn->prepare("SELECT idPM, state, subject, date FROM PrivateMessage WHERE idUser = :id;");
     $stmt->execute(array(':id' => $userId));
     return $stmt->fetchAll();
 }
@@ -211,6 +211,15 @@ function getRegisteredUser($username)
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE username = :username");
     $stmt->execute(array(':username' => $username));
+
+    return $stmt->fetch();
+}
+
+function getRegisteredUserById($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE iduser = :id");
+    $stmt->execute(array(':id' => $id));
 
     return $stmt->fetch();
 }
@@ -331,7 +340,8 @@ function updateSellerCountry($userid, $country) {
 
 function hashPass() {
     $i = 1;
-    while (($user = getRegisteredUser($i)) != false) {
+
+    while (($user = getRegisteredUserById($i)) != false) {
         updateUserPassword($i,$user['password']);
         $i++;
     }

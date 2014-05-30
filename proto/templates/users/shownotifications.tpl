@@ -1,25 +1,46 @@
 {include file='common/header.tpl'}
 
 <div class="container">
-    <ul>
-        {foreach from=$notifications['interactions'] key=interactionno item=interaction}
-            <li><a href="#">
-                    Nova oferta no produto {$interaction.name} <br/>
-                    Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b>
-                </a></li>
+    <table id="privateMessagesTable" class="table table-striped">
+        <thead><tr>
+            <th>Tipo</th>
+            <th>Assunto</th>
+            <th>Data</th>
+        </tr></thead>
+        {foreach $fullnotifications as $notification}
+            <tr class="{$notification.type}">
+                {if $notification['type'] == 'interaction'}
+                    <td style="display: none;">{$notification.iddeal}</td>
+                {else}
+                    <td style="display: none;">{$notification.idpm}</td>
+                {/if}
+                <td>
+                    {if $notification.state == 'Read'}
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                    {else}
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    {/if}
+                    {if $notification['type'] == 'interaction'}
+                        Nova oferta
+                    {else}
+                        Mensagem privada
+                    {/if}
+                </td>
+
+                <td>
+                    {if $notification['type'] == 'interaction'}
+                        {$notification.amount} <b class="glyphicon glyphicon-euro"></b> no produto {$notification.name} <br/>
+                    {else}
+                        {$notification.subject}
+                    {/if}
+                </td>
+                <td>
+                    {$notification.date}
+                </td>
+            </tr>
         {/foreach}
-        <li class="divider"></li>
-        {foreach from=$notifications['privateMessages'] key=messageno item=message}
-            <li><a href="#">
-                    Mensagem {$message@iteration} <br/>
-                    Assunto: {$message.subject}
-                </a></li>
-        {/foreach}
-        <li class="divider"></li>
-        <div style="text-align: center;"><b>
-                <a href="{$BASE_URL}pages/users/shownotifications.php">Ver todas</a>
-            </b></div>
-    </ul>
+    </table>
 </div>
 
 {include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/privatemessages.js"></script>
