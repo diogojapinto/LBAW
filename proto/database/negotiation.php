@@ -86,14 +86,18 @@ function hasDealEnded($idDeal)
     $stmt = $conn->prepare("SELECT MAX(interactionNo), interactionType, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY amount;");
+                            GROUP BY amount, interactionType;");
 
     $stmt->execute(array(":idDeal" => $idDeal));
 
     $result = $stmt->fetch();
 
-    if ($result['interactionType'] == "Offer") {
-        return $result['amount'];
+    if ($result['interactiontype'] == "Offer") {
+        $ret = array("amount" => $result['amount'], "state" => "success");
+        return $ret;
+    } else if ($result['interactiontype'] == "Refusal" || $result['interactiontype'] == "Declined") {
+        $ret = array("state" => "failure");
+        return $ret;
     } else {
         return false;
     }
@@ -129,9 +133,37 @@ function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $cred
     $conn->commit();
 }
 
-function declineProposal($username, $idProduct)
+function declineProposal($username, $idDeal)
 {
+    /*
+     * TODO
+     * Don't forget to use Proposal & Declined.
+     */
+    global $conn;
 
+    if (!isBuyer($username)) {
+        return false;
+    }
+
+    $conn->beginTransaction();
+
+    $stmt = $conn->prepare("SELECT MAX(interactionNo), amount
+                            FROM Interaction
+                            WHERE idDeal = :idDeal
+                            GROUP BY amount;");
+
+    $stmt->execute(array(":idDeal" => $idDeal));
+
+    $result = $stmt->fetch();
+    $lastInteraction = $result['max'];
+    $amount = $result['amount'];
+
+    $stmt = $conn->prepare("INSERT INTO Interaction (idDeal, InteractionNo, amount, date, interactionType)
+                            VALUES (:idDeal, :lastInteractionNo, :lastAmount, CURRENT_TIMESTAMP, 'Offer');");
+
+    $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction, ':lastAmount', $amount));
+
+    $conn->commit();
 }
 
 /*
