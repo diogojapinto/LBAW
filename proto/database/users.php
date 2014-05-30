@@ -70,7 +70,7 @@ function registerBuyer($userName, $password, $email)
 
     $stmt->execute();
 
-    return $conn->commit() == true;
+    return $conn->commit();
 }
 
 function registerSeller($userName, $password, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone)
@@ -91,7 +91,7 @@ function registerSeller($userName, $password, $email, $addressLine, $postalCode,
 
     $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone));
 
-    return $conn->commit() == true;
+    return $conn->commit();
 }
 
 function userLogin($username, $password)
@@ -101,7 +101,7 @@ function userLogin($username, $password)
                             FROM RegisteredUser
                             WHERE username = ? AND password = ?");
     $stmt->execute(array($username, sha1($password)));
-    return $stmt->fetch() == true;
+    return $stmt->fetch();
 }
 
 function isBuyer($username)
@@ -248,40 +248,46 @@ function getPrivateMessage($privateMessageId)
     return $result;
 }
 
-function updateUserEmail($userid, $email) {
+function updateUserEmail($userid, $email)
+{
     global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET email = :email WHERE idUser = :id");
     return $stmt->execute(array(':email' => $email, ':id' => $userid));
 }
 
-function updateUserPassword($userid, $password) {
+function updateUserPassword($userid, $password)
+{
     global $conn;
     $stmt = $conn->prepare("UPDATE RegisteredUser SET password = :password WHERE idUser = :id");
     return $stmt->execute(array(':password' => sha1($password), ':id' => $userid));
 }
 
-function updateSellerCellphone($userid, $cellphone) {
+function updateSellerCellphone($userid, $cellphone)
+{
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET cellphone = :cellphone WHERE idUser = :id");
     return $stmt->execute(array(':cellphone' => $cellphone, ':id' => $userid));
 }
 
-function updateSellerCompanyName($userid, $companyname) {
+function updateSellerCompanyName($userid, $companyname)
+{
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET companyname = :companyname WHERE idSeller = :id");
     return $stmt->execute(array(':companyname' => $companyname, ':id' => $userid));
 }
 
-function updateSellerDescription($userid, $description) {
+function updateSellerDescription($userid, $description)
+{
     global $conn;
 
     $stmt = $conn->prepare("UPDATE Seller SET description = :description WHERE idSeller = :id");
     return $stmt->execute(array(':description' => $description, ':id' => $userid));
 }
 
-function updateSellerAddressLine($userid, $address) {
+function updateSellerAddressLine($userid, $address)
+{
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -293,7 +299,8 @@ function updateSellerAddressLine($userid, $address) {
     return $stmt->execute(array(':addressline' => $address, ':id' => $idAddress));
 }
 
-function updateSellerCity($userid, $city) {
+function updateSellerCity($userid, $city)
+{
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -305,7 +312,8 @@ function updateSellerCity($userid, $city) {
     return $stmt->execute(array(':city' => $city, ':id' => $idAddress));
 }
 
-function updateSellerPostalCode($userid, $postalcode) {
+function updateSellerPostalCode($userid, $postalcode)
+{
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -317,7 +325,8 @@ function updateSellerPostalCode($userid, $postalcode) {
     return $stmt->execute(array(':postalcode' => $postalcode, ':id' => $idAddress));
 }
 
-function updateSellerCountry($userid, $country) {
+function updateSellerCountry($userid, $country)
+{
     global $conn;
 
     $stmt = $conn->prepare("SELECT idAddress FROM Seller WHERE idSeller = :id;");
@@ -329,10 +338,11 @@ function updateSellerCountry($userid, $country) {
     return $stmt->execute(array(':country' => $country, ':id' => $idAddress));
 }
 
-function hashPass() {
+function hashPass()
+{
     $i = 1;
     while (($user = getRegisteredUser($i)) != false) {
-        updateUserPassword($i,$user['password']);
+        updateUserPassword($i, $user['password']);
         $i++;
     }
 }

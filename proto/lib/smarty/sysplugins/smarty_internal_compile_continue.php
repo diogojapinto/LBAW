@@ -35,9 +35,9 @@ class Smarty_Internal_Compile_Continue extends Smarty_Internal_CompileBase
     /**
      * Compiles code for the {continue} tag
      *
-     * @param  array  $args      array with attributes from parser
-     * @param  object $compiler  compiler object
-     * @param  array  $parameter array with compilation parameter
+     * @param  array $args array with attributes from parser
+     * @param  object $compiler compiler object
+     * @param  array $parameter array with compilation parameter
      * @return string compiled code
      */
     public function compile($args, $compiler, $parameter)

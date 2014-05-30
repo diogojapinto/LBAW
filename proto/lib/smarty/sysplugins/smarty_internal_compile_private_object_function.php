@@ -28,11 +28,11 @@ class Smarty_Internal_Compile_Private_Object_Function extends Smarty_Internal_Co
     /**
      * Compiles code for the execution of function plugin
      *
-     * @param  array $args      array with attributes from parser
-     * @param  object $compiler  compiler object
+     * @param  array $args array with attributes from parser
+     * @param  object $compiler compiler object
      * @param  array $parameter array with compilation parameter
-     * @param  string $tag       name of function
-     * @param  string $method    name of method to call
+     * @param  string $tag name of function
+     * @param  string $method name of method to call
      * @return string compiled code
      */
     public function compile($args, $compiler, $parameter, $tag, $method)

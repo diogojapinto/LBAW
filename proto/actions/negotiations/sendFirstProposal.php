@@ -24,7 +24,7 @@ $username = $_SESSION['username'];
 $successes = 0;
 $failures = 0;
 
-foreach($users as $user) {
+foreach ($users as $user) {
     if (!beginDeal($username, $user, $id)) {
         $failures++;
     } else {

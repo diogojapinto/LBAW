@@ -1,6 +1,8 @@
 {include file='common/header.tpl'}
 
-<h1>Utilizadores interessados<br><small>Selecione os que deseja</small></h1>
+<h1>Utilizadores interessados<br>
+    <small>Selecione os que deseja</small>
+</h1>
 
 <form role="form" method="post" action="{$BASE_URL}actions/negotiations/sendFirstProposal.php">
     {foreach $HIGH_BUYERS as $BUYER}

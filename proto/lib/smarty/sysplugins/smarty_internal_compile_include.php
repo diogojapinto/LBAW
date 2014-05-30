@@ -53,8 +53,8 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase
     /**
      * Compiles code for the {include} tag
      *
-     * @param  array $args      array with attributes from parser
-     * @param  object $compiler  compiler object
+     * @param  array $args array with attributes from parser
+     * @param  object $compiler compiler object
      * @param  array $parameter array with compilation parameter
      * @return string compiled code
      */
@@ -81,7 +81,7 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase
                 $_parent_scope = Smarty::SCOPE_GLOBAL;
             }
         }
-        
+
         $_caching = Smarty::CACHING_OFF;
 
         // flag if included template code should be merged into caller
@@ -89,7 +89,7 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase
 
         // set default when in nocache mode
 //       if ($compiler->template->caching && ($compiler->nocache || $compiler->tag_nocache || $compiler->forceNocache == 2)) {
-        if ($compiler->template->caching && ((!$compiler->inheritance && !$compiler->nocache && !$compiler->tag_nocache) || ($compiler->inheritance && ($compiler->nocache ||$compiler->tag_nocache)))) {
+        if ($compiler->template->caching && ((!$compiler->inheritance && !$compiler->nocache && !$compiler->tag_nocache) || ($compiler->inheritance && ($compiler->nocache || $compiler->tag_nocache)))) {
             $_caching = self::CACHING_NOCACHE_CODE;
         }
         /*
@@ -122,9 +122,9 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase
         if ($_attr['nocache'] === true) {
             $compiler->tag_nocache = true;
             if ($merge_compiled_includes || $compiler->inheritance) {
-            $_caching = self::CACHING_NOCACHE_CODE;
+                $_caching = self::CACHING_NOCACHE_CODE;
             } else {
-            $_caching = Smarty::CACHING_OFF;
+                $_caching = Smarty::CACHING_OFF;
             }
         }
 

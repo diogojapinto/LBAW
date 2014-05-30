@@ -6,8 +6,8 @@
             <small>Pesquisa de Produtos</small>
         </h1>
         {if $USERNAME }
-        <a class="btn btn-default pull-right addProduct" href="{$BASE_URL}pages/products/add.php"
-           role="button">Adicionar Produto</a>
+            <a class="btn btn-default pull-right addProduct" href="{$BASE_URL}pages/products/add.php"
+               role="button">Adicionar Produto</a>
         {/if}
 
     </div>

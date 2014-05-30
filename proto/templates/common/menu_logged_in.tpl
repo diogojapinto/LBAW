@@ -10,14 +10,14 @@
                         <li><a href="#">
                                 Nova oferta no produto {$interaction.name} <br/>
                                 Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b>
-                        </a></li>
+                            </a></li>
                     {/foreach}
                     <li class="divider"></li>
                     {foreach from=$notifications['privateMessages'] key=messageno item=message}
                         <li><a href="#">
                                 Mensagem {$message@iteration} <br/>
                                 Assunto: {$message.subject}
-                        </a></li>
+                            </a></li>
                     {/foreach}
                     <li class="divider"></li>
                     <div style="text-align: center;"><b>Ver todos</b></div>
