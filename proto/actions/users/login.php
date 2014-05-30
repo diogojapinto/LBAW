@@ -18,12 +18,11 @@ if (userLogin($username, $password)) {
     session_regenerate_id();
 
     $_SESSION['username'] = $username;
-    $_SESSION['iduser'] = $id;
 
-    if (isBuyer($username))
-        $_SESSION['usertype'] = 'buyer';
-    else
-        $_SESSION['usertype'] = 'seller';
+	if( isBuyer($username) )
+		$_SESSION['usertype'] = 'buyer';
+	else
+		$_SESSION['usertype'] = 'seller';
 
     $_SESSION['success_messages'][] = 'Login successful';
 } else {

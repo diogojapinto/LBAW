@@ -20,7 +20,9 @@
                             </a></li>
                     {/foreach}
                     <li class="divider"></li>
-                    <div style="text-align: center;"><b>Ver todos</b></div>
+                    <div style="text-align: center;"><b>
+                            <a href="{$BASE_URL}pages/users/shownotifications.php">Ver todas</a>
+                    </b></div>
                 </ul>
             </li>
             <li>

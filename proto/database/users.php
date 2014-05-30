@@ -206,23 +206,23 @@ function getIdUser($username)
     return $user['iduser'];
 }
 
-function getRegisteredUser($id)
+function getRegisteredUser($username)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE idUser = :id;");
-    $stmt->execute(array(':id' => $id));
+    $stmt = $conn->prepare("SELECT * FROM RegisteredUser WHERE username = :username");
+    $stmt->execute(array(':username' => $username));
 
     return $stmt->fetch();
 }
 
-function getSeller($id)
+function getSeller($iduser)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT cellphone, companyName, description, addressline, city, postalCode, name
 	FROM Seller, Address, Country
-	WHERE Seller.idSeller = :id AND Seller.idAddress = Address.idAddress AND
-		Country.idCountry = Address.idCountry;");
-    $stmt->execute(array(':id' => $id));
+	WHERE Seller.idSeller = :iduser AND Seller.idAddress = Address.idAddress AND
+		Country.idCountry = Address.idCountry");
+    $stmt->execute(array(':iduser' => $iduser));
 
     return $stmt->fetch();
 }

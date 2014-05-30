@@ -1,13 +1,14 @@
 <?php
-include_once($BASE_DIR . 'database/users.php');
+include_once('../../config/init.php');
+include_once($BASE_DIR . 'pages/common/initializer.php');
 
-if (isset($_SESSION['iduser'])) {
-    $unreadNotifications['privateMessages'] = getUnreadPrivateMessages($_SESSION['iduser']);
-    $unreadNotifications['interactions'] = getUnreadInteractions($_SESSION['iduser']);
+if (!$_SESSION['username']) {
+    $_SESSION['error_messages'] = array('Tem que fazer login');
 
-    $smarty->assign('notifications', $unreadNotifications);
-} else {
-
+    header('Location: ' . $BASE_URL);
+    exit;
 }
+
+$smarty->display('users/shownotifications.tpl');
 
 ?>
