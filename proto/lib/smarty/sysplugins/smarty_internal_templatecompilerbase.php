@@ -210,7 +210,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
      * Method to compile a Smarty template
      *
      * @param  Smarty_Internal_Template $template template object to compile
-     * @param  bool $nocache    true is shall be compiled in nocache mode
+     * @param  bool $nocache true is shall be compiled in nocache mode
      * @return bool             true if compiling succeeded, false if it failed
      */
     public function compileTemplate(Smarty_Internal_Template $template, $nocache = false)
@@ -312,8 +312,8 @@ abstract class Smarty_Internal_TemplateCompilerBase
      * This is a call back from the lexer/parser
      * It executes the required compile plugin for the Smarty tag
      *
-     * @param  string $tag       tag name
-     * @param  array $args      array with tag attributes
+     * @param  string $tag tag name
+     * @param  array $args array with tag attributes
      * @param  array $parameter array with compilation parameter
      * @return string compiled code
      */
@@ -541,8 +541,8 @@ abstract class Smarty_Internal_TemplateCompilerBase
      * class name format:  Smarty_Internal_Compile_TagName
      * plugin filename format: Smarty_Internal_Tagname.php
      *
-     * @param  string $tag    tag name
-     * @param  array $args   list of tag attributes
+     * @param  string $tag tag name
+     * @param  array $args list of tag attributes
      * @param  mixed $param1 optional parameter
      * @param  mixed $param2 optional parameter
      * @param  mixed $param3 optional parameter
@@ -573,7 +573,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
     /**
      * Check for plugins and return function name
      *
-     * @param  string $pugin_name  name of plugin or function
+     * @param  string $pugin_name name of plugin or function
      * @param  string $plugin_type type of plugin
      * @return string call name of function
      */
@@ -631,7 +631,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
     /**
      * Check for plugins by default plugin handler
      *
-     * @param  string $tag         name of tag
+     * @param  string $tag name of tag
      * @param  string $plugin_type type of plugin
      * @return boolean true if found
      */
@@ -732,7 +732,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
         array_push($this->trace_stack, array($this->smarty->_current_file, $this->trace_filepath, $this->trace_uid, $this->trace_line_offset));
         $this->trace_filepath = $this->smarty->_current_file = $file;
         $this->trace_uid = $uid;
-        $this->trace_line_offset = $line ;
+        $this->trace_line_offset = $line;
         if ($this->smarty->debugging) {
             Smarty_Internal_Debug::start_compile($this->template);
         }
@@ -777,7 +777,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
         }
 //        $line += $this->trace_line_offset;
         $match = preg_split("/\n/", $this->lex->data);
-        $error_text = 'Syntax error in template "' . (empty($this->trace_filepath) ? $this->template->source->filepath : $this->trace_filepath) . '"  on line ' . ($line + $this->trace_line_offset)  . ' "' . trim(preg_replace('![\t\r\n]+!', ' ', $match[$line - 1])) . '" ';
+        $error_text = 'Syntax error in template "' . (empty($this->trace_filepath) ? $this->template->source->filepath : $this->trace_filepath) . '"  on line ' . ($line + $this->trace_line_offset) . ' "' . trim(preg_replace('![\t\r\n]+!', ' ', $match[$line - 1])) . '" ';
         if (isset($args)) {
             // individual error message
             $error_text .= $args;

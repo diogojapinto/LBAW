@@ -21,10 +21,10 @@ class Smarty_Internal_Resource_File extends Smarty_Resource
     /**
      * populate Source Object with meta data from Resource
      *
-     * @param Smarty_Template_Source   $source    source object
+     * @param Smarty_Template_Source $source source object
      * @param Smarty_Internal_Template $_template template object
      */
-    public function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template=null)
+    public function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template = null)
     {
         $source->filepath = $this->buildFilepath($source, $_template);
 

@@ -11,8 +11,8 @@ if (!$_SESSION['username']) {
 
 try {
     deleteUser($_SESSION['username']);
-} catch(PDOException $e) {
-    $_SESSION['error_messages'][] = 'Erro a apagar o utilizador '.$e->getMessage();
+} catch (PDOException $e) {
+    $_SESSION['error_messages'][] = 'Erro a apagar o utilizador ' . $e->getMessage();
 
     header('Location: ' . $BASE_URL);
     exit;

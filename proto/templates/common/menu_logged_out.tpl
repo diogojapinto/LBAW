@@ -5,9 +5,11 @@
         </a>
         <ul class="dropdown-menu" role="menu" style="padding: 15px;">
             <form action="{$BASE_URL}actions/users/login.php" method="post" accept-charset="UTF-8">
-                <input placeholder="Nome de utilizador" class="form-control" style="margin-bottom: 3px;" type="text" name="username"
+                <input placeholder="Nome de utilizador" class="form-control" style="margin-bottom: 3px;" type="text"
+                       name="username"
                        size="30"/>
-                <input placeholder="Palavra-passe" class="form-control" style="margin-bottom: 8px;" type="password" name="password"
+                <input placeholder="Palavra-passe" class="form-control" style="margin-bottom: 8px;" type="password"
+                       name="password"
                        size="30"/>
 
                 <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;"

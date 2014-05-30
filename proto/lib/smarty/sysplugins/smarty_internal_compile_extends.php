@@ -36,7 +36,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase
     /**
      * Compiles code for the {extends} tag
      *
-     * @param array $args     array with attributes from parser
+     * @param array $args array with attributes from parser
      * @param object $compiler compiler object
      * @return string compiled code
      */
@@ -58,7 +58,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase
             $compiler->trigger_template_error('variable template file name not allowed', $compiler->lex->taglineno);
         }
 
-        $name = trim($_attr['file'],"\"'");
+        $name = trim($_attr['file'], "\"'");
         // create template object
         $_template = new $compiler->smarty->template_class($name, $compiler->smarty, $compiler->template);
         // check for recursion

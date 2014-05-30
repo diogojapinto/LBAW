@@ -62,7 +62,8 @@
                                         Mínimo</label>
 
                                     <div class="col-sm-2" id="productPriceInput">
-                                        <input type="text" class="form-control" id="minimum" placeholder="{$minimumPrice}"
+                                        <input type="text" class="form-control" id="minimum"
+                                               placeholder="{$minimumPrice}"
                                                name="minimumValue" value="{$minimumPrice}">
                                     </div>
                                     <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>
@@ -71,7 +72,8 @@
                                         Médio</label>
 
                                     <div class="col-sm-2" id="productPriceInput">
-                                        <input type="text" class="form-control" id="average" placeholder="{$averagePrice}"
+                                        <input type="text" class="form-control" id="average"
+                                               placeholder="{$averagePrice}"
                                                name="averageValue" value="{$averagePrice}">
                                     </div>
                                     <span class="glyphicon glyphicon-euro" id="productEuroGlyphicon"></span><br><br><br>

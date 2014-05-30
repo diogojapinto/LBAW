@@ -37,7 +37,7 @@ try {
     if (strpos($e->getMessage(), 'wantstosell_pkey') != FALSE) {
         try {
             updateSelling($idProduct, $username, $minimumValue, $averageValue);
-            header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php?idProduct='.$idProduct);
+            header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php?idProduct=' . $idProduct);
             exit;
         } catch (PDOException $e) {
             $_SESSION["error_messages"][] = $e->getMessage();

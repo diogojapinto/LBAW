@@ -51,7 +51,7 @@ if ($password1 !== $password2) {
     }
 }
 
-if($error) {
+if ($error) {
     header("Location: $BASE_URL" . 'pages/users/registerseller.php');
     exit;
 }

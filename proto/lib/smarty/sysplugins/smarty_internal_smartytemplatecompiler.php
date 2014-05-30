@@ -67,9 +67,9 @@ class Smarty_Internal_SmartyTemplateCompiler extends Smarty_Internal_TemplateCom
     /**
      * Initialize compiler
      *
-     * @param string $lexer_class  class name
+     * @param string $lexer_class class name
      * @param string $parser_class class name
-     * @param Smarty $smarty       global instance
+     * @param Smarty $smarty global instance
      */
     public function __construct($lexer_class, $parser_class, $smarty)
     {

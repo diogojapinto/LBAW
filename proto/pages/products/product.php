@@ -16,7 +16,7 @@ $product = getProduct($_GET['productId']);
 $relatedProducts = getProductsByCategory($product['idcategory']);
 
 $i = 0;
-foreach($relatedProducts as $prod) {
+foreach ($relatedProducts as $prod) {
     if ($prod['idproduct'] == $product['idproduct']) {
         unset($relatedProducts[$i]);
     }

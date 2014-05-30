@@ -21,7 +21,7 @@ class Smarty_Internal_Compile_Rdelim extends Smarty_Internal_CompileBase
      *
      * This tag does output the right delimiter.
      *
-     * @param  array  $args     array with attributes from parser
+     * @param  array $args array with attributes from parser
      * @param  object $compiler compiler object
      * @return string compiled code
      */
