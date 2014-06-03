@@ -1,4 +1,12 @@
-﻿<div class="col-md-3 navbar-right">
+﻿<script>
+    $(document).ready(function() {
+        $("#showAllNotifications").click(function() {
+            window.location.href="{$BASE_URL}pages/users/shownotifications.php";
+        });
+    });
+</script>
+
+<div class="col-md-3 navbar-right">
     <div class="navbar-collapse collapse" id="sessionTab">
         <ul class="list-inline" style="display:inline-block; margin:0px;list-style-type:none">
             <li>
@@ -7,10 +15,13 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     {foreach from=$notifications['interactions'] key=interactionno item=interaction}
-                        <li><a href="#">
-                                Nova oferta no produto {$interaction.name} <br/>
-                                Novo Preço: {$interaction.amount} <b class="glyphicon glyphicon-euro"></b>
-                            </a></li>
+                        <li style="padding: 3px 20px 3px 20px">
+                            Nova oferta no produto {$interaction.name}<br/>
+
+                            <b>Valor:</b> {$interaction.amount}<span class="glyphicon glyphicon-euro"></span>&nbsp;&nbsp;&nbsp;
+                            <a href="#" style="display: inline;background-color: #5cb85c"><span style="color: #398439" class="glyphicon glyphicon-ok"></span></a>
+                            <a href="#" style="display: inline;background-color: #D16666"><span style="color: #B20000" class="glyphicon glyphicon-remove"></span></a>
+                        </li>
                     {/foreach}
                     <li class="divider"></li>
                     {foreach from=$notifications['privateMessages'] key=messageno item=message}
@@ -20,7 +31,7 @@
                             </a></li>
                     {/foreach}
                     <li class="divider"></li>
-                    <div style="text-align: center;"><b>
+                    <div id="showAllNotifications" style="text-align: center;"><b>
                             <a href="{$BASE_URL}pages/users/shownotifications.php">Ver todas</a>
                     </b></div>
                 </ul>

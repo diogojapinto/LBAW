@@ -236,6 +236,18 @@ function getSeller($iduser)
     return $stmt->fetch();
 }
 
+function isPrivateMessageFromUser($privateMessageId, $username) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT PrivateMessage.idUser FROM PrivateMessage, RegisteredUser
+                            WHERE idPM = :id AND PrivateMessage.idUser = RegisteredUser.idUser
+                            AND username = :username;");
+
+    $stmt->execute(array(':id' => $privateMessageId, ':username' => $username));
+
+    return $stmt->fetch();
+}
+
 function getPrivateMessage($privateMessageId)
 {
     global $conn;

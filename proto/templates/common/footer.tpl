@@ -157,7 +157,6 @@
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <script src="{$BASE_URL}javascript/session.js"></script>
 <script src="{$BASE_URL}javascript/productsSearch.js"></script>
