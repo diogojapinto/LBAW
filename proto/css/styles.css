@@ -136,3 +136,10 @@ body {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.badge {
+    position: relative;
+    background-color: #d43f3a;
+    bottom: 10px;
+    right: 10px;
+}
