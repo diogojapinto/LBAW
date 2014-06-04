@@ -10,7 +10,16 @@ if (isset($_SESSION['username'])) {
     $iduser = getIdUser($_SESSION['username']);
     $notifications['privateMessages'] = getUnreadPrivateMessages($iduser);
     $notifications['interactions'] = getUnreadInteractions($iduser);
-
+    $nr = 0;
+    foreach($notifications['privateMessages'] as $n){
+        if($n['state']='Unread')
+            $nr++;
+    }
+    foreach($notifications['interactions'] as $n){
+        if($n['state']='Unread')
+            $nr++;
+    }
+    $notifications['count'] = $nr;
     $smarty->assign('notifications', $notifications);
 }
 

@@ -11,7 +11,7 @@
         <ul class="list-inline" style="display:inline-block; margin:0px;list-style-type:none">
             <li>
                 <a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
-                    <span class="glyphicon glyphicon-envelope"></span> Notificações
+                    <span class="glyphicon glyphicon-envelope"></span> Notificações<span class="badge">{$notifications['count']}</span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     {foreach from=$notifications['interactions'] key=interactionno item=interaction}
