@@ -7,14 +7,17 @@
  */
 include_once($BASE_DIR . 'database/users.php');
 
-function getAllProducts()
+function getAllProducts($offset)
 {
     global $conn;
+    global $productsPerBlock;
+
     $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
-    $stmt->execute();
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            ORDER BY idproduct LIMIT :limit OFFSET :offset");
+    $stmt->execute(array("limit" => $productsPerBlock, "offset" => $offset));
     return $stmt->fetchAll();
 }
 

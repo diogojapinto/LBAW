@@ -159,7 +159,6 @@
 
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <script src="{$BASE_URL}javascript/session.js"></script>
-<script src="{$BASE_URL}javascript/productsSearch.js"></script>
 <script src="{$BASE_URL}javascript/warnings.js"></script>
 
 </body>

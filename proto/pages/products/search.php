@@ -13,7 +13,7 @@ $products;
 if (!isset($name) || $name == "") {
 
     if (!isset($category) || $category == "" || $category == "All") {
-        $products = getAllProducts();
+        $products = getAllProducts(0);
     } else {
         $products = getProductsByCategory($category);
     }
