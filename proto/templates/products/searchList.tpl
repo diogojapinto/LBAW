@@ -36,9 +36,11 @@
                 {$productCount = 0}
             {/if}
         {/foreach}
-        <div id="getMoreProducts" style="text-align: center;">
-                <button onclick="loadMoreProducts()" type="button" class="btn btn-primary">Ver mais <span class="caret"></span></button>
-        </div>
+    </div>
+
+
+    <div id="getMoreProducts" style="text-align: center;">
+        <button onclick="loadMoreProducts()" type="button" class="btn btn-primary">Ver mais <span class="caret"></span></button>
     </div>
 </div>
 
@@ -47,6 +49,8 @@
 <script src="{$BASE_URL}javascript/handlebars-v1.3.0.js"></script>
 <input type="hidden" name="baseUrl" value="{$BASE_URL}" />
 <input type="hidden" name="productsPerBlock" value="{$PRODUCT_PER_BLOCK}" />
+<input type="hidden" name="name" value="{$name}" />
+<input type="hidden" name="category" value="{$category}" />
 <script id="product-template" type="text/x-handlebars-template">
     {literal}
     <a href="{/literal}{$BASE_URL}{literal}pages/products/product.php?productId={{idproduct}}">
