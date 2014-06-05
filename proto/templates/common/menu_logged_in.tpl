@@ -7,7 +7,7 @@
 </script>
 
 <div class="col-md-3 navbar-right">
-    <div class="navbar-collapse collapse" id="sessionTab">
+    <div id="sessionTab">
         <ul class="list-inline" style="display:inline-block; margin:0px;list-style-type:none">
             <li>
                 <a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
