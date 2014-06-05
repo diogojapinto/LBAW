@@ -79,17 +79,8 @@ body {
     opacity: 0.8;
 }
 
-.searchText {
-    padding-right: 1px;
-}
-
 .searchButtons {
     padding-left: 1px;
-}
-
-#sessionTab {
-    margin-top: 8px;
-    cursor: pointer;
 }
 
 #sessionLink {
@@ -142,4 +133,15 @@ body {
     background-color: #d43f3a;
     bottom: 10px;
     right: 10px;
+}
+
+#sessionTab {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.searchText {
+    padding-right: 1px;
+    padding-left: 0;
 }
