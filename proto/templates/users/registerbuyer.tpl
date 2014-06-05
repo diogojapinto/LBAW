@@ -5,7 +5,7 @@
     <div class="row">
         <h1>Registo de utilizador</h1><br/>
 
-        <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/newbuyer.php">
+        <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/newbuyer.php" onsubmit="return validateRegisterBuyerForm();">
             {foreach $FORM_VALUES.errors as $error}
                 <div class="alert alert-danger">{$error}</div>
             {/foreach}
@@ -29,7 +29,7 @@
                 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password"
+                    <input type="password" class="form-control" id="inputPassword31" placeholder="Password"
                            name="password1" required>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <label for="inputPassword3" class="col-sm-2 control-label">Confirmar password</label>
 
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Confirmar password"
+                    <input type="password" class="form-control" id="inputPassword32" placeholder="Confirmar password"
                            name="password2" required>
                 </div>
             </div>
