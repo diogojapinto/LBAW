@@ -2,23 +2,21 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR . 'pages/common/initializer.php');
     include_once($BASE_DIR . 'database/users.php');
+    include_once($BASE_DIR . 'database/products.php');
 
-    if (!$_SESSION['username']) {
-        $_SESSION['error_messages'] = array('Tem que fazer login');
-
-        header('Location: ' . $BASE_URL);
-        exit;
-    }
-
-    $common = getRegisteredUser($_SESSION['username']);
-    $smarty->assign('COMMON', $common);
-
-    if (isBuyer($_SESSION['username'])) {
+    if (!isBuyer($_GET['seller'])) {
+        $idSeller = getIdUser($_GET['seller']);
+        $seller = getSeller($idSeller);
+        $products = getProductsBySeller($idSeller);
+        shuffle($products);
+        $products = array_slice($products, 0, 4);
+        $smarty->assign('SELLER', $seller);
+        $smarty->assign('PRODUCTS', $products);
         $smarty->display('users/sellerPage.tpl');
     } else {
         $_SESSION['error_messages'] = array('Esse utilizador não é vendedor.');
 
-        header('Location: ' . $BASE_URL);
-        exit;
+        //header('Location: ' . $BASE_URL);
+        //exit;
     }
 ?>
