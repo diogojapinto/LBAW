@@ -40,9 +40,8 @@ $category = $_POST['productCategory'];
 
 try {
     $productId = insertProduct($name, $description, $category);
-    var_dump(move_uploaded_file($_FILES['image']['tmp_name'],
-        $BASE_DIR . 'images/products/' . $productId . '.jpg'));
-
+    move_uploaded_file($_FILES['image']['tmp_name'],
+        $BASE_DIR . 'images/products/' . $productId . '.jpg');
 
     $_SESSION['success_messages'][] = "Producto submetido para aprovação";
     header("Location: $BASE_URL" . 'index.php');
