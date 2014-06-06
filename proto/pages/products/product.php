@@ -19,6 +19,7 @@ $i = 0;
 foreach ($relatedProducts as $prod) {
     if ($prod['idproduct'] == $product['idproduct']) {
         unset($relatedProducts[$i]);
+        break;
     }
     $i++;
 }

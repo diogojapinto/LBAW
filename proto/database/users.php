@@ -227,7 +227,7 @@
     function getSeller($iduser)
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT cellphone, companyName, description, addressline, city, postalCode, name
+        $stmt = $conn->prepare("SELECT Seller.idseller, cellphone, companyName, description, addressline, city, postalCode, name
 	FROM Seller, Address, Country
 	WHERE Seller.idSeller = :iduser AND Seller.idAddress = Address.idAddress AND
 		Country.idCountry = Address.idCountry");
