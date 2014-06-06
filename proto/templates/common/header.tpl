@@ -88,3 +88,5 @@
         <div class="alert alert-success errorsAlert">{$SUCCSESS}</div>
     {/foreach}
 </div>
+<div class="dynamicErrorsParent">
+</div>

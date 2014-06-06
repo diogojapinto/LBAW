@@ -4,10 +4,17 @@ include_once($BASE_DIR . 'pages/common/initializer.php');
 include_once($BASE_DIR . 'database/negotiation.php');
 include_once($BASE_DIR . 'database/products.php');
 
-$username = $_SESSION['username'];
+    if (!$_SESSION['username']) {
+        $_SESSION['error_messages'] = array('Tem que fazer login');
+
+        header('Location: ' . $BASE_URL);
+        exit;
+    }
+
+    $username = $_SESSION['username'];
 $idProduct = $_GET['idProduct'];
 
-$sellingInfo = getSellingInfo($username, $idProduct);
+    $sellingInfo = getSellingInfo($username, $idProduct);
 
 $buyers = getInterestedBuyers($idProduct);
 if (sizeof($buyers) == 0) {

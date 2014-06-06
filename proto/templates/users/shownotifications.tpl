@@ -82,7 +82,6 @@
 
 {include file='common/footer.tpl'}
 
-<script src="{$BASE_URL}javascript/handlebars-v1.3.0.js"></script>
 <input type="hidden" name="baseUrl" value="{$BASE_URL}" />
 <script id="privatemessage-template" type="text/x-handlebars-template">
     {literal}

@@ -46,7 +46,6 @@
 
 {include file='common/footer.tpl'}
 
-<script src="{$BASE_URL}javascript/handlebars-v1.3.0.js"></script>
 <input type="hidden" name="baseUrl" value="{$BASE_URL}" />
 <input type="hidden" name="productsPerBlock" value="{$PRODUCT_PER_BLOCK}" />
 <input type="hidden" name="name" value="{$name}" />
