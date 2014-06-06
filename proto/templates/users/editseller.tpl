@@ -3,7 +3,8 @@
     <div class="row">
         <h1>Modificar dados de utilizador</h1><br/>
 
-        <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/editseller.php" onsubmit="return validateEditSellerForm();">
+        <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/editseller.php"
+              onsubmit="return validateEditSellerForm();">
             {foreach $FORM_VALUES.errors as $error}
                 <div class="alert alert-danger">{$error}</div>
             {/foreach}
@@ -39,7 +40,8 @@
                            name="oldpassword" required>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Obrigatório inserir"><span class="glyphicon glyphicon-info-sign"></span>
+                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right"
+                            title="Obrigatório inserir"><span class="glyphicon glyphicon-info-sign"></span>
                     </button>
                 </div>
             </div>
@@ -95,10 +97,8 @@
                               name="description"></textarea>
                 </div>
             </div>
-            <div class="form-group">
-            </div>
-            <div class="form-group">
-            </div>
+            <div class="form-group"></div>
+            <div class="form-group"></div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-primary">Submeter alterações</button>

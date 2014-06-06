@@ -5,7 +5,8 @@
     <div class="row">
         <h1>Registo de Empresa</h1><br/>
 
-        <form class="form-horizontal" role="form" method="post" action="{$BASE_URL}actions/users/newseller.php" onsubmit="return validateRegisterSellerForm();">
+        <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post"
+              action="{$BASE_URL}actions/users/newseller.php" onsubmit="return validateRegisterSellerForm();">
             {foreach $FORM_VALUES.errors as $error}
                 <div class="alert alert-danger">{$error}</div>
             {/foreach}
@@ -46,7 +47,20 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Imagem do Banner</label>
+
+                <div class="col-sm-2">
+                    <input type="file" name="banner" id="imageInput" class="form-control" accept="image/jpeg">
+                </div>
             </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Imagem do Perfil</label>
+
+                <div class="col-sm-2">
+                    <input type="file" name="profile" id="imageInput" class="form-control" accept="image/jpeg">
+                </div>
+            </div>
+            <div class="form-group"></div>
             <div class="form-group">
             </div>
             <div class="form-group">
