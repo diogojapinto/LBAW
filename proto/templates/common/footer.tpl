@@ -111,7 +111,7 @@
 <div class="modal fade" id="contact" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post" action="{$BASE_URL}actions/users/sendEmail.php">
                 <div class="modal-header">
                     <h4>Contact Realezy Team</h4>
                 </div>
@@ -122,7 +122,7 @@
 
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Full Name">
+                            <input type="text" class="form-control" id="contact-name" placeholder="Full Name" value="{$FORM_VALUES.username}">
 
                         </div>
                     </div>
@@ -132,7 +132,7 @@
 
                         <div class="col-lg-10">
 
-                            <input type="email" class="form-control" id="contact-email" placeholder="you@example.com">
+                            <input type="email" class="form-control" id="contact-email" placeholder="you@example.com" value="{$FORM_VALUES.email}">
 
                         </div>
                     </div>
@@ -142,7 +142,7 @@
 
                         <div class="col-lg-10">
 
-                            <textarea name="contact-message" class="form-control" rows="8"></textarea>
+                            <textarea name="contact-message" class="form-control" rows="8" value="{$FORM_VALUES.message}"></textarea>
 
                         </div>
                     </div>
@@ -152,6 +152,8 @@
                     <a class="btn btn-primary" data-dismiss="modal">Close</a>
                     <a class="btn btn-primary" type="submit">Send</a>
                 </div>
+
+                {$FORM_VALUES.subject = "Realezy Team Contact"}
             </form>
         </div>
     </div>
@@ -159,15 +161,7 @@
 
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <script src="{$BASE_URL}javascript/session.js"></script>
-<script src="{$BASE_URL}javascript/handlebars-v1.3.0.js"></script>
-<script id="error-template" type="text/x-handlebars-template">
-    {literal}
-        <div class="alert alert-{{type}} errorsAlert">{{text}}</div>
-    {/literal}
-</script>
 <script src="{$BASE_URL}javascript/warnings.js"></script>
-<script src="{$BASE_URL}javascript/formValidation.js"></script>
-<script src="{$BASE_URL}javascript/productsSearch.js"></script>
 
 </body>
 </html>
