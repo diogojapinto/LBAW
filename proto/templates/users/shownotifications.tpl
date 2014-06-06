@@ -95,5 +95,5 @@
     var notificationsByPage = {$notificationsByPage};
     var numberOfPages = Math.ceil({$fullnotifications|@count/$notificationsByPage});
 </script>
-<script src="{$BASE_URL}javascript/privateMessages.js">
+<script src="{$BASE_URL}javascript/notificationsPage.js">
 </script>

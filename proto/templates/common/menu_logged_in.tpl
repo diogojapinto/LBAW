@@ -1,12 +1,4 @@
-﻿<script>
-    $(document).ready(function() {
-        $("#showAllNotifications").click(function() {
-            window.location.href="{$BASE_URL}pages/users/shownotifications.php";
-        });
-    });
-</script>
-
-<div class="col-md-3 navbar-right">
+﻿<div class="col-md-3 navbar-right">
     <div id="sessionTab">
         <ul class="list-inline" style="display:inline-block; margin:0px;list-style-type:none">
             <li>
@@ -50,3 +42,6 @@
         </ul>
     </div>
 </div>
+
+<input type="hidden" name="baseUrl" value="{$BASE_URL}" />
+<script src="{$BASE_URL}javascript/notificationsHeader.js"></script>
