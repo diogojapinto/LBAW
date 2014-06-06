@@ -9,15 +9,20 @@ if (!$_POST['password1'] || !$_POST['password2'] || !$_POST['email'] || !$_POST[
     header("Location: $BASE_URL" . 'pages/users/registerbuyer.php');
     exit;
 }
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password1 = $_POST['password1'];
-$password2 = $_POST['password2'];
+
+$username = strip_tags($_POST['username']);
+$email = strip_tags($_POST['email']);
+$password1 = strip_tags($_POST['password1']);
+$password2 = strip_tags($_POST['password2']);
 
 $error = false;
 
 if (strlen($username) > 80) {
     $_SESSION['form_values']['errors'] = array('O número máximo de caratéres para o nome de utilizador é de 80.');
+}
+
+if (strpos($username, ' ') !== false) {
+    $_SESSION['form_values']['errors'] = array('O nome de utilizador não pode conter espaços.');
 }
 
 if ($password1 !== $password2) {

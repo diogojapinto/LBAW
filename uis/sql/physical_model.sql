@@ -158,6 +158,7 @@ CREATE TABLE  PrivateMessage (
     idUser INTEGER REFERENCES RegisteredUser(idUser) NOT NULL,
     idAdmin INTEGER REFERENCES Administrator(idAdmin) NOT NULL,
     state NotificationState NOT NULL DEFAULT 'Unread',
+    date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     subject VARCHAR(40) NOT NULL,
     content VARCHAR(1000) NOT NULL
 );

@@ -34,9 +34,9 @@ if (!isset($_POST['name']) || $_POST['name'] == ""
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$category = $_POST['productCategory'];
+$name = strip_tags($_POST['name']);
+$description = strip_tags($_POST['description']);
+$category = strip_tags($_POST['productCategory']);
 
 try {
     $productId = insertProduct($name, $description, $category);

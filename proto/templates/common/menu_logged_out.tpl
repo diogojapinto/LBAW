@@ -1,5 +1,5 @@
 <div class="col-md-2 navbar-right">
-    <div class="navbar-collapse collapse" id="sessionTab">
+    <div id="sessionTab">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
             <span class="glyphicon glyphicon-user"></span> Sessão
         </a>

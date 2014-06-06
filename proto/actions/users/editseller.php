@@ -51,7 +51,7 @@ $iduser = getIdUser($_SESSION['username']);
 
 if ($_POST['password1']) {
     try {
-        updateUserPassword($iduser, $_POST['password1']);
+        updateUserPassword($iduser, strip_tags($_POST['password1']));
     } catch (PDOException $e) {
         $_SESSION['form_values']['errors'] = array($e->getMessage());
     }
@@ -59,7 +59,7 @@ if ($_POST['password1']) {
 
 if ($_POST['email']) {
     try {
-        updateUserEmail($iduser, $_POST['email']);
+        updateUserEmail($iduser, strip_tags($_POST['email']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'registereduser_email_key') !== false) {
@@ -71,7 +71,7 @@ if ($_POST['email']) {
 }
 if ($_POST['address']) {
     try {
-        updateSellerAddressLine($iduser, $_POST['address']);
+        updateSellerAddressLine($iduser, strip_tags(strip_tags($_POST['address'])));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
@@ -79,7 +79,7 @@ if ($_POST['address']) {
 }
 if ($_POST['description']) {
     try {
-        updateSellerDescription($iduser, $_POST['description']);
+        updateSellerDescription($iduser, strip_tags($_POST['description']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
@@ -87,7 +87,7 @@ if ($_POST['description']) {
 }
 if ($_POST['city']) {
     try {
-        updateSellerCity($iduser, $_POST['city']);
+        updateSellerCity($iduser, strip_tags($_POST['city']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
@@ -95,7 +95,7 @@ if ($_POST['city']) {
 }
 if ($_POST['postalcode']) {
     try {
-        updateSellerPostalCode($iduser, $_POST['postalcode']);
+        updateSellerPostalCode($iduser, strip_tags($_POST['postalcode']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'validpostalcode') !== false)
@@ -106,7 +106,7 @@ if ($_POST['postalcode']) {
 }
 if ($_POST['country'] && $_POST['country'] > 0) {
     try {
-        updateSellerCountry($iduser, $_POST['country']);
+        updateSellerCountry($iduser, strip_tags($_POST['country']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['form_values']['errors'] = array($e->getMessage(), 'Erro na edição do perfil.');
@@ -114,7 +114,7 @@ if ($_POST['country'] && $_POST['country'] > 0) {
 }
 if ($_POST['cellphone']) {
     try {
-        updateSellerCellphone($iduser, $_POST['cellphone']);
+        updateSellerCellphone($iduser, strip_tags($_POST['cellphone']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'validcellnumber') !== false)

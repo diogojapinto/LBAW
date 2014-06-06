@@ -10,11 +10,26 @@ include_once($BASE_DIR . 'database/users.php');
 function getAllProducts()
 {
     global $conn;
+
     $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
                             FROM Product, ProductCategoryProduct, ProductCategory
                             WHERE Product.idproduct = ProductCategoryProduct.idproduct
-                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory");
     $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function getAllProductsByBlocks($offset)
+{
+    global $conn;
+    global $productsPerBlock;
+
+    $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            ORDER BY idproduct LIMIT :limit OFFSET :offset");
+    $stmt->execute(array("limit" => $productsPerBlock, "offset" => $offset));
     return $stmt->fetchAll();
 }
 
@@ -43,6 +58,20 @@ function getProductsByName($name)
     return $stmt->fetchAll();
 }
 
+function getProductsByNameByBlocks($name, $offset)
+{
+    global $conn;
+    global $productsPerBlock;
+
+    $stmt = $conn->prepare("SELECT Product.name, Product.idproduct, description, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            AND to_tsvector('portuguese', Product.name) @@ to_tsquery('portuguese', :name)
+                            ORDER BY idproduct LIMIT :limit OFFSET :offset");
+    $stmt->execute(array("name" => $name, "limit" => $productsPerBlock, "offset" => $offset));
+    return $stmt->fetchAll();
+}
 
 function getProductsByCategory($category)
 {
@@ -56,6 +85,25 @@ function getProductsByCategory($category)
                                                                       OR idparent = :category)
                             AND ProductCategory.idcategory = ProductCategoryProduct.idcategory;");
     $stmt->execute(array($category));
+
+    return $stmt->fetchAll();
+}
+
+function getProductsByCategoryByBlocks($category, $offset)
+{
+    global $conn;
+    global $productsPerBlock;
+
+    $stmt = $conn->prepare("SELECT Product.*, ProductCategory.name as category
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory IN (SELECT idcategory
+                                                                      FROM ProductCategory
+                                                                      WHERE idcategory = :category
+                                                                      OR idparent = :category)
+                            AND ProductCategory.idcategory = ProductCategoryProduct.idcategory
+                            ORDER BY idproduct LIMIT :limit OFFSET :offset");
+    $stmt->execute(array("category" => $category, "limit" => $productsPerBlock, "offset" => $offset));
 
     return $stmt->fetchAll();
 }
@@ -74,6 +122,28 @@ function getProductsByNameAndCategory($name, $category)
                             AND ProductCategoryProduct.idcategory = ProductCategory.idcategory;");
 
         $stmt->execute(array(':name' => $name, ':category' => $category));
+    }
+
+    return $stmt->fetchAll();
+}
+
+function getProductsByNameAndCategoryByBlocks($name, $category, $offset)
+{
+    global $conn;
+    global $productsPerBlock;
+
+    if (!isset($category) || $category == "All") {
+        return getProductsByName($name);
+    } else {
+        $stmt = $conn->prepare("SELECT Product.*
+                            FROM Product, ProductCategoryProduct, ProductCategory
+                            WHERE ProductCategory.idcategory = :category
+                            AND to_tsvector('portuguese', Product.name) @@ to_tsquery('portuguese', :name)
+                            AND Product.idproduct = ProductCategoryProduct.idproduct
+                            AND ProductCategoryProduct.idcategory = ProductCategory.idcategory
+                            ORDER BY idproduct LIMIT :limit OFFSET :offset");
+
+        $stmt->execute(array(':name' => $name, ':category' => $category, "limit" => $productsPerBlock, "offset" => $offset));
     }
 
     return $stmt->fetchAll();
