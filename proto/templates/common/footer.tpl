@@ -167,6 +167,7 @@
 </script>
 <script src="{$BASE_URL}javascript/warnings.js"></script>
 <script src="{$BASE_URL}javascript/formValidation.js"></script>
+<script src="{$BASE_URL}javascript/productsSearch.js"></script>
 
 </body>
 </html>
