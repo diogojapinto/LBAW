@@ -145,3 +145,7 @@ body {
     padding-right: 1px;
     padding-left: 0;
 }
+
+.dropdown-menu {
+    position: static;
+}
