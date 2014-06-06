@@ -23,20 +23,22 @@ var category = $("input[name=category]")[0].value;
 var productsPerBlock =  parseInt( $("input[name=productsPerBlock]")[0].value );
 var productTemplate = Handlebars.compile($('#product-template').html());
 var rowTemplate = Handlebars.compile($('#product-row-template').html());
+var loadingButton = $("#getMoreProductsButton");
 
 var loadMoreProducts = function() {
     if(!loadMore)
         return;
 
+    loadingButton.button('loading');
     offset += productsPerBlock;
     var url = baseUrl + "actions/products/getProducts.php";
 
     $.get(url, {offset: offset, productName: name, productCategory: category}, function(data) {
-
+    console.log(data);
         if( data['error'] ) {
             loadMore = false;
 
-            $("#getMoreProducts button").prop('disabled', true);
+            loadingButton.prop('disabled', true);
 
             return;
         }
@@ -45,7 +47,7 @@ var loadMoreProducts = function() {
         if( data.length < 4 ) {
             loadMore = false;
 
-            $("#getMoreProducts button").prop('disabled', true);
+            loadingButton.prop('disabled', true);
         }
 
         var i = 0, products = [];
@@ -65,8 +67,11 @@ var loadMoreProducts = function() {
             updateSizes($("#productsList > div:last-child"));
         }
 
-    }, 'json');
+    }, 'json').always(function() {
+        loadingButton.button('reset');
+    });
 
+    return;
 }
 
 var updateSizes = function(row) {

@@ -17,10 +17,10 @@ if (!isset($_POST['idProduct']) || $_POST['idProduct'] == "" || !isset($_POST['m
     exit;
 }
 
-$idProduct = $_POST['idProduct'];
+$idProduct = strip_tags($_POST['idProduct']);
 $username = $_SESSION['username'];
-$minimumValue = $_POST['minimumValue'];
-$averageValue = $_POST['averageValue'];
+$minimumValue = strip_tags($_POST['minimumValue']);
+$averageValue = strip_tags($_POST['averageValue']);
 
 try {
 

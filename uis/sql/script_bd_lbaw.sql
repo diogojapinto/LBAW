@@ -1,5 +1,3 @@
--- update deal and notifications
-
 DROP SCHEMA IF EXISTS public CASCADE; 
 CREATE SCHEMA public;
 SET SCHEMA 'public';
@@ -197,8 +195,8 @@ SET SCHEMA 'public';
             ON DELETE SET NULL,
         beginningDate DATE NOT NULL,
         endDate DATE,
-        deliveryMethod DeliveryMethod,
-        idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
+        deliveryMethod DeliveryMethod
+,        idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
             ON DELETE SET NULL,
         minSaleValue Amount,
         sellerRating RATING,

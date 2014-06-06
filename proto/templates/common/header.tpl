@@ -3,7 +3,7 @@
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
-    <meta content="text/html; charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html, charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <link href="{$BASE_URL}css/styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png">

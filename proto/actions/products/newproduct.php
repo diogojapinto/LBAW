@@ -34,15 +34,14 @@ if (!isset($_POST['name']) || $_POST['name'] == ""
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$category = $_POST['productCategory'];
+$name = strip_tags($_POST['name']);
+$description = strip_tags($_POST['description']);
+$category = strip_tags($_POST['productCategory']);
 
 try {
     $productId = insertProduct($name, $description, $category);
-    var_dump(move_uploaded_file($_FILES['image']['tmp_name'],
-        $BASE_DIR . 'images/products/' . $productId . '.jpg'));
-
+    move_uploaded_file($_FILES['image']['tmp_name'],
+        $BASE_DIR . 'images/products/' . $productId . '.jpg');
 
     $_SESSION['success_messages'][] = "Producto submetido para aprovação";
     header("Location: $BASE_URL" . 'index.php');

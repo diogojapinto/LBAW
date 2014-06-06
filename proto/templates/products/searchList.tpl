@@ -40,7 +40,7 @@
 
 
     <div id="getMoreProducts" style="text-align: center;">
-        <button onclick="loadMoreProducts()" type="button" class="btn btn-primary">Ver mais <span class="caret"></span></button>
+        <button id="getMoreProductsButton" onclick="loadMoreProducts()" type="button" class="btn btn-primary" data-loading-text="A carregar...">Ver mais <span class="caret"></span></button>
     </div>
 </div>
 
