@@ -51,7 +51,7 @@ $iduser = getIdUser($_SESSION['username']);
 
 if ($_POST['password1']) {
     try {
-        updateUserPassword($iduser, $_POST['password1']);
+        updateUserPassword($iduser, strip_tags($_POST['password1']));
     } catch (PDOException $e) {
         $_SESSION['form_values']['errors'] = array($e->getMessage());
     }
@@ -59,7 +59,7 @@ if ($_POST['password1']) {
 
 if ($_POST['email']) {
     try {
-        updateUserEmail($iduser, $_POST['email']);
+        updateUserEmail($iduser, strip_tags($_POST['email']));
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'registereduser_email_key') !== false) {

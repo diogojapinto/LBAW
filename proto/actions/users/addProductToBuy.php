@@ -17,8 +17,8 @@ if (!isset($_POST['idProduct']) || $_POST['idProduct'] == "" || !isset($_POST['p
     exit;
 }
 
-$idProduct = $_POST['idProduct'];
-$proposedValue = $_POST['proposedValue'];
+$idProduct = strip_tags($_POST['idProduct']);
+$proposedValue = strip_tags($_POST['proposedValue']);
 $username = $_SESSION['username'];
 
 try {

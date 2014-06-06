@@ -7,3 +7,8 @@
 {/if}
 
 {include file='common/footer.tpl'}
+<script>
+    $(document).ready(function() {
+        $("button[data-toggle=tooltip").tooltip();
+    });
+</script>

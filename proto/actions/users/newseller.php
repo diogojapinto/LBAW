@@ -9,16 +9,16 @@ if (!$_POST['password1'] || !$_POST['password2'] || !$_POST['email'] || !$_POST[
     header("Location: $BASE_URL" . 'pages/users/registerseller.php');
     exit;
 }
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password1 = $_POST['password1'];
-$password2 = $_POST['password2'];
-$addressLine = $_POST['address'];
-$postalCode = $_POST['postalcode'];
-$city = $_POST['city'];
-$idCountry = $_POST['country'];
-$companyName = $_POST['companyname'];
-$cellPhone = $_POST['cellphone'];
+$username = strip_tags($_POST['username']);
+$email = strip_tags($_POST['email']);
+$password1 = strip_tags($_POST['password1']);
+$password2 = strip_tags($_POST['password2']);
+$addressLine = strip_tags($_POST['address']);
+$postalCode = strip_tags($_POST['postalcode']);
+$city = strip_tags($_POST['city']);
+$idCountry = strip_tags($_POST['country']);
+$companyName = strip_tags($_POST['companyname']);
+$cellPhone = strip_tags($_POST['cellphone']);
 
 $_SESSION['form_values'] = $_POST;
 $error = false;
@@ -26,6 +26,10 @@ $error = false;
 if (strlen($username) > 80) {
     $error = true;
     $_SESSION['form_values']['errors'] = array('O número máximo de caratéres para o nome de utilizador é de 80.');
+}
+
+if (strpos($username, ' ') !== false) {
+    $_SESSION['form_values']['errors'] = array('O nome de utilizador não pode conter espaços.');
 }
 
 if (strlen($companyName) > 80) {
