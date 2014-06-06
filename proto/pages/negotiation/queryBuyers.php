@@ -4,20 +4,19 @@ include_once($BASE_DIR . 'pages/common/initializer.php');
 include_once($BASE_DIR . 'database/negotiation.php');
 include_once($BASE_DIR . 'database/products.php');
 
-    if (!$_SESSION['username']) {
-        $_SESSION['error_messages'] = array('Tem que fazer login');
+if (!$_SESSION['username']) {
+    $_SESSION['error_messages'] = array('Tem que fazer login');
 
-        header('Location: ' . $BASE_URL);
-        exit;
-    }
+    header('Location: ' . $BASE_URL);
+    exit;
+}
 
-    $username = $_SESSION['username'];
+$username = $_SESSION['username'];
 $idProduct = $_GET['idProduct'];
 
-    $sellingInfo = getSellingInfo($username, $idProduct);
-
+$sellingInfo = getSellingInfo($username, $idProduct);
 $buyers = getInterestedBuyers($idProduct);
-if (sizeof($buyers) == 0) {
+if (count($buyers) == 0) {
     $_SESSION['error_messages'][] = 'Ninguém está interessado neste produto. Por favor tente mais tarde';
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;

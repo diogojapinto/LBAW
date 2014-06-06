@@ -5,7 +5,7 @@
     <div class="row">
 
         <div class="widewrapper main thumbnail">
-            <img src="imgs/seller/{$SELLER[idseller]}/banner.jpg" class="img-responsive">
+            <img src="imgs/seller/{$USERNAME}/banner.jpg" class="img-responsive">
         </div>
 
     </div>
@@ -14,7 +14,7 @@
 
         <div class="col-md-3 thumbnail">
 
-            <img src="imgs/seller/{$SELLER[idseller]}/profile.jpg" class="img-responsive">
+            <img src="imgs/seller/{$USERNAME}/profile.jpg" class="img-responsive">
 
         </div>
 
