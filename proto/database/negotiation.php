@@ -91,12 +91,49 @@ function acceptProposal($username, $idDeal)
 
     $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':lastAmount', $amount));
 
+    $stmt = $conn->prepare("UPDATE Deal
+                            SET dealState = 'Successful'
+                            WHERE idDeal = ?;");
+
+    $stmt->execute(array($idDeal));
+
     $conn->commit();
 }
 
-function hasDealEnded($idDeal)
+function getDealState($idDeal)
 {
+    /*
+     * possible states:
+     * pending, answer_proposal, finalize, unsuccessful, success, (false)
+     */
+    $response = null;
+
     global $conn;
+
+    $stmt = $conn->prepare("SELECT dealState
+                            FROM Deal
+                            WHERE idDeal = ?");
+
+    $stmt->execute(array($idDeal));
+    $result = $stmt->fetch();
+
+    $dealState = $result['dealstate'];
+
+    switch ($dealState) {
+        case "Pending":
+            break;
+        case "Unsuccessful":
+            $response = "unsuccessful";
+            break;
+        case "Successful":
+            break;
+        case "Delivered":
+            break;
+        default:
+            return false;
+    }
+
+    return $response;
 
     $stmt = $conn->prepare("SELECT MAX(interactionNo), interactionType, amount
                             FROM Interaction
@@ -136,8 +173,6 @@ function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $cred
 
     $stmt->execute(array(":idDeal" => $idDeal));
     $result = $stmt->fetch();
-    $amount = $result['amount'];
-
 
     $stmt = $conn->prepare("UPDATE Deal
                             SET dealState = 'Successful',
@@ -145,6 +180,14 @@ function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $cred
                                 deliveryMethod = :deliveryMethod,
                                 idBuyerInfo = :idBuyerInfo
                             WHERE idDeal = :idDeal;");
+
+    $stmt->execute(array($idDeal));
+
+    $stmt = $conn->prepare("UPDATE Deal
+                            SET dealState = 'Delivered'
+                            WHERE idDeal = ?;");
+
+    $stmt->execute(array($idDeal));
 
     $conn->commit();
 }
@@ -175,9 +218,13 @@ function declineProposal($username, $idDeal)
 
     $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':lastAmount' => $amount));
 
-    $conn->commit();
+    $stmt = $conn->prepare("UPDATE Deal
+                            SET dealState = 'Unsuccessful'
+                            WHERE idDeal = ?;");
 
-    //TODO: call sellerAction after some random time
+    $stmt->execute(array($idDeal));
+
+    $conn->commit();
 }
 
 function sellerAction($idDeal)
@@ -212,6 +259,12 @@ function sellerAction($idDeal)
 
         $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':lastAmount' => $amount));
 
+        $stmt = $conn->prepare("UPDATE Deal
+                            SET dealState = 'Unsuccessful'
+                            WHERE idDeal = ?;");
+
+        $stmt->execute(array($idDeal));
+
     } else {
         // send new proposal
         $sellingInfo = getSellingInfo($idSeller, $idProduct);
@@ -227,6 +280,25 @@ function sellerAction($idDeal)
         $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':nextAmount' => $nextValue));
 
     }
+}
+
+function getLastAmount($idDeal)
+{
+    global $conn;
+
+    $conn->beginTransaction();
+
+    $stmt = $conn->prepare("SELECT MAX(interactionNo), amount
+                            FROM Interaction
+                            WHERE idDeal = :idDeal
+                            GROUP BY amount;");
+
+    $stmt->execute(array(":idDeal" => $idDeal));
+
+    $result = $stmt->fetch();
+    $amount = $result['amount'];
+
+    return $amount;
 }
 
 /*
