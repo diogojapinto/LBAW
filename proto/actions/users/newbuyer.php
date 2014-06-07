@@ -18,22 +18,26 @@ $password2 = strip_tags($_POST['password2']);
 $error = false;
 
 if (strlen($username) > 80) {
+    $error = true;
     $_SESSION['form_values']['errors'] = array('O número máximo de caratéres para o nome de utilizador é de 80.');
 }
 
 if (strpos($username, ' ') !== false) {
+    $error = true;
     $_SESSION['form_values']['errors'] = array('O nome de utilizador não pode conter espaços.');
 }
 
 if ($password1 !== $password2) {
+    $error = true;
     $_SESSION['form_values']['errors'] = array('As passwords não são iguais.');
+
     if (strlen($password1) > 80) {
         $_SESSION['form_values']['errors'] = array('O número máximo de caratéres para a password é de 80.');
     }
 }
 
 if ($error) {
-    header("Location: $BASE_URL" . 'pages/users/registerseller.php');
+    header("Location: $BASE_URL" . 'pages/users/registerbuyer.php');
     exit;
 }
 

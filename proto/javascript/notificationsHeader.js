@@ -24,8 +24,6 @@ function updateNotifications() {
         else
             $("#sessionLink span.badge").text(count);
 
-        console.log(data);
-
         $.each( data['privateMessages'], function(key, value) {
             console.log(value);
             $("#firstDivider").after( privateMessageTemplate({number: key + 1, subject: value['subject']}) );

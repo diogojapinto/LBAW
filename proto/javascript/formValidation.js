@@ -1,5 +1,5 @@
 function validateEmail(email) {
-    var emailRegex = new RegExp(".+\@.+\..+");
+    var emailRegex = new RegExp("^.+\@.+\..+$");
 
     if(!emailRegex.test(email))
         showError('Email inválido!', 'danger');
@@ -10,7 +10,7 @@ function validateEmail(email) {
 }
 
 function validateUsername(username) {
-    var usernameRegex = new RegExp(".+");
+    var usernameRegex = new RegExp("^\\S+$");
 
     if(!usernameRegex.test(username))
         showError('Nome de utilizador inválido', 'danger');

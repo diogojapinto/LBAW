@@ -62,6 +62,7 @@
 
 
 {include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/formValidation.js"></script>
 <script>
     $(document).ready(function() {
        $("button[data-toggle=tooltip").tooltip();
