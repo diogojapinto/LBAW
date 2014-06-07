@@ -146,14 +146,13 @@
 
                         </div>
                     </div>
-
+                    {$FORM_VALUES.subject = "Realezy Team Contact"}
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary" data-dismiss="modal">Close</a>
                     <a class="btn btn-primary" type="submit">Send</a>
                 </div>
 
-                {$FORM_VALUES.subject = "Realezy Team Contact"}
             </form>
         </div>
     </div>
