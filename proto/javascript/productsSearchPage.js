@@ -27,7 +27,6 @@ var loadMoreProducts = function() {
     var url = baseUrl + "actions/products/getProducts.php";
 
     $.get(url, {offset: offset, productName: name, productCategory: category}, function(data) {
-        console.log(data);
         if( data['error'] ) {
             loadMore = false;
 

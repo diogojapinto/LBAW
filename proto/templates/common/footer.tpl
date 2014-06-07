@@ -161,6 +161,11 @@
 
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <script src="{$BASE_URL}javascript/session.js"></script>
+<script id="error-template" type="text/x-handlebars-template">
+    {literal}
+        <div class="alert alert-{{type}} errorsAlert">{{text}}</div>
+    {/literal}
+</script>
 <script src="{$BASE_URL}javascript/warnings.js"></script>
 
 </body>
