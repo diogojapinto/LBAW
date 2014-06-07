@@ -67,7 +67,7 @@
         return $conn->commit() == true;
     }
 
-    function registerSeller($userName, $password, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone)
+    function registerSeller($userName, $password, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone, $description)
     {
         global $conn;
         $conn->beginTransaction();
@@ -80,10 +80,11 @@
 
         $stmt->execute(array(':addressLine' => $addressLine, ':postalCode' => $postalCode, ':city' => $city, ':idCountry' => $idCountry));
 
-        $stmt = $conn->prepare("INSERT INTO Seller(idSeller, idAddress, companyName, cellPhone)
-                                VALUES (currval('RegisteredUser_idUser_seq'), currval('Address_idAddress_seq'), :companyName, :cellphone);");
+        $stmt = $conn->prepare("INSERT INTO Seller(idSeller, idAddress, companyName, cellPhone, description)
+                                VALUES (currval('RegisteredUser_idUser_seq'), currval('Address_idAddress_seq'),
+                                :companyName, :cellphone, :description);");
 
-        $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone));
+        $stmt->execute(array(':companyName' => $companyName, ':cellphone' => $cellPhone, ':description' => $description));
 
         return $conn->commit() == true;
     }

@@ -4,7 +4,7 @@
 
     var_dump($_FILES);
 
-    if (!$_POST['password1'] || !$_POST['password2'] || !$_POST['email'] || !$_POST['username'] || !$_POST['address'] || !$_POST['postalcode'] || !$_POST['city'] || $_POST['country'] === '-1' || !$_POST['companyname'] || !$_POST['cellphone']) {
+    if (!$_POST['password1'] || !$_POST['password2'] || !$_POST['email'] || !$_POST['username'] || !$_POST['address'] || !$_POST['postalcode'] || !$_POST['city'] || $_POST['country'] === '-1' || !$_POST['companyname'] || !$_POST['cellphone'] || !$_POST['description']) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['form_values']['errors'] = array('Todos os campos são obrigatórios.');
 
@@ -21,6 +21,7 @@
     $idCountry = strip_tags($_POST['country']);
     $companyName = strip_tags($_POST['companyname']);
     $cellPhone = strip_tags($_POST['cellphone']);
+    $description = strip_tags($_POST['description']);
 
     $_SESSION['form_values'] = $_POST;
     $error = false;
@@ -63,14 +64,6 @@
         $_SESSION['error_messages'][] = $_FILES['banner']['type'];
 
     }
-
-    if (!move_uploaded_file($_FILES['banner']['tmp_name'], $BASE_DIR . 'images/seller/' . $username . "/banner
-    .jpg")
-    ) {
-        $error = true;
-        $_SESSION['error_messages'][] = 'Erro a guardar banner. Tente outra vez mais tarde';
-    }
-
     if ($_FILES['profile']['type'] != 'image/jpeg') {
         $error = true;
         $_SESSION['error_messages'][] = 'Selecione uma imagem com extenção <it>jpg</it>';
@@ -78,11 +71,16 @@
 
     }
 
-    if (!move_uploaded_file($_FILES['banner']['tmp_name'], $BASE_DIR . 'images/seller/' . $username . "/banner
-    .jpg")
+    if (!move_uploaded_file($_FILES['profile']['tmp_name'], $BASE_DIR . 'images/seller/' . $username . "_profile.jpg")
     ) {
         $error = true;
         $_SESSION['error_messages'][] = 'Erro a guardar imagem de perfil. Tente outra vez mais tarde';
+    }
+
+    if (!move_uploaded_file($_FILES['banner']['tmp_name'], $BASE_DIR . 'images/seller/' . $username . "_banner.jpg")
+    ) {
+        $error = true;
+        $_SESSION['error_messages'][] = 'Erro a guardar banner. Tente outra vez mais tarde';
     }
 
     if ($error) {
@@ -91,7 +89,7 @@
     }
 
     try {
-        registerSeller($username, $password1, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone);
+        registerSeller($username, $password1, $email, $addressLine, $postalCode, $city, $idCountry, $companyName, $cellPhone, $description);
     } catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         if (strpos($e->getMessage(), 'registereduser_email_key') !== false) {
