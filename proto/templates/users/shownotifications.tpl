@@ -30,6 +30,7 @@
                 {else}
                     <td style="display: none;">{$notification.idpm}</td>
                 {/if}
+
                 <td style="vertical-align: middle">
                     {if $notification.state == 'Read'}
                         <span class="glyphicon glyphicon-ok-circle"></span>
@@ -48,7 +49,7 @@
                         <b>{$notification.amount}</b>
                         <span class="glyphicon glyphicon-euro"></span>
                         no produto {$notification.name} por
-                        <a href="{$BASE_URL}pages/users/sellerPage?seller={$notification.username}">{$notification.username}</a>
+                        <a href="{$BASE_URL}pages/users/sellerPage.php?seller={$notification.username}">{$notification.username}</a>
                     {else}
                         <span style="-webkit-transform: rotate(-90deg); transform: rotate(-90deg); -ms-transform: rotate(-90deg)"
                               class="caret"></span>
@@ -59,16 +60,22 @@
                 <td>
                     {if $notification['type'] == 'interaction'}
                         {if $notification['state'] == 'pending'}
-                            <a class="btn btn-default" href=""><span class="glyphicon glyphicon-time"></span>Aguarda contra-proposta</a>
+                            <a class="btn btn-default" href=""><span class="glyphicon glyphicon-time"></span>Aguarda
+                                contra-proposta</a>
                         {elseif $notification['state'] == 'answer_proposal'}
-                            <a class="btn btn-success" href="{$BASE_URL}actions/negotiations/acceptProposal.php?idDeal={$notification.iddeal}">Aceitar<span
+                            <a class="btn btn-success"
+                               href="{$BASE_URL}actions/negotiations/acceptProposal.php?idDeal={$notification.iddeal}">Aceitar<span
                                         class="glyphicon glyphicon-ok"></span></a>
-                            <a class="btn btn-danger" href="{$BASE_URL}actions/negotiations/declineProposal.php?idDeal={$notification.iddeal}"><span
+                            <a class="btn btn-danger"
+                               href="{$BASE_URL}actions/negotiations/declineProposal.php?idDeal={$notification.iddeal}"><span
                                         class="glyphicon glyphicon-remove">Recusar</span></a>
                         {elseif $notification['state'] == 'finalize'}
-                            <a class="btn btn-primary" href="{$BASE_URL}pages/negotiation/concludeDeal.php?idDeal={$notification.iddeal}"><span class="glyphicon glyphicon-shopping-cart">Concluir</span></a>
+                            <a class="btn btn-primary"
+                               href="{$BASE_URL}pages/negotiation/concludeDeal.php?idDeal={$notification.iddeal}"><span
+                                        class="glyphicon glyphicon-shopping-cart">Concluir</span></a>
                         {elseif $notification['state'] == 'unsuccessful'}
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-warning-sign">Sem exito</span></a>
+                            <a class="btn btn-danger" href=""><span
+                                        class="glyphicon glyphicon-warning-sign">Sem exito</span></a>
                         {elseif $notification['state'] == 'success'}
                             <a class="btn btn-success" href=""><span class="glyphicon glyphicon-flag">Concluido com exito</span></a>
                         {/if}
@@ -109,5 +116,4 @@
     var notificationsByPage = {$notificationsByPage};
     var numberOfPages = Math.ceil({$fullnotifications|@count/$notificationsByPage});
 </script>
-<script src="{$BASE_URL}javascript/notificationsPage.js">
-</script>
+<script src="{$BASE_URL}javascript/notificationsPage.js"></script>
