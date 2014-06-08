@@ -117,42 +117,50 @@ function getDealState($idDeal)
     $stmt->execute(array($idDeal));
     $result = $stmt->fetch();
 
+    if (!$result) {
+        return false;
+    }
+
     $dealState = $result['dealstate'];
 
     switch ($dealState) {
         case "Pending":
+
+            $stmt = $conn->prepare("SELECT MAX(interactionNo), interactionType
+                            FROM Interaction
+                            WHERE idDeal = :idDeal
+                            GROUP BY amount, interactionType;");
+
+            $stmt->execute(array(":idDeal" => $idDeal));
+
+            $result = $stmt->fetch();
+
+            $interactionType = $result['interactiontype'];
+
+            switch($interactionType) {
+                case "Refusal":
+                    $response = "pending";
+                    break;
+                case "Proposal":
+                    $response = "answer_proposal";
+                    break;
+            }
+
             break;
         case "Unsuccessful":
             $response = "unsuccessful";
             break;
         case "Successful":
+            $response = "finalize";
             break;
         case "Delivered":
+            $response = "success";
             break;
         default:
             return false;
     }
 
     return $response;
-
-    $stmt = $conn->prepare("SELECT MAX(interactionNo), interactionType, amount
-                            FROM Interaction
-                            WHERE idDeal = :idDeal
-                            GROUP BY amount, interactionType;");
-
-    $stmt->execute(array(":idDeal" => $idDeal));
-
-    $result = $stmt->fetch();
-
-    if ($result['interactiontype'] == "Offer") {
-        $ret = array("amount" => $result['amount'], "state" => "success");
-        return $ret;
-    } else if ($result['interactiontype'] == "Refusal" || $result['interactiontype'] == "Declined") {
-        $ret = array("state" => "failure");
-        return $ret;
-    } else {
-        return false;
-    }
 }
 
 function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $creditCard)
