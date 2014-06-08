@@ -9,10 +9,12 @@
                 <ul id="notificationsHeaderList" class="dropdown-menu" role="menu">
                     {foreach from=$notifications['interactions'] key=interactionno item=interaction}
                         <li style="padding: 3px 20px 3px 20px">
-                            Nova oferta no produto {$interaction.name}<br/>
+                            Nova oferta no produto {$interaction.name} por <a
+                                    href="{$BASE_URL}pages/users/sellerPage?seller={$interaction.username}">{$interaction.username}</a>
 
                             <b>Valor:</b> {$interaction.amount}<span class="glyphicon glyphicon-euro"></span>&nbsp;&nbsp;&nbsp;
                         </li>
+                        <hr>
                     {/foreach}
                     <li id="firstDivider" class="divider"></li>
                     {foreach from=$notifications['privateMessages'] key=messageno item=message}
@@ -57,7 +59,7 @@
         <li><a href="#">
                 Mensagem {{number}} <br/>
                 Assunto: {{subject}}
-        </a></li>
+            </a></li>
     {/literal}
 </script>
 <script src="{$BASE_URL}javascript/notificationsHeader.js"></script>

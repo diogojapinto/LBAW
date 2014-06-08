@@ -27,13 +27,13 @@
                 </a>
             </div>
 
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <!--<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-
-            <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px">
+            </button>-->
+            <!-- <div class="container collapse navbar-collapse navHeaderCollapse" style="margin-top:7px"> -->
+            <div class="container" style="margin-top:7px">
                 <form method="post" action="{$BASE_URL}pages/products/search.php">
                     <div class="container col-md-7">
                         <div class="col-md-2">
