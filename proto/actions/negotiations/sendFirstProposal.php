@@ -4,7 +4,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/products.php');
 
 if (!isset($_SESSION['username'])) {
-    $_SESSION['error_messages'][] = 'Tem de ter sessão iniciada para submeter um produto para avaliação';
+    $_SESSION['error_messages'][] = 'Tem de ter sessão iniciada para submeter propostas';
 
     header("Location: $BASE_URL" . 'index.php');
     exit;

@@ -8,3 +8,12 @@ if (!isset($_SESSION['username'])) {
     header("Location: $BASE_URL" . 'index.php');
     exit;
 }
+
+$username = $_SESSION['username'];
+$idDeal = $_POST['idDeal'];
+
+acceptProposal($username, $idDeal);
+
+// has idDeal in post
+header($BASE_URL . "concludeDeal.php");
+exit;

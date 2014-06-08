@@ -29,5 +29,5 @@ if (userLogin($username, $password)) {
     $_SESSION['error_messages'][] = 'Login failed';
 }
 
-header('Location: ' . $BASE_URL);
+header('Location: ' . $_SERVER["HTTP_REFERER"]);
 ?>

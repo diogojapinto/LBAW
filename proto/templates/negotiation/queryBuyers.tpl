@@ -32,7 +32,7 @@
             <label>{$BUYER['proposedprice']}</label>
         </div>
     {/foreach}
-
+    <button class="btn btn-default" type="submit">Submeter</button>
 </form>
 
 {include file='common/footer.tpl'}

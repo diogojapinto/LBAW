@@ -1,36 +1,51 @@
 <?php
-    include_once('../../config/init.php');
-    include_once($BASE_DIR . 'pages/common/initializer.php');
-    include_once($BASE_DIR . 'database/negotiation.php');
-    include_once($BASE_DIR . 'database/users.php');
-    include_once($BASE_DIR . 'database/products.php');
+include_once('../../config/init.php');
+include_once($BASE_DIR . 'pages/common/initializer.php');
+include_once($BASE_DIR . 'database/negotiation.php');
+include_once($BASE_DIR . 'database/users.php');
+include_once($BASE_DIR . 'database/products.php');
 
-    /*if (!$_SESSION['username']) {
-        $_SESSION['error_messages'] = array('Tem que fazer login');
+if (!$_SESSION['username']) {
+    $_SESSION['error_messages'] = array('Tem que fazer login');
 
-        header('Location: ' . $BASE_URL);
-        exit;
-    }
+    header('Location: ' . $BASE_URL);
+    exit;
+}
 
-    if(isSeller($_SESSION['username'])) {
-        $_SESSION['error_messages'] = array('Operação reservada a compradores.');
+if (isSeller($_SESSION['username'])) {
+    $_SESSION['error_messages'] = array('Operação reservada a compradores.');
 
-        header('Location: ' . $BASE_URL);
-        exit;
-    }*/
+    header('Location: ' . $BASE_URL);
+    exit;
+}
 
-    $username = $_SESSION['username'];
-    $idDeal = $_POST['idDeal'];
-    $idUser = getIdUser($username);
+$username = $_SESSION['username'];
+$idDeal = $_POST['idDeal'];
+$idUser = getIdUser($username);
 
-    /*if(!$lastInteraction = hasDealEnded($idDeal)){
-        $_SESSION['error_messages'] = array('Negócio não finalizado');
+$dealState = getDealState($idDeal);
+if (!$dealState) {
+    $_SESSION['error_messages'] = array('Negócio não encontrado');
+    header('Location: ' . $BASE_URL);
+    exit;
 
-        header('Location: ' . $BASE_URL);
-        exit;
-    }*/
-    var_dump($lastInteraction);
+} else if ($dealState == "unsuccessful") {
+    $_SESSION['error_messages'] = array('Negócio não teve sucesso');
+    header('Location: ' . $BASE_URL);
+    exit;
+} else if ($dealState == "pending" || $dealState == "answer_proposal") {
+    $_SESSION['error_messages'] = array('Negócio a decorrer');
+    header('Location: ' . $BASE_URL);
+    exit;
+} else if ($dealState == "success") {
+    $_SESSION['error_messages'] = array('Negócio a decorrer');
+    header('Location: ' . $BASE_URL);
+    exit;
+
+} else if ($dealState == "finalize") {
+    // todo: assign variables and show things
 
     $smarty->assign('LASTINTERACTION', $lastInteraction);
 
     $smarty->display('negotiation/concludeDeal.tpl');
+}
