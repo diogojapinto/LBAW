@@ -6,9 +6,9 @@
     {include file='users/editbuyer.tpl'}
 {/if}
 
-{include file='common/footer.tpl'}
 <script>
     $(document).ready(function() {
         $("button[data-toggle=tooltip").tooltip();
     });
 </script>
+{include file='common/footer.tpl'}

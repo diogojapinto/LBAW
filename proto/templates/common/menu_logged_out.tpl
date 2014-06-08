@@ -3,7 +3,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
             <span class="glyphicon glyphicon-user"></span> Sessão
         </a>
-        <ul class="dropdown-menu" role="menu" style="padding: 15px;">
+        <div class="dropdown-menu" role="menu" style="padding: 15px;">
             <form action="{$BASE_URL}actions/users/login.php" method="post" accept-charset="UTF-8">
                 <input placeholder="Nome de utilizador" class="form-control" style="margin-bottom: 3px;" type="text"
                        name="username"
@@ -20,6 +20,6 @@
                style="margin-top: 3px;">Registar Vendedor</a>
             <a href="{$BASE_URL}pages/users/registerbuyer.php" class="btn btn-success form-control"
                style="margin-top: 3px;">Registar Comprador</a>
-        </ul>
+        </div>
     </div>
 </div>

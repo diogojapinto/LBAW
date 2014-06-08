@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <label for="inputPassword31" class="col-sm-2 control-label">Password</label>
 
                 <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword31" placeholder="Password"
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Confirmar password</label>
+                <label for="inputPassword32" class="col-sm-2 control-label">Confirmar password</label>
 
                 <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword32" placeholder="Confirmar password"
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password antiga</label>
+                <label for="inputPassword4" class="col-sm-2 control-label">Password antiga</label>
 
                 <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password antiga"

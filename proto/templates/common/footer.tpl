@@ -142,7 +142,7 @@
 
                         <div class="col-lg-10">
 
-                            <textarea name="contact-message" class="form-control" rows="8" value="{$FORM_VALUES.message}"></textarea>
+                            <textarea name="contact-message" id="contact-message" class="form-control" rows="8" cols="8"></textarea>
 
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-primary" type="submit">Send</a>
+                    <a class="btn btn-primary">Send</a>
                 </div>
 
             </form>
@@ -158,14 +158,14 @@
     </div>
 </div>
 
-<script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
-<script src="{$BASE_URL}javascript/session.js"></script>
+<script src="{$BASE_URL}javascript/bootstrap.min.js" type="text/javascript"></script>
+<script src="{$BASE_URL}javascript/session.js" type="text/javascript"></script>
 <script id="error-template" type="text/x-handlebars-template">
     {literal}
         <div class="alert alert-{{type}} errorsAlert">{{text}}</div>
     {/literal}
 </script>
-<script src="{$BASE_URL}javascript/warnings.js"></script>
+<script src="{$BASE_URL}javascript/warnings.js" type="text/javascript"></script>
 
 </body>
 </html>

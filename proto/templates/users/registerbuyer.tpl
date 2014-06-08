@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <label for="inputPassword31" class="col-sm-2 control-label">Password</label>
 
                 <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword31" placeholder="Password"
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Confirmar password</label>
+                <label for="inputPassword32" class="col-sm-2 control-label">Confirmar password</label>
 
                 <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword32" placeholder="Confirmar password"
@@ -60,11 +60,11 @@
 
 </div>
 
-
-{include file='common/footer.tpl'}
-<script src="{$BASE_URL}javascript/formValidation.js"></script>
+<script src="{$BASE_URL}javascript/formValidation.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
-       $("button[data-toggle=tooltip").tooltip();
+        $("button[data-toggle=tooltip").tooltip();
     });
 </script>
+
+{include file='common/footer.tpl'}
