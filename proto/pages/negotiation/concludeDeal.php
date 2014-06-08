@@ -29,24 +29,23 @@ if (!$dealState) {
     header('Location: ' . $BASE_URL);
     exit;
 
-} else if ($dealState != "finalize") {
-    $_SESSION['error_messages'] = array('Negócio não finalizado');
-    header('Location: ' . $BASE_URL);
-    exit;
-
 } else if ($dealState == "unsuccessful") {
     $_SESSION['error_messages'] = array('Negócio não teve sucesso');
     header('Location: ' . $BASE_URL);
     exit;
-    /*
-     * possible states:
-     * finalize, unsuccessful, success, (false)
-     */
 } else if ($dealState == "pending" || $dealState == "answer_proposal") {
+    $_SESSION['error_messages'] = array('Negócio a decorrer');
+    header('Location: ' . $BASE_URL);
+    exit;
+} else if ($dealState == "success") {
+    $_SESSION['error_messages'] = array('Negócio a decorrer');
+    header('Location: ' . $BASE_URL);
+    exit;
 
+} else if ($dealState == "finalize") {
+    // todo: assign variables and show things
 
+    $smarty->assign('LASTINTERACTION', $lastInteraction);
+
+    $smarty->display('negotiation/concludeDeal.tpl');
 }
-
-$smarty->assign('LASTINTERACTION', $lastInteraction);
-
-$smarty->display('negotiation/concludeDeal.tpl');
