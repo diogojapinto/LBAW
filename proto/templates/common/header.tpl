@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
     <title>Realezy - Realize os seus desejos, "the easy way"</title>
-    <meta content="text/html, charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{$BASE_URL}css/styles.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="{$BASE_URL}javascript/handlebars-v1.3.0.js"></script>
+    <meta content="text/html, charset=iso-8859-1" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{$BASE_URL}css/styles.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+    <script src="{$BASE_URL}javascript/handlebars-v1.3.0.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -21,8 +21,8 @@
             <div class="col-md-2">
                 <a class="navbar-brand" href="{$BASE_URL}">
                     <img class="img-responsive" style="margin-top:-12px;"
-                         src="{$BASE_URL}images/icon_set/logo.png" height="40px"
-                         width="100px"
+                         src="{$BASE_URL}images/icon_set/logo.png" height="40"
+                         width="100"
                          alt="Realezy Logo"/>
                 </a>
             </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-6 navbar-search searchText">
                             <input type="text" name="productName" value="{$FORM_VALUES.name}" placeholder="Produto"
-                                   class="form-control">
+                                   class="form-control"/>
                         </div>
                         <div class="col-md-4 searchButtons">
                             <div class="btn-group">

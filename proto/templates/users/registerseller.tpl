@@ -40,32 +40,30 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Confirmar password</label>
+                <label for="inputPassword32" class="col-sm-2 control-label">Confirmar password</label>
 
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Confirmar password"
+                    <input type="password" class="form-control" id="inputPassword32" placeholder="Confirmar password"
                            name="password2" maxlength="20" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Imagem do Banner</label>
+                <label for="imageInput1" class="col-sm-2 control-label">Imagem do Banner</label>
 
                 <div class="col-sm-2">
-                    <input type="file" name="banner" id="imageInput" class="form-control" accept="image/jpeg">
+                    <input type="file" name="banner" id="imageInput1" class="form-control" accept="image/jpeg">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Imagem do Perfil</label>
+                <label for="imageInput2" class="col-sm-2 control-label">Imagem do Perfil</label>
 
                 <div class="col-sm-2">
-                    <input type="file" name="profile" id="imageInput" class="form-control" accept="image/jpeg">
+                    <input type="file" name="profile" id="imageInput2" class="form-control" accept="image/jpeg">
                 </div>
             </div>
             <div class="form-group"></div>
             <div class="form-group"></div>
             <div class="form-group">
-                <label for="tooltip" class="col-sm-2 control-label"></label>
-
                 <div class="col-sm-2">
                     <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom"
                             title="A Realezy, de forma a manter padrões de qualidade e ter apenas vendedores válidos na sua plataforma, utiliza estes dados para verificar a legitimidade dos vendedores.">
@@ -112,7 +110,7 @@
 
                 <div class="col-sm-2">
                     <select name="country" id="inputCountry3" class="form-control">
-                        <option value="-1"></option>
+                        <option value="-1">Nenhum</option>
                         {foreach $countries as $country}
                             <option value="{$country.idcountry}">{$country.name}</option>
                         {/foreach}
@@ -148,10 +146,11 @@
 
 </div>
 
-{include file='common/footer.tpl'}
-<script src="{$BASE_URL}javascript/formValidation.js"></script>
+<script src="{$BASE_URL}javascript/formValidation.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $("button[data-toggle=tooltip").tooltip();
     });
 </script>
+
+{include file='common/footer.tpl'}
