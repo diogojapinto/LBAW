@@ -254,7 +254,9 @@ function addToSelling($idProduct, $username, $minimumPrice, $averagePrice)
         $stmt = $conn->prepare("INSERT INTO WantsToSell(idseller, idproduct, minimumprice, averageprice)
                                 VALUES (:id, :idProduct, :minimumPrice, :averagePrice);");
 
-        return $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':minimumPrice' => $minimumPrice, ':averagePrice' => $averagePrice));
+        $stmt->execute(array(':id' => $id, ':idProduct' => $idProduct, ':minimumPrice' => $minimumPrice, ':averagePrice' => $averagePrice));
+
+        return true;
     } else {
         return false;
     }

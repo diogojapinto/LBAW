@@ -17,10 +17,12 @@ function sort_by_date($a, $b) {
 $iduser = getIdUser($_SESSION['username']);
 
 $interactions = getInteractions($iduser);
+
 foreach($interactions as &$interaction) {
     $interaction['type'] = 'interaction';
     $interaction['state'] = getDealState($interaction['iddeal']);
 }
+
 $privateMessages = getPrivateMessages($iduser);
 foreach($privateMessages as &$privateMessage)
     $privateMessage['type'] = 'privateMessage';

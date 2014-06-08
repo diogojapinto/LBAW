@@ -25,10 +25,10 @@ $averageValue = strip_tags($_POST['averageValue']);
 try {
 
     if (addToSelling($idProduct, $username, $minimumValue, $averageValue)) {
-        header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php');
+        header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php?idProduct=' . $idProduct);
         exit;
     } else {
-        $_SESSION['error_messages'][] = "Something went wrong. Please try again";
+        $_SESSION['error_messages'][] = "Algo falhou. Por favor tente novamente";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
@@ -40,18 +40,29 @@ try {
             header('Location: ' . $BASE_URL . 'pages/negotiation/queryBuyers.php?idProduct=' . $idProduct);
             exit;
         } catch (PDOException $e) {
+            if (strpos($e->getMessage(), 'ct_valid_seller_prices') != FALSE) {
+                $_SESSION["error_messages"][] = "Selecione um valor mínimo inferior ao valor médio";
+                $_SESSION['form_values'] = $_POST;
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
+            } else {
+                $_SESSION["error_messages"][] = $e->getMessage();
+                $_SESSION['form_values'] = $_POST;
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
+            }
+        }
+    } else
+        if (strpos($e->getMessage(), 'ct_valid_seller_prices') != FALSE) {
+            $_SESSION["error_messages"][] = "Selecione um valor mínimo inferior ao valor médio";
+            $_SESSION['form_values'] = $_POST;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
             $_SESSION["error_messages"][] = $e->getMessage();
             $_SESSION['form_values'] = $_POST;
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
-    } else {
-        $_SESSION["error_messages"][] = $e->getMessage();
-        $_SESSION['form_values'] = $_POST;
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
-    }
 }
 ?>

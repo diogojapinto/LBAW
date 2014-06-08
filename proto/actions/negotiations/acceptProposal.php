@@ -2,6 +2,7 @@
 
 include_once('../../config/init.php');
 include_once($BASE_DIR . "database/negotiation.php");
+include_once($BASE_DIR . "database/users.php");
 
 if (!isset($_SESSION['username']) || !isBuyer($_SESSION['username'])) {
     $_SESSION['error_messages'][] = 'Tem de ter sessão iniciada para aceitar propostas';
@@ -17,6 +18,5 @@ acceptProposal($username, $idDeal);
 
 $_SESSION['success_messages'][] = 'Proposta aceite';
 
-// has idDeal in post
-header($BASE_URL . "concludeDeal.php");
+header('Location: ' . $BASE_URL . "pages/negotiation/concludeDeal.php");
 exit;

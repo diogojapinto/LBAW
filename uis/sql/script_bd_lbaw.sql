@@ -195,8 +195,8 @@ SET SCHEMA 'public';
             ON DELETE SET NULL,
         beginningDate DATE NOT NULL,
         endDate DATE,
-        deliveryMethod DeliveryMethod
-,        idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
+        deliveryMethod DeliveryMethod,
+        idBuyerInfo INTEGER REFERENCES BuyerInfo(idBuyerInfo)
             ON DELETE SET NULL,
         minSaleValue Amount,
         sellerRating RATING,
@@ -336,12 +336,12 @@ SET SCHEMA 'public';
 
     CREATE OR REPLACE FUNCTION update_deal_trigger() RETURNS TRIGGER AS $$
     BEGIN
-        IF NEW.DealState = 'Successful' AND NEW.deliveryMethod IS NULL
+        IF NEW.DealState = 'Delivered' AND NEW.deliveryMethod IS NULL
         THEN
             RAISE EXCEPTION 'When a Deal is successful, a Delivery Method must be set';
         END IF;
         
-        IF NEW.deliveryMethod = "Shipping" AND idBuyerInfo IS NULL
+        IF NEW.deliveryMethod = 'Shipping' AND NEW.idBuyerInfo IS NULL
         THEN
             RAISE EXCEPTION 'When a Deal is shipping, Buyer Info must be specified';
         END IF;

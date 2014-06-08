@@ -21,6 +21,8 @@ if (isset($_SESSION['username'])) {
             $nr++;
     }
     $notifications['count'] = $nr;
+    $notifications['privateMessages'] = array_slice($notifications['privateMessages'], 0, 3);
+    $notifications['interactions'] = array_slice($notifications['interactions'], 0, 3);
     $smarty->assign('notifications', $notifications);
 }
 

@@ -37,7 +37,7 @@
                         <span class="glyphicon glyphicon-remove-circle"></span>
                     {/if}
                     {if $notification['type'] == 'interaction'}
-                        <span>Nova oferta</span>
+                        <span>Atualização mais recente</span>
                     {else}
                         Mensagem privada
                     {/if}
@@ -59,18 +59,18 @@
                 <td>
                     {if $notification['type'] == 'interaction'}
                         {if $notification['state'] == 'pending'}
-                            <a class="btn btn-default" href=""><span class="glyphicon glyphicon-time"></span>Aguarda contra-proposta</a>
+                            <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-time"></span>Aguarda contra-proposta</a>
                         {elseif $notification['state'] == 'answer_proposal'}
-                            <a class="btn btn-success" href="{$BASE_URL}actions/negotiations/acceptProposal.php?idDeal={$notification.iddeal}">Aceitar<span
-                                        class="glyphicon glyphicon-ok"></span></a>
+                            <a class="btn btn-success" href="{$BASE_URL}actions/negotiations/acceptProposal.php?idDeal={$notification.iddeal}"><span
+                                        class="glyphicon glyphicon-ok"></span> Aceitar</a>
                             <a class="btn btn-danger" href="{$BASE_URL}actions/negotiations/declineProposal.php?idDeal={$notification.iddeal}"><span
-                                        class="glyphicon glyphicon-remove">Recusar</span></a>
+                                        class="glyphicon glyphicon-remove"></span> Recusar</a>
                         {elseif $notification['state'] == 'finalize'}
-                            <a class="btn btn-primary" href="{$BASE_URL}pages/negotiation/concludeDeal.php?idDeal={$notification.iddeal}"><span class="glyphicon glyphicon-shopping-cart">Concluir</span></a>
+                            <a class="btn btn-primary" href="{$BASE_URL}pages/negotiation/concludeDeal.php?idDeal={$notification.iddeal}"><span class="glyphicon glyphicon-shopping-cart"> Concluir</span></a>
                         {elseif $notification['state'] == 'unsuccessful'}
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-warning-sign">Sem exito</span></a>
+                            <a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-warning-sign"> Sem exito</span></a>
                         {elseif $notification['state'] == 'success'}
-                            <a class="btn btn-success" href=""><span class="glyphicon glyphicon-flag">Concluido com exito</span></a>
+                            <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-flag"> Concluido com exito</span></a>
                         {/if}
                     {/if}
                 </td>
