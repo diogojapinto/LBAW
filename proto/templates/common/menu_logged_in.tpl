@@ -12,10 +12,6 @@
                             Nova oferta no produto {$interaction.name}<br/>
 
                             <b>Valor:</b> {$interaction.amount}<span class="glyphicon glyphicon-euro"></span>&nbsp;&nbsp;&nbsp;
-                            <a href="#" style="display: inline;background-color: #5cb85c"><span style="color: #398439"
-                                                                                                class="glyphicon glyphicon-ok"></span></a>
-                            <a href="#" style="display: inline;background-color: #D16666"><span style="color: #B20000"
-                                                                                                class="glyphicon glyphicon-remove"></span></a>
                         </li>
                     {/foreach}
                     <li id="firstDivider" class="divider"></li>
@@ -53,10 +49,6 @@
             Nova oferta no produto {{name}}<br/>
 
             <b>Valor:</b> {{amount}}<span class="glyphicon glyphicon-euro"></span>&nbsp;&nbsp;&nbsp;
-            <a href="#" style="display: inline;background-color: #5cb85c"><span style="color: #398439"
-                                                                                class="glyphicon glyphicon-ok"></span></a>
-            <a href="#" style="display: inline;background-color: #D16666"><span style="color: #B20000"
-                                                                                class="glyphicon glyphicon-remove"></span></a>
         </li>
     {/literal}
 </script>

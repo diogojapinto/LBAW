@@ -19,7 +19,7 @@ $iduser = getIdUser($_SESSION['username']);
 $interactions = getInteractions($iduser);
 foreach($interactions as &$interaction) {
     $interaction['type'] = 'interaction';
-   // $interaction['ended'] = hasDealEnded($interaction['iddeal']);
+    $interaction['state'] = getDealState($interaction['iddeal']);
 }
 $privateMessages = getPrivateMessages($iduser);
 foreach($privateMessages as &$privateMessage)

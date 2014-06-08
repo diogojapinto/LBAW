@@ -20,7 +20,7 @@ if (isSeller($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
-$idDeal = $_POST['idDeal'];
+$idDeal = $_GET['idDeal'];
 $idUser = getIdUser($username);
 
 $dealState = getDealState($idDeal);

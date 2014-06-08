@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: knoweat
- * Date: 06/06/14
- * Time: 13:04
- */
-include_once("../config/init.php");
+include_once('../../config/init.php');
 include_once($BASE_DIR . "database/negotiation.php");
 
-class SellerAction extends Thread
+class SellerAction
 {
     private $idDeal;
 

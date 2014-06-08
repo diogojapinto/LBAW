@@ -25,6 +25,7 @@ if (count($buyers) == 0) {
 
 $buyers = organizeBuyers($buyers, $sellingInfo['minimumprice'], $sellingInfo['averageprice']);
 
+$smarty->assign('PRODUCT_ID', $idProduct);
 $smarty->assign('LOW_BUYERS', $buyers[0]);
 $smarty->assign('MID_BUYERS', $buyers[1]);
 $smarty->assign('HIGH_BUYERS', $buyers[2]);

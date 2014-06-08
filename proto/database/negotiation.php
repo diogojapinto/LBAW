@@ -25,7 +25,6 @@ function getInterestedBuyers($idProduct)
 
 function beginDeal($username, $idBuyer, $idProduct)
 {
-
     global $conn;
 
     if (!isSeller($username)) {
@@ -48,20 +47,19 @@ function beginDeal($username, $idBuyer, $idProduct)
     $i = mt_rand(0, $nrValues);
     $minForSale = $normDist[$i];
 
-
     $stmt = $conn->prepare("INSERT INTO Deal (idBuyer, idSeller, idProduct, beginningDate, minSaleValue)
                             VALUES (:idBuyer, :idSeller, :idProduct, CURRENT_TIMESTAMP, :minSaleValue)");
-    $stmt->execute(array('idBuyer' => $idBuyer, 'idSeller' => $idSeller, 'idProduct' => $idProduct,
+    $result = $stmt->execute(array(':idBuyer' => $idBuyer, ':idSeller' => $idSeller, ':idProduct' => $idProduct,
         ":minSaleValue" => $minForSale));
 
-    $lastDeal = $conn->lastInsertId();
+    $lastDeal = $conn->lastInsertId('deal_iddeal_seq');
 
     $stmt = $conn->prepare("INSERT INTO Interaction (idDeal, InteractionNo, amount, date, interactionType)
 	                        VALUES (:idDeal, 1, :firstProposal, CURRENT_TIMESTAMP, 'Proposal');");
     $stmt->execute(array(':idDeal' => $lastDeal, ':firstProposal' => $maxPrice));
 
     $conn->commit();
-
+    return true;
 }
 
 function acceptProposal($username, $idDeal)
@@ -136,7 +134,7 @@ function getDealState($idDeal)
 
             $interactionType = $result['interactiontype'];
 
-            switch($interactionType) {
+            switch ($interactionType) {
                 case "Refusal":
                     $response = "pending";
                     break;
@@ -333,7 +331,8 @@ function array_distribute($mean, $sd, $min, $max)
     return $result;
 }
 
-function sendFinishedDealEmail($username, $idDeal, $billingAddress, $shippingAddress, $amount){
+function sendFinishedDealEmail($username, $idDeal, $billingAddress, $shippingAddress, $amount)
+{
     global $conn;
     $stmt = $conn->prepare("SELECT email FROM RegisteredUser WHERE username = :username;");
     $stmt->execute(array(':username' => $username));
@@ -351,7 +350,7 @@ function sendFinishedDealEmail($username, $idDeal, $billingAddress, $shippingAdd
     $headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
     $headers .= "From: " . $sendermail . "\r\n"; // remetente
     $headers .= "Return-Path: realezy@realezy.pt\r\n";
-    $subject = "Finished Deal on " . $pname ;
+    $subject = "Finished Deal on " . $pname;
     $message = "Dear Customer,\r\n";
     $message .= "You've successfully purchased " . $pname . " for the amount of " . $amount . " euros.\r\n\r\n";
     $message .= "Billing Adress:\r\n";

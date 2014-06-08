@@ -24,10 +24,23 @@ $username = $_SESSION['username'];
 try {
     addToBuying($idProduct, $username, $proposedValue);
 
-    $_SESSION["success_messages"][] = "Produto adicionado com sucesso";
-    header('Location: ' . $BASE_URL);
+    $_SESSION["success_messages"][] = "Proposta de compra adicionada com sucesso";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 } catch (PDOException $e) {
+    if (strpos($e->getMessage(), 'wantstobuy_pkey') !== false) {
+        try {
+            // there is a previous value
+            updateBuying($idProduct, $username, $proposedValue);
+            $_SESSION["success_messages"][] = "Proposta de compra alterada com sucesso";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } catch (PDOException $e) {
+            $_SESSION["error_messages"][] = $e->getMessage();
+            $_SESSION['form_values'] = $_POST;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+    }
     $_SESSION["error_messages"][] = $e->getMessage();
     $_SESSION['form_values'] = $_POST;
     header('Location: ' . $_SERVER['HTTP_REFERER']);

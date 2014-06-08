@@ -2,6 +2,7 @@
 
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/products.php');
+include_once($BASE_DIR . 'database/negotiation.php');
 
 if (!isset($_SESSION['username'])) {
     $_SESSION['error_messages'][] = 'Tem de ter sessão iniciada para submeter propostas';
@@ -20,23 +21,33 @@ if (!isset($_POST['users'])) {
 
 $users = $_POST['users'];
 $username = $_SESSION['username'];
+$idProduct = intval($_POST['idProduct']);
 
 $successes = 0;
 $failures = 0;
 
 foreach ($users as $user) {
-    if (!beginDeal($username, $user, $id)) {
+    $success = false;
+    try {
+        $success = beginDeal($username, $user, $idProduct);
+    } catch (PDOException $e) {
+        $_SESSION['error_messages'][] = $e->getMessage();
+        $failures++;
+    }
+    if (!$success) {
         $failures++;
     } else {
         $successes++;
     }
 }
 
-$_SESSION['success_messages'][] = $successes . ' propostas enviadas com sucesso';
+if($successes != 0) {
+    $_SESSION['success_messages'][] = $successes . ' propostas enviadas com sucesso';
+}
 
 if ($failures != 0) {
     $_SESSION['error_messages'][] = $failures . ' propostas falhadas';
 }
 
-header("Location: " . $BASE_URL . "index.php");
+header("Location: " . $BASE_URL);
 exit;

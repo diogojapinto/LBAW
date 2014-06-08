@@ -43,7 +43,7 @@ try {
     move_uploaded_file($_FILES['image']['tmp_name'],
         $BASE_DIR . 'images/products/' . $productId . '.jpg');
 
-    $_SESSION['success_messages'][] = "Producto submetido para aprovação";
+    $_SESSION['success_messages'][] = "Producto submetido com sucesso";
     header("Location: $BASE_URL" . 'index.php');
     exit;
 } catch (PDOException $e) {

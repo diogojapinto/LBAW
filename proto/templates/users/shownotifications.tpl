@@ -49,15 +49,28 @@
                         <span class="glyphicon glyphicon-euro"></span>
                         no produto {$notification.name}
                     {else}
-                        <span style="-webkit-transform: rotate(-90deg); transform: rotate(-90deg); -ms-transform: rotate(-90deg)" class="caret"></span>
+                        <span style="-webkit-transform: rotate(-90deg); transform: rotate(-90deg); -ms-transform: rotate(-90deg)"
+                              class="caret"></span>
                         {$notification.subject}
                     {/if}
                 </td>
 
                 <td>
                     {if $notification['type'] == 'interaction'}
-                        <a class="btn btn-success"  href="#"><span class="glyphicon glyphicon-ok"></span></a>
-                        <a class="btn btn-danger"  href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        {if $notification['state'] == 'pending'}
+                            <a class="btn btn-default" href=""><span class="glyphicon glyphicon-time"></span>Aguarda contra-proposta</a>
+                        {elseif $notification['state'] == 'answer_proposal'}
+                            <a class="btn btn-success" href="{$BASE_URL}actions/negotiations/acceptProposal.php?idDeal={$notification.iddeal}">Aceitar<span
+                                        class="glyphicon glyphicon-ok"></span></a>
+                            <a class="btn btn-danger" href="{$BASE_URL}actions/negotiations/declineProposal.php?idDeal={$notification.iddeal}"><span
+                                        class="glyphicon glyphicon-remove">Recusar</span></a>
+                        {elseif $notification['state'] == 'finalize'}
+                            <a class="btn btn-primary" href="{$BASE_URL}pages/negotiation/concludeDeal.php?idDeal={$notification.iddeal}"><span class="glyphicon glyphicon-shopping-cart">Concluir</span></a>
+                        {elseif $notification['state'] == 'unsuccessful'}
+                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-warning-sign">Sem exito</span></a>
+                        {elseif $notification['state'] == 'success'}
+                            <a class="btn btn-success" href=""><span class="glyphicon glyphicon-flag">Concluido com exito</span></a>
+                        {/if}
                     {/if}
                 </td>
 
@@ -82,7 +95,7 @@
 
 {include file='common/footer.tpl'}
 
-<input type="hidden" name="baseUrl" value="{$BASE_URL}" />
+<input type="hidden" name="baseUrl" value="{$BASE_URL}"/>
 <script id="privatemessage-template" type="text/x-handlebars-template">
     {literal}
         <tr>
