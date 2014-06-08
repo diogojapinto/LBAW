@@ -30,7 +30,7 @@
                 </ul>
             </li>
             <li>
-                <a class="dropdown-toggle" data-toggle="dropdown" id="sessionLink">
+                <a class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span> Perfil
                 </a>
                 <ul class="dropdown-menu" role="menu">

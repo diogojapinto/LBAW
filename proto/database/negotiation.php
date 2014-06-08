@@ -52,8 +52,7 @@ function beginDeal($username, $idBuyer, $idProduct)
 
     $stmt = $conn->prepare("INSERT INTO Deal (idBuyer, idSeller, idProduct, beginningDate, minSaleValue)
                             VALUES (:idBuyer, :idSeller, :idProduct, CURRENT_TIMESTAMP, :minSaleValue)");
-    $result = $stmt->execute(array(':idBuyer' => $idBuyer, ':idSeller' => $idSeller, ':idProduct' => $idProduct,
-        ":minSaleValue" => $minForSale));
+    $result = $stmt->execute(array(':idBuyer' => $idBuyer, ':idSeller' => $idSeller, ':idProduct' => $idProduct, ":minSaleValue" => $minForSale));
 
     $lastDeal = $conn->lastInsertId('deal_iddeal_seq');
 
@@ -62,6 +61,7 @@ function beginDeal($username, $idBuyer, $idProduct)
     $stmt->execute(array(':idDeal' => $lastDeal, ':firstProposal' => $maxPrice));
 
     $conn->commit();
+
     return true;
 }
 
@@ -90,6 +90,7 @@ function acceptProposal($username, $idDeal)
                             VALUES (:idDeal, :lastInteractionNo, :lastAmount, CURRENT_TIMESTAMP, 'Offer');");
 
     $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':lastAmount' => $amount));
+
 
     $stmt = $conn->prepare("UPDATE Deal
                             SET dealState = 'Successful'
@@ -163,7 +164,7 @@ function getDealState($idDeal)
     return $response;
 }
 
-function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $creditCard)
+function finishDeal($username, $idDeal, $buyerAddress, $buyerCity, $buyerPostal, $buyerCountry, $billingAddress, $billingCity, $billingPostal, $billingCountry, $creditCardNumber, $creditCardDate, $creditCardHolder, $deliveryMethod)
 {
     // TODO
     global $conn;
@@ -180,16 +181,37 @@ function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $cred
                             GROUP BY iddeal, amount;");
 
     $stmt->execute(array(":idDeal" => $idDeal));
-    $result = $stmt->fetch();
+    $temp = $stmt->fetch();
+    $amount = $temp['amount'];
+
+    $stmt = $conn->prepare("INSERT INTO Address (addressline, postalcode, city, idcountry)
+                            VALUES (?, ?, ?, ?);");
+    $stmt->execute(array($buyerAddress, $buyerPostal, $buyerCity, $buyerCountry));
+    $shippingAddress = $conn->lastInsertId("address_idaddress_seq");
+
+    $stmt = $conn->prepare("INSERT INTO Address (addressline, postalcode, city, idcountry)
+                            VALUES (?, ?, ?, ?);");
+    $stmt->execute(array($billingAddress, $billingPostal, $billingCity, $billingCountry));
+    $billingAddress = $conn->lastInsertId("address_idaddress_seq");
+
+    $stmt = $conn->prepare("INSERT INTO CreditCard (idbuyer, ownername, number, duedate)
+                            VALUES (?, ?, ?, ?);");
+    $stmt->execute(array(getIdUser($username), $creditCardHolder, $creditCardNumber, $creditCardDate));
+    $creditCard = $conn->lastInsertId("address_idaddress_seq");
+
+    $stmt = $conn->prepare("INSERT INTO BuyerInfo (idshippingaddress, idbillingaddress, idcreditcard)
+                            VALUES (?, ?, ?);");
+    $stmt->execute(array($shippingAddress, $billingAddress, $creditCard));
+    $buyerInfo = $conn->lastInsertId("address_idaddress_seq");
 
     $stmt = $conn->prepare("UPDATE Deal
                             SET dealState = 'Successful',
                                 endDate = CURRENT_TIMESTAMP,
-                                deliveryMethod = :deliveryMethod,
-                                idBuyerInfo = :idBuyerInfo
-                            WHERE idDeal = :idDeal;");
+                                deliveryMethod = ?,
+                                idBuyerInfo = ?
+                            WHERE idDeal = ?;");
 
-    $stmt->execute(array($idDeal));
+    $stmt->execute(array($deliveryMethod, $buyerInfo, $idDeal));
 
     $stmt = $conn->prepare("UPDATE Deal
                             SET dealState = 'Delivered'
@@ -278,6 +300,7 @@ function sellerAction($idDeal)
                             VALUES (:idDeal, :lastInteractionNo, :nextAmount, CURRENT_TIMESTAMP, 'Proposal');");
 
         $stmt->execute(array(":idDeal" => $idDeal, ":lastInteractionNo" => $lastInteraction + 1, ':nextAmount' => $nextValue));
+
     }
 }
 
@@ -287,7 +310,9 @@ function getLastAmount($idDeal)
 
     $conn->beginTransaction();
 
+
     $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
+
                             FROM Interaction
                             WHERE idDeal = :idDeal
                             GROUP BY iddeal, amount;");
@@ -320,6 +345,7 @@ function array_distribute($mean, $sd, $min, $max)
         $total_mean -= $random;
     }
     $result[] = $total_mean;
+
     return $result;
 }
 

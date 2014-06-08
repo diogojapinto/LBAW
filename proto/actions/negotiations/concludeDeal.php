@@ -1,12 +1,10 @@
 <?php
+
     include_once('../../config/init.php');
     include_once($BASE_DIR . 'pages/common/initializer.php');
     include_once($BASE_DIR . 'database/negotiation.php');
     include_once($BASE_DIR . 'database/users.php');
     include_once($BASE_DIR . 'database/products.php');
-
-    $countries = getCountryList();
-    $smarty->assign('countries', $countries);
 
     if (!$_SESSION['username']) {
         $_SESSION['error_messages'] = array('Tem que fazer login');
@@ -28,7 +26,6 @@
 
     $dealState = getDealState($idDeal);
 
-    /*
     if (!$dealState) {
         $_SESSION['error_messages'] = array('Negócio não encontrado');
         header('Location: ' . $BASE_URL);
@@ -48,10 +45,15 @@
         exit;
 
     } else if ($dealState == "finalize") {
-        // todo: assign variables and show things
-    */
-    $smarty->assign('LASTINTERACTION', $lastInteraction);
-    $smarty->assign('IDDEAL', $idDeal);
+        if (!$_POST['idDeal'] || !$_POST['buyerAddress'] || !$_POST['buyerCity'] || !$_POST['buyerPostal'] || !$_POST['buyerCountry'] || !$_POST['billingAddress'] || !$_POST['billingCity'] || !$_POST['billingPostal'] || !$_POST['billingCountry'] || !$_POST['creditCardNumber'] || !$_POST['creditCardDate'] || !$_POST['creditCardHolder'] || !$_POST['deliveryMethod'] || !$_POST['password2']) {
+            $_SESSION['form_values'] = $_POST;
+            $_SESSION['form_values']['errors'] = array('Todos os campos são obrigatórios.');
 
-    $smarty->display('negotiation/concludeDeal.tpl');
-    //}
+            header("Location: $BASE_URL" . 'pages/negotiation/concludeDeal.php');
+            exit;
+        }
+
+        finishDeal($username, $_POST['idDeal'], $_POST['buyerAddress'], $_POST['buyerCity'], $_POST['buyerPostal'], $_POST['buyerCountry'], $_POST['billingAddress'], $_POST['billingCity'], $_POST['billingPostal'], $_POST['billingCountry'], $_POST['creditCardNumber'], $_POST['creditCardDate'], $_POST['creditCardHolder'], $_POST['deliveryMethod']);
+
+    }
+?>

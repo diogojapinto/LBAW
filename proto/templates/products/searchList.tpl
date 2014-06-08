@@ -67,7 +67,7 @@
     </a>
     {/literal}
 </script>
-<script id="product-row-template" type="text/x-handlebars-template">
+<script id="product-row-template" type="text/x-handlebars-template" type="text/javascript">
     {literal}
     <div class="row productThumbnails">
         {{#each products}}
@@ -77,4 +77,4 @@
     {/literal}
 </script>
 
-<script src="{$BASE_URL}javascript/productsSearchPage.js"></script>
+<script src="{$BASE_URL}javascript/productsSearchPage.js" type="text/javascript"></script>

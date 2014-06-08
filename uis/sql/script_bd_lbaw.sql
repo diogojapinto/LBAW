@@ -179,8 +179,9 @@ SET SCHEMA 'public';
 
     CREATE TABLE  BuyerInfo (
         idBuyerInfo SERIAL PRIMARY KEY,
-        idShippingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress),
-        idBillingAddress INTEGER NOT NULL REFERENCES BuyerAddress(idAddress),
+        #todo: change to BuyerAddress
+        idShippingAddress INTEGER NOT NULL REFERENCES Address(idAddress),
+        idBillingAddress INTEGER NOT NULL REFERENCES Address(idAddress),
         idCreditCard INTEGER NOT NULL REFERENCES CreditCard
     );
 

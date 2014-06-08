@@ -30,6 +30,7 @@
                 {else}
                     <td style="display: none;">{$notification.idpm}</td>
                 {/if}
+
                 <td style="vertical-align: middle">
                     {if $notification.state == 'Read'}
                         <span class="glyphicon glyphicon-ok-circle"></span>
@@ -48,7 +49,7 @@
                         <b>{$notification.amount}</b>
                         <span class="glyphicon glyphicon-euro"></span>
                         no produto {$notification.name} por
-                        <a href="{$BASE_URL}pages/users/sellerPage?seller={$notification.username}">{$notification.username}</a>
+                        <a href="{$BASE_URL}pages/users/sellerPage.php?seller={$notification.username}">{$notification.username}</a>
                     {else}
                         <span style="-webkit-transform: rotate(-90deg); transform: rotate(-90deg); -ms-transform: rotate(-90deg)"
                               class="caret"></span>
@@ -109,5 +110,4 @@
     var notificationsByPage = {$notificationsByPage};
     var numberOfPages = Math.ceil({$fullnotifications|@count/$notificationsByPage});
 </script>
-<script src="{$BASE_URL}javascript/notificationsPage.js">
-</script>
+<script src="{$BASE_URL}javascript/notificationsPage.js"></script>

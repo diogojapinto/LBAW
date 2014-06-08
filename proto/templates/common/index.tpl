@@ -22,8 +22,8 @@
                     <h2>
                         É comprador?
                     </h2>
-                    <img height="200px" width="200px" style="float:right; top:50px" class="img img-responsive"
-                         src="{$BASE_URL}images/icon_set/buyer.png">
+                    <img height="200" width="200" style="float:right; top:50px" class="img img-responsive"
+                         src="{$BASE_URL}images/icon_set/buyer.png" alt="Publicidade comprador">
 
                     <p>Para si, para além de poder conhecer vários produtos, temos a possibilidade de dar a conhecer o
                         preço que está disposto a pagar pelo que deseja adquirir. Após se apresentar como interessado
@@ -35,8 +35,8 @@
                     <h2>
                         É vendedor?
                     </h2>
-                    <img height="200px" width="200px" style="float:left; top:50px" class="img img-responsive"
-                         src="{$BASE_URL}images/icon_set/seller.png">
+                    <img height="200" width="200" style="float:left; top:50px" class="img img-responsive"
+                         src="{$BASE_URL}images/icon_set/seller.png" alt="Publicidade vendedor">
 
                     <p>Através desta plataforma poderá conhecer os seus clientes. Terá acesso ao preço que estes
                         estão dispostos a pagar pelos seus produtos, bem como ser avaliado por estes pelos seus
