@@ -134,7 +134,21 @@
                                   registeredUser.idUser = ?;");
         $stmt->execute(array($userId));
 
-        return $stmt->fetchAll();
+        $result = $stmt->fetchAll();
+
+        foreach ($result as &$interaction) {
+            $stmt = $conn->prepare("SELECT RegisteredUser.username FROM RegisteredUser, Interaction, Deal
+                                    WHERE Interaction.iddeal = ? AND
+                                    interactionNo = ? AND
+                                    Interaction.iddeal = Deal.iddeal AND
+                                    Deal.idSeller = RegisteredUser.iduser;");
+
+            $stmt->execute(array($interaction['iddeal'], $interaction['interactionno']));
+            $temp = $stmt->fetchAll();
+            $interaction['username'] = $temp[0]['username'];
+        }
+
+        return $result;
     }
 
     function getUnreadInteractions($userId)
@@ -147,7 +161,21 @@
                                   registeredUser.idUser = ? AND state = 'Unread';");
         $stmt->execute(array($userId));
 
-        return $stmt->fetchAll();
+        $result = $stmt->fetchAll();
+
+        foreach ($result as &$interaction) {
+            $stmt = $conn->prepare("SELECT RegisteredUser.username FROM RegisteredUser, Interaction, Deal
+                                    WHERE Interaction.iddeal = ? AND
+                                    interactionNo = ? AND
+                                    Interaction.iddeal = Deal.iddeal AND
+                                    Deal.idSeller = RegisteredUser.iduser;");
+
+            $stmt->execute(array($interaction['iddeal'], $interaction['interactionno']));
+            $temp = $stmt->fetchAll();
+            $interaction['username'] = $temp[0]['username'];
+        }
+
+        return $result;
     }
 
     function getInteraction($interactionId)

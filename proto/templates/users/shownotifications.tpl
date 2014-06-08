@@ -47,7 +47,8 @@
                     {if $notification['type'] == 'interaction'}
                         <b>{$notification.amount}</b>
                         <span class="glyphicon glyphicon-euro"></span>
-                        no produto {$notification.name}
+                        no produto {$notification.name} por
+                        <a href="{$BASE_URL}pages/users/sellerPage?seller={$notification.username}">{$notification.username}</a>
                     {else}
                         <span style="-webkit-transform: rotate(-90deg); transform: rotate(-90deg); -ms-transform: rotate(-90deg)" class="caret"></span>
                         {$notification.subject}
