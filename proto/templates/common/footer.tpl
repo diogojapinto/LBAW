@@ -122,7 +122,7 @@
 
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Full Name" value="{$FORM_VALUES.username}">
+                            <input type="text" class="form-control" id="contact-name" placeholder="Full Name">
 
                         </div>
                     </div>

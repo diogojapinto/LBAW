@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Buyer  -> Offer / Refusal
  * Seller -> Proposed / Declined
@@ -147,6 +146,8 @@ function finishDeal($username, $idDeal, $billingAddress, $shippingAddress, $cred
                             WHERE idDeal = :idDeal;");
 
     $conn->commit();
+
+    sendFinishedDealEmail($username, $idDeal, $billingAddress, $shippingAddress, $amount);
 }
 
 function declineProposal($username, $idDeal)
@@ -250,4 +251,35 @@ function array_distribute($mean, $sd, $min, $max)
     }
     $result[] = $total_mean;
     return $result;
+}
+
+function sendFinishedDealEmail($username, $idDeal, $billingAddress, $shippingAddress, $amount){
+    global $conn;
+    $stmt = $conn->prepare("SELECT email FROM RegisteredUser WHERE username = :username;");
+    $stmt->execute(array(':username' => $username));
+    $email = $stmt->fetch();
+
+    $stmt = $conn->prepare("SELECT name
+                            FROM deal, product
+                            WHERE idDeal = :idDeal AND product.idproduct = deal.idproduct ;");
+    $stmt->execute(array(":idDeal" => $idDeal));
+
+    $pname = $stmt->fetch();
+
+    $sendermail = "realezy@realezy.pt";
+    $headers = "MIME-Version: 1.1\r\n";
+    $headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
+    $headers .= "From: " . $sendermail . "\r\n"; // remetente
+    $headers .= "Return-Path: realezy@realezy.pt\r\n";
+    $subject = "Finished Deal on " . $pname ;
+    $message = "Dear Customer,\r\n";
+    $message .= "You've successfully purchased " . $pname . " for the amount of " . $amount . " euros.\r\n\r\n";
+    $message .= "Billing Adress:\r\n";
+    $message .= $billingAddress . "\r\n";
+    $message .= "Shiping Address:\r\n";
+    $message .= $shippingAddress . "\r\n\r\n";
+    $message .= "Best regards,\r\n";
+    $message .= "Realezy.";
+
+    mail($email, $subject, $message, $headers);
 }
