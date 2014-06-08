@@ -8,6 +8,7 @@
     <link href="{$BASE_URL}css/styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{$BASE_URL}javascript/handlebars-v1.3.0"></script>
 </head>
 
 <body>

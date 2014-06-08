@@ -4,8 +4,8 @@
 
     <div class="row">
 
-        <div class="widewrapper main thumbnail">
-            <img src="imgs/seller/{$USERNAME}/banner.jpg" class="img-responsive">
+        <div class="widewrapper main thumbnail" style="height: 33%; overflow: hidden">
+            <img src="{$BASE_URL}images/seller/{$USERNAME}_banner.jpg" class="img-responsive">
         </div>
 
     </div>
@@ -14,7 +14,7 @@
 
         <div class="col-md-3 thumbnail">
 
-            <img src="imgs/seller/{$USERNAME}/profile.jpg" class="img-responsive">
+            <img src="{$BASE_URL}images/seller/{$USERNAME}_profile.jpg" class="img-responsive">
 
         </div>
 

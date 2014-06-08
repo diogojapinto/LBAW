@@ -77,4 +77,4 @@
     {/literal}
 </script>
 
-<script src="{$BASE_URL}javascript/productsSearch.js"></script>
+<script src="{$BASE_URL}javascript/productsSearchPage.js"></script>

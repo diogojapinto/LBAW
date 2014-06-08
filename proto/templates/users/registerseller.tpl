@@ -18,7 +18,8 @@
                            placeholder="Nome de utilizador" name="username" maxlength="20" required>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Não pode conter espaços"><span class="glyphicon glyphicon-question-sign"></span>
+                    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+                            title="Não pode conter espaços"><span class="glyphicon glyphicon-question-sign"></span>
                     </button>
                 </div>
             </div>
@@ -61,14 +62,15 @@
                 </div>
             </div>
             <div class="form-group"></div>
-            <div class="form-group">
-            </div>
+            <div class="form-group"></div>
             <div class="form-group">
                 <label for="tooltip" class="col-sm-2 control-label"></label>
+
                 <div class="col-sm-2">
                     <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom"
                             title="A Realezy, de forma a manter padrões de qualidade e ter apenas vendedores válidos na sua plataforma, utiliza estes dados para verificar a legitimidade dos vendedores.">
-                        Porque tenho que fornecer esta informaçao <span class="glyphicon glyphicon-question-sign"></span>
+                        Porque tenho que fornecer esta informaçao <span
+                                class="glyphicon glyphicon-question-sign"></span>
                     </button>
                 </div>
             </div>
@@ -122,11 +124,19 @@
 
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputCellphone3" placeholder="+351 22578467"
-                           value="{$FORM_VALUES.cellphone}" pattern="(\+)?[\- | 0-9]+" name="cellphone" maxlength="20" required>
+                           value="{$FORM_VALUES.cellphone}" pattern="(\+)?[\- | 0-9]+" name="cellphone" maxlength="20"
+                           required>
                 </div>
             </div>
             <div class="form-group">
+                <label for="inputDescription3" class="col-sm-2 control-label">Descrição</label>
+
+                <div class="col-sm-5">
+                    <textarea class="form-control" id="inputDescription3" placeholder="Relizam-se duplos negócios!"
+                              name="description"></textarea>
+                </div>
             </div>
+            <div class="form-group"></div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-primary">Registar</button>
@@ -139,8 +149,9 @@
 </div>
 
 {include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/formValidation.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("button[data-toggle=tooltip").tooltip();
     });
 </script>
