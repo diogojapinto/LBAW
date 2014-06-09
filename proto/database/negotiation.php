@@ -75,15 +75,18 @@ function acceptProposal($username, $idDeal)
 
     $conn->beginTransaction();
 
-    $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
+    $stmt = $conn->prepare("SELECT interactionNo, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY iddeal, amount;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
     $stmt->execute(array(":idDeal" => $idDeal));
 
     $result = $stmt->fetch();
-    $lastInteraction = $result['max'];
+    $lastInteraction = $result['interactionno'];
     $amount = $result['amount'];
 
     $stmt = $conn->prepare("INSERT INTO Interaction (idDeal, InteractionNo, amount, date, interactionType)
@@ -127,10 +130,13 @@ function getDealState($idDeal)
     switch ($dealState) {
         case "Pending":
 
-            $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), interactionType
+            $stmt = $conn->prepare("SELECT interactionNo, amount, interactiontype
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY interactionNo, iddeal, interactionType;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
             $stmt->execute(array(":idDeal" => $idDeal));
 
@@ -175,10 +181,13 @@ function finishDeal($username, $idDeal, $buyerAddress, $buyerCity, $buyerPostal,
 
     $conn->beginTransaction();
 
-    $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
+    $stmt = $conn->prepare("SELECT interactionNo, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY iddeal, amount;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
     $stmt->execute(array(":idDeal" => $idDeal));
     $temp = $stmt->fetch();
@@ -232,15 +241,18 @@ function declineProposal($username, $idDeal)
         return false;
     }
 
-    $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
+    $stmt = $conn->prepare("SELECT interactionNo, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY iddeal, amount;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
     $stmt->execute(array(":idDeal" => $idDeal));
 
     $result = $stmt->fetch();
-    $lastInteraction = $result['max'];
+    $lastInteraction = $result['interactionno'];
     $amount = $result['amount'];
 
     $stmt = $conn->prepare("INSERT INTO Interaction (idDeal, InteractionNo, amount, date, interactionType)
@@ -253,15 +265,18 @@ function sellerAction($idDeal)
 {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
+    $stmt = $conn->prepare("SELECT interactionNo, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY iddeal, amount;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
     $stmt->execute(array(":idDeal" => $idDeal));
 
     $result = $stmt->fetch();
-    $lastInteraction = $result['max'];
+    $lastInteraction = $result['interactionno'];
     $amount = $result['amount'];
 
     // get lowest possible offer
@@ -311,11 +326,13 @@ function getLastAmount($idDeal)
     $conn->beginTransaction();
 
 
-    $stmt = $conn->prepare("SELECT DISTINCT ON(idDeal) MAX(interactionNo), amount
-
+    $stmt = $conn->prepare("SELECT interactionNo, amount
                             FROM Interaction
                             WHERE idDeal = :idDeal
-                            GROUP BY iddeal, amount;");
+                              AND interactionno =
+                                (SELECT MAX(interactionno)
+                                FROM interaction
+                                WHERE iddeal = :idDeal);");
 
     $stmt->execute(array(":idDeal" => $idDeal));
 

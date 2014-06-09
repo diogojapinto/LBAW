@@ -127,13 +127,15 @@ function isSeller($username)
 function getInteractions($userId)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT DISTINCT ON(iddeal) MAX(Interaction.interactionNo), Interaction.*, Product.name
-                                FROM Interaction, Deal, Product, registeredUser
-                                WHERE Interaction.iddeal = Deal.iddeal AND
-                                    Deal.idproduct = Product.idproduct AND
-                                    Deal.idbuyer = registeredUser.idUser AND
-                                    registeredUser.idUser = ?
-                                GROUP BY interaction.interactionno, Interaction.idDeal, Product.name;");
+    $stmt = $conn->prepare("SELECT Interaction.*, Product.name
+                                FROM Interaction, Deal as Deal1, Product, registeredUser
+                                WHERE Interaction.iddeal = Deal1.iddeal AND
+                                    Deal1.idproduct = Product.idproduct AND
+                                    Deal1.idbuyer = registeredUser.idUser AND
+                                    registeredUser.idUser = ? AND
+                                    Interaction.interactionNo = (SELECT MAX(Interaction.interactionNo)
+                                                                 FROM Interaction
+                                                                 WHERE Interaction.idDeal = Deal1.idDeal);");
     $stmt->execute(array($userId));
 
     $result = $stmt->fetchAll();
