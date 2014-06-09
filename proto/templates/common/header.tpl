@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="{$BASE_URL}images/icon_set/icon.png"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
     <script src="{$BASE_URL}javascript/handlebars-v1.3.0.js" type="text/javascript"></script>
+    <script src="{$BASE_URL}javascript/productsSearch.js" type="text/javascript"></script>
 </head>
 
 <body>
