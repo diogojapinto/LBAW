@@ -179,7 +179,7 @@ SET SCHEMA 'public';
 
     CREATE TABLE  BuyerInfo (
         idBuyerInfo SERIAL PRIMARY KEY,
-        #todo: change to BuyerAddress
+        /*todo: change to BuyerAddress*/
         idShippingAddress INTEGER NOT NULL REFERENCES Address(idAddress),
         idBillingAddress INTEGER NOT NULL REFERENCES Address(idAddress),
         idCreditCard INTEGER NOT NULL REFERENCES CreditCard
@@ -234,7 +234,7 @@ SET SCHEMA 'public';
         ADD CONSTRAINT ct_valid_pm_recipient CHECK (idAdmin != idUser);
 
     ALTER TABLE Deal 
-        ADD CONSTRAINT ct_valid_deal_dates CHECK (endDate::date > beginningDate::date);
+        ADD CONSTRAINT ct_valid_deal_dates CHECK (endDate::date >= beginningDate::date);
 
     ALTER TABLE WantsToSell 
         ADD CONSTRAINT ct_valid_seller_prices CHECK (minimumPrice < averagePrice);

@@ -6,7 +6,9 @@
     include_once($BASE_DIR . 'database/products.php');
 
     $countries = getCountryList();
+    $countries2 = getCountryList();
     $smarty->assign('countries', $countries);
+$smarty->assign('countries2', $countries2);
 
     if (!$_SESSION['username']) {
         $_SESSION['error_messages'] = array('Tem que fazer login');
@@ -23,7 +25,7 @@
     }
 
     $username = $_SESSION['username'];
-    $idDeal = $_POST['idDeal'];
+    $idDeal = $_GET['idDeal'];
     $idUser = getIdUser($username);
 
     $dealState = getDealState($idDeal);

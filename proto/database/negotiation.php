@@ -172,7 +172,6 @@ function getDealState($idDeal)
 
 function finishDeal($username, $idDeal, $buyerAddress, $buyerCity, $buyerPostal, $buyerCountry, $billingAddress, $billingCity, $billingPostal, $billingCountry, $creditCardNumber, $creditCardDate, $creditCardHolder, $deliveryMethod)
 {
-    // TODO
     global $conn;
 
     if (!isBuyer($username)) {
@@ -206,27 +205,21 @@ function finishDeal($username, $idDeal, $buyerAddress, $buyerCity, $buyerPostal,
     $stmt = $conn->prepare("INSERT INTO CreditCard (idbuyer, ownername, number, duedate)
                             VALUES (?, ?, ?, ?);");
     $stmt->execute(array(getIdUser($username), $creditCardHolder, $creditCardNumber, $creditCardDate));
-    $creditCard = $conn->lastInsertId("address_idaddress_seq");
+    $creditCard = $conn->lastInsertId("creditcard_idcreditcard_seq");
 
     $stmt = $conn->prepare("INSERT INTO BuyerInfo (idshippingaddress, idbillingaddress, idcreditcard)
                             VALUES (?, ?, ?);");
     $stmt->execute(array($shippingAddress, $billingAddress, $creditCard));
-    $buyerInfo = $conn->lastInsertId("address_idaddress_seq");
+    $buyerInfo = $conn->lastInsertId("buyerinfo_idbuyerinfo_seq");
 
     $stmt = $conn->prepare("UPDATE Deal
-                            SET dealState = 'Successful',
+                            SET dealState = 'Delivered',
                                 endDate = CURRENT_TIMESTAMP,
                                 deliveryMethod = ?,
                                 idBuyerInfo = ?
                             WHERE idDeal = ?;");
 
     $stmt->execute(array($deliveryMethod, $buyerInfo, $idDeal));
-
-    $stmt = $conn->prepare("UPDATE Deal
-                            SET dealState = 'Delivered'
-                            WHERE idDeal = ?;");
-
-    $stmt->execute(array($idDeal));
 
     $conn->commit();
 

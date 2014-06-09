@@ -18,5 +18,5 @@ acceptProposal($username, $idDeal);
 
 $_SESSION['success_messages'][] = 'Proposta aceite';
 
-header('Location: ' . $BASE_URL . "pages/negotiation/concludeDeal.php");
+header('Location: ' . $BASE_URL . "pages/negotiation/concludeDeal.php?idDeal=" . $idDeal);
 exit;

@@ -22,12 +22,14 @@
 
     $username = $_SESSION['username'];
     $idDeal = $_GET['idDeal'];
+
+    var_dump($idDeal);
     $idUser = getIdUser($username);
 
     $dealState = getDealState($idDeal);
 
     if (!$dealState) {
-        $_SESSION['error_messages'] = array('Negócio não encontrado');
+        $_SESSION['error_messages'][] = array('Negócio não encontrado');
         header('Location: ' . $BASE_URL);
         exit;
 
@@ -45,15 +47,16 @@
         exit;
 
     } else if ($dealState == "finalize") {
-        if (!$_POST['idDeal'] || !$_POST['buyerAddress'] || !$_POST['buyerCity'] || !$_POST['buyerPostal'] || !$_POST['buyerCountry'] || !$_POST['billingAddress'] || !$_POST['billingCity'] || !$_POST['billingPostal'] || !$_POST['billingCountry'] || !$_POST['creditCardNumber'] || !$_POST['creditCardDate'] || !$_POST['creditCardHolder'] || !$_POST['deliveryMethod'] || !$_POST['password2']) {
+        if (!$_GET['idDeal'] || !$_POST['buyerAddress'] || !$_POST['buyerCity'] || !$_POST['buyerPostal'] || !$_POST['buyerCountry'] || !$_POST['billingAddress'] || !$_POST['billingCity'] || !$_POST['billingPostal'] || !$_POST['billingCountry'] || !$_POST['creditCardNumber'] || !$_POST['creditCardDate'] || !$_POST['creditCardHolder'] || !$_POST['deliveryMethod'] || !$_POST['password2']) {
             $_SESSION['form_values'] = $_POST;
-            $_SESSION['form_values']['errors'] = array('Todos os campos são obrigatórios.');
+            $_SESSION['error_messages'][] = array('Todos os campos são obrigatórios.');
 
-            header("Location: $BASE_URL" . 'pages/negotiation/concludeDeal.php');
+            header("Location: $BASE_URL" . 'pages/negotiation/concludeDeal.php?idDeal=' . $idDeal);
             exit;
         }
-
-        finishDeal($username, $_POST['idDeal'], $_POST['buyerAddress'], $_POST['buyerCity'], $_POST['buyerPostal'], $_POST['buyerCountry'], $_POST['billingAddress'], $_POST['billingCity'], $_POST['billingPostal'], $_POST['billingCountry'], $_POST['creditCardNumber'], $_POST['creditCardDate'], $_POST['creditCardHolder'], $_POST['deliveryMethod']);
-
+        finishDeal($username, $_GET['idDeal'], $_POST['buyerAddress'], $_POST['buyerCity'], $_POST['buyerPostal'], $_POST['buyerCountry'], $_POST['billingAddress'], $_POST['billingCity'], $_POST['billingPostal'], $_POST['billingCountry'], $_POST['creditCardNumber'], $_POST['creditCardDate'], $_POST['creditCardHolder'], $_POST['deliveryMethod']);
+        $_SESSION["success_messages"][] = "Negócio concluido com sucesso";
+        header('Location: ' . $BASE_URL);
+        exit;
     }
 ?>

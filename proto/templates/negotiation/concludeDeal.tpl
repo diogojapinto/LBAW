@@ -6,7 +6,7 @@
         <h1>Concluir negócio</h1><br/>
 
         <form class="form-horizontal" role="form" method="post"
-              action="{$BASE_URL}actions/negotiations/concludeDeal.php">
+              action="{$BASE_URL}actions/negotiations/concludeDeal.php?idDeal={$IDDEAL}">
             {foreach $FORM_VALUES.errors as $error}
                 <div class="alert alert-danger">{$error}</div>
             {/foreach}
@@ -78,7 +78,7 @@
                 <div class="col-sm-2">
                     <select name="billingCountry" id="inputCountry3" class="form-control">
                         <option value="-1"></option>
-                        {foreach $countries as $country}
+                        {foreach $countries2 as $country}
                             <option value="{$country.idcountry}">{$country.name}</option>
                         {/foreach}
                     </select>
