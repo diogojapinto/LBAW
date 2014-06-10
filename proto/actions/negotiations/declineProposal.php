@@ -15,9 +15,9 @@ $idDeal = $_GET['idDeal'];
 
 declineProposal($username, $idDeal);
 
-//exec($BASE_DIR . 'actions/negotiations/sellerAction.php' . " > /dev/null &");
+exec($BASE_DIR . 'actions/negotiations/sellerAction.php ' . $idDeal . ' > /dev/null &');
 
-include_once($BASE_DIR . 'actions/negotiations/sellerAction.php');
+//include_once($BASE_DIR . 'actions/negotiations/sellerAction.php');
 
 $_SESSION['success_messages'][] = 'Proposta recusada. Aguarde contra-proposta';
 header('Location: ' . $_SERVER["HTTP_REFERER"]);

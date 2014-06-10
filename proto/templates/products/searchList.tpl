@@ -40,16 +40,15 @@
 
 
     <div id="getMoreProducts" style="text-align: center;">
-        <button id="getMoreProductsButton" onclick="loadMoreProducts()" type="button" class="btn btn-primary" data-loading-text="A carregar...">Ver mais <span class="caret"></span></button>
+        <button id="getMoreProductsButton" onclick="loadMoreProducts()" type="button" class="btn btn-primary"
+                data-loading-text="A carregar...">Ver mais <span class="caret"></span></button>
     </div>
 </div>
 
-{include file='common/footer.tpl'}
-
-<input type="hidden" name="baseUrl" value="{$BASE_URL}" />
-<input type="hidden" name="productsPerBlock" value="{$PRODUCT_PER_BLOCK}" />
-<input type="hidden" name="name" value="{$name}" />
-<input type="hidden" name="category" value="{$category}" />
+<input type="hidden" name="baseUrl" value="{$BASE_URL}"/>
+<input type="hidden" name="productsPerBlock" value="{$PRODUCT_PER_BLOCK}"/>
+<input type="hidden" name="name" value="{$name}"/>
+<input type="hidden" name="category" value="{$category}"/>
 <script id="product-template" type="text/x-handlebars-template">
     {literal}
     <a href="{/literal}{$BASE_URL}{literal}pages/products/product.php?productId={{idproduct}}">
@@ -69,12 +68,31 @@
 </script>
 <script id="product-row-template" type="text/x-handlebars-template" type="text/javascript">
     {literal}
-    <div class="row productThumbnails">
-        {{#each products}}
-        {{{this}}}
-        {{/each}}
-    </div>
+    <
+    div
+    class
+    = "row productThumbnails" >
+    {
+    {#each
+        products
+    }
+    }
+    {
+        {
+            {
+                this
+            }
+        }
+    }
+    {
+        {/each
+        }
+    }
+    </
+    div >
     {/literal}
 </script>
 
 <script src="{$BASE_URL}javascript/productsSearchPage.js" type="text/javascript"></script>
+
+{include file='common/footer.tpl'}

@@ -166,6 +166,7 @@
     {/literal}
 </script>
 <script src="{$BASE_URL}javascript/warnings.js" type="text/javascript"></script>
+<script src="{$BASE_URL}javascript/productsSearch.js" type="text/javascript"></script>
 
 </body>
 </html>
