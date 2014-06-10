@@ -17,6 +17,7 @@ function updateNotifications() {
             return;
 
         $("#notificationsHeaderList li:not(.divider)").remove();
+        $("#notificationsHeaderList hr").remove();
 
         var count = parseInt( data['count'] );
         if( count == 0 )
@@ -25,12 +26,10 @@ function updateNotifications() {
             $("#sessionLink span.badge").text(count);
 
         $.each( data['privateMessages'], function(key, value) {
-            console.log(value);
             $("#firstDivider").after( privateMessageTemplate({number: key + 1, subject: value['subject']}) );
         });
 
         $.each( data['interactions'], function(key, value) {
-            console.log(value);
             $("#notificationsHeaderList").prepend( interactionTemplate(value) );
         });
 

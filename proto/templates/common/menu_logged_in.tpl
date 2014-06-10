@@ -48,10 +48,12 @@
 <script id="interaction-template" type="text/x-handlebars-template">
     {literal}
         <li style="padding: 3px 20px 3px 20px">
-            Nova oferta no produto {{name}}<br/>
+            Nova oferta no produto {{name}} por <a
+                    href="{$BASE_URL}pages/users/sellerPage?seller={{username}}">{{username}}</a>
 
             <b>Valor:</b> {{amount}}<span class="glyphicon glyphicon-euro"></span>&nbsp;&nbsp;&nbsp;
         </li>
+        <hr>
     {/literal}
 </script>
 <script id="privateMessage-template" type="text/x-handlebars-template">
